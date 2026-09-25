@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Schibsted+Grotesk:ital,wght@0,400..800;1,400..800&amp;display=swap">
+<style>
+body{margin:0;background:#F4EFE6;color:#292824;font-family:'Schibsted Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#292824}
+a:hover{color:#6D263D}
+:focus-visible{outline:2px solid #6D263D;outline-offset:2px}
+button,input,select,textarea{font-family:inherit}
+::selection{background:#D7A66D;color:#292824}
+</style>
+</helmet>
+<div style="height:100vh;display:flex;flex-direction:{{ L.shellDir }};background:#F4EFE6;color:#292824;font-family:'Schibsted Grotesk',system-ui,sans-serif;overflow:hidden;">
+
+<aside aria-label="Navegação do editor" style="flex:{{ L.sideFlex }};display:flex;flex-direction:{{ L.sideDir }};align-items:{{ L.sideAlign }};gap:8px;padding:{{ L.sidePad }};background:#EDE5D8;border-right:{{ L.sideBR }};border-bottom:{{ L.sideBB }};overflow-x:auto;min-width:0;box-sizing:border-box;">
+  <div style="padding:{{ L.brandPad }};flex:0 0 auto;">
+    <div style="font-family:'Instrument Serif',serif;font-size:26px;line-height:1;">Raquel <em style="color:#6D263D;">Frias</em></div>
+    <div style="margin-top:6px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#5E5A52;">Editor de conteúdo</div>
+  </div>
+  <nav style="display:flex;flex-direction:{{ L.sideDir }};gap:2px;flex:0 0 auto;">
+    <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="6">
+      <button type="button" onClick="{{ n.onClick }}" aria-current="{{ n.current }}" style="display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:40px;padding:0 12px;border:0;border-radius:4px;background:{{ n.bg }};color:#292824;font-size:14px;font-weight:{{ n.weight }};text-align:left;cursor:pointer;white-space:nowrap;" style-hover="background:#E3D9C9;"><span>{{ n.label }}</span><span style="font-size:12px;color:#5E5A52;">{{ n.count }}</span></button>
+    </sc-for>
+  </nav>
+  <div style="margin-top:auto;margin-left:{{ L.footML }};display:flex;flex-direction:{{ L.sideDir }};gap:8px;padding:{{ L.footPad }};flex:0 0 auto;align-items:stretch;">
+    <button type="button" onClick="{{ openPublish }}" style="display:flex;justify-content:center;align-items:center;gap:10px;min-height:44px;padding:0 18px;border:0;border-radius:999px;background:#6D263D;color:#F4EFE6;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;white-space:nowrap;" style-hover="background:#571E31;">Publicar<sc-if value="{{ hasChanges }}"><span style="min-width:20px;height:20px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:#D7A66D;color:#292824;font-size:11px;letter-spacing:0;display:inline-flex;align-items:center;justify-content:center;">{{ changeCount }}</span></sc-if></button>
+    <a href="Portfolio.dc.html" target="_blank" rel="noopener" style="display:flex;justify-content:center;align-items:center;min-height:40px;padding:0 14px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;white-space:nowrap;">Ver site ↗</a>
+  </div>
+</aside>
+
+<main ref="{{ mainRef }}" style="display:{{ L.mainDisplay }};flex:1 1 auto;min-width:0;min-height:0;flex-direction:column;overflow-y:auto;">
+  <div style="width:100%;max-width:780px;box-sizing:border-box;padding:28px clamp(20px,3.2vw,44px) 96px;">
+
+    <sc-if value="{{ L.showPaneToggle }}">
+      <div style="display:flex;justify-content:flex-end;margin-bottom:12px;">
+        <button type="button" onClick="{{ showPreviewPane }}" style="min-height:40px;padding:0 16px;border:1px solid #292824;border-radius:999px;background:transparent;color:#292824;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;">Ver prévia →</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+      <p style="font-size:14px;color:#5E5A52;">Carregando conteúdo…</p>
+    </sc-if>
+
+    <!-- INÍCIO -->
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:0 0 18px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#5E5A52;">Início</p>
+      <h1 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(44px,5.6vw,72px);line-height:.95;letter-spacing:-.02em;">Olá, Raquel.<br><em style="color:#6D263D;">O que você quer fazer?</em></h1>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:24px;padding:14px 0;border-top:1px solid #292824;border-bottom:1px solid rgba(41,40,36,.16);font-size:14px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:{{ statusDot }};flex:0 0 auto;"></span>
+        <span style="flex:1 1 240px;">{{ statusLine }}</span>
+        <sc-if value="{{ hasChanges }}"><button type="button" onClick="{{ openPublish }}" style="padding:0;border:0;border-bottom:1px solid #6D263D;background:transparent;color:#6D263D;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;">Revisar e publicar →</button></sc-if>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0 28px;margin-top:12px;">
+        <sc-for list="{{ tiles }}" as="t" hint-placeholder-count="7">
+          <button type="button" onClick="{{ t.onClick }}" style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:22px 0 24px;border:0;border-bottom:1px solid rgba(41,40,36,.16);background:transparent;color:#292824;text-align:left;cursor:pointer;transition:padding .25s,color .25s;" style-hover="padding-left:10px;color:#6D263D;">
+            <span style="font-size:11px;letter-spacing:.14em;color:#6D263D;">{{ t.n }}</span>
+            <span style="font-family:'Instrument Serif',serif;font-size:32px;line-height:1;">{{ t.title }} <span aria-hidden="true" style="font-family:'Schibsted Grotesk',sans-serif;font-size:18px;">→</span></span>
+            <span style="font-size:14px;line-height:1.45;color:#5E5A52;">{{ t.text }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <section aria-label="Como funciona" style="margin-top:48px;padding:22px 24px;background:#EDE5D8;">
+        <h2 style="margin:0 0 14px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;">Como funciona</h2>
+        <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.5;">
+          <li style="display:flex;gap:14px;"><span style="color:#6D263D;font-weight:600;">1</span><span>Edite. Tudo é salvo sozinho no rascunho — nada vai ao ar ainda.</span></li>
+          <li style="display:flex;gap:14px;"><span style="color:#6D263D;font-weight:600;">2</span><span>Confira na prévia ao lado como o site vai ficar.</span></li>
+          <li style="display:flex;gap:14px;"><span style="color:#6D263D;font-weight:600;">3</span><span>Publique quando estiver pronto. O site atualiza em cerca de um minuto.</span></li>
+        </ol>
+      </section>
+    </sc-if>
+
+    <!-- LISTA -->
+    <sc-if value="{{ isList }}" hint-placeholder-val="{{ false }}">
+      <button type="button" onClick="{{ goHome }}" style="padding:0;border:0;background:transparent;color:#292824;font-size:11px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;">← Início</button>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-top:18px;">
+        <h1 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(48px,6vw,80px);line-height:.9;letter-spacing:-.02em;">{{ list.label }}</h1>
+        <button type="button" onClick="{{ list.onNew }}" style="min-height:44px;padding:0 20px;border:0;border-radius:999px;background:#292824;color:#F4EFE6;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;" style-hover="background:#6D263D;">+ Novo {{ list.singular }}</button>
+      </div>
+      <p style="margin:16px 0 0;font-size:14px;line-height:1.5;color:#5E5A52;">{{ list.hint }}</p>
+      <ol style="list-style:none;margin:24px 0 0;padding:0;border-top:1px solid #292824;">
+        <sc-for list="{{ list.rows }}" as="r" hint-placeholder-count="4">
+          <li style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:16px 0;border-bottom:1px solid rgba(41,40,36,.16);">
+            <span style="flex:0 0 26px;font-size:12px;letter-spacing:.1em;color:#6D263D;">{{ r.num }}</span>
+            <button type="button" onClick="{{ r.onEdit }}" style="flex:1 1 220px;min-width:0;padding:0;border:0;background:transparent;text-align:left;cursor:pointer;color:#292824;" style-hover="color:#6D263D;">
+              <span style="display:block;font-family:'Instrument Serif',serif;font-size:28px;line-height:1.05;">{{ r.title }}</span>
+              <span style="display:block;margin-top:4px;font-size:13px;color:#5E5A52;">{{ r.meta }}</span>
+            </button>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;">
+              <sc-if value="{{ r.changed }}"><span style="padding:4px 9px;border-radius:999px;background:#D7A66D;color:#292824;font-size:11px;letter-spacing:.08em;text-transform:uppercase;">Alterado</span></sc-if>
+              <sc-if value="{{ r.hasStatus }}"><span style="padding:4px 9px;border-radius:999px;border:1px solid {{ r.statusLine }};color:{{ r.statusFg }};font-size:11px;letter-spacing:.08em;text-transform:uppercase;">{{ r.statusLabel }}</span></sc-if>
+              <sc-if value="{{ r.isProj }}"><button type="button" onClick="{{ r.onFeat }}" aria-pressed="{{ r.featStr }}" title="Destaque na Home" style="min-height:32px;padding:0 10px;border:1px solid rgba(41,40,36,.3);border-radius:999px;background:{{ r.featBg }};color:{{ r.featFg }};font-size:11px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;">★ Home</button></sc-if>
+              <button type="button" onClick="{{ r.onUp }}" disabled="{{ r.noUp }}" aria-label="{{ r.upLabel }}" style="width:32px;height:32px;border:1px solid rgba(41,40,36,.3);border-radius:50%;background:transparent;color:#292824;cursor:pointer;opacity:{{ r.upOp }};">↑</button>
+              <button type="button" onClick="{{ r.onDown }}" disabled="{{ r.noDown }}" aria-label="{{ r.downLabel }}" style="width:32px;height:32px;border:1px solid rgba(41,40,36,.3);border-radius:50%;background:transparent;color:#292824;cursor:pointer;opacity:{{ r.downOp }};">↓</button>
+              <button type="button" onClick="{{ r.onEdit }}" style="min-height:32px;padding:0 14px;border:0;border-radius:999px;background:#292824;color:#F4EFE6;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;">Editar</button>
+              <button type="button" onClick="{{ r.onDelete }}" style="min-height:32px;padding:0 12px;border:1px solid {{ r.delLine }};border-radius:999px;background:{{ r.delBg }};color:{{ r.delFg }};font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;">{{ r.delLabel }}</button>
+            </div>
+          </li>
+        </sc-for>
+      </ol>
+    </sc-if>
+
+    <!-- FORMULÁRIO -->
+    <sc-if value="{{ isForm }}" hint-placeholder-val="{{ false }}">
+      <button type="button" onClick="{{ form.onBack }}" style="padding:0;border:0;background:transparent;color:#292824;font-size:11px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;">← {{ form.backLabel }}</button>
+      <h1 style="margin:18px 0 0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(44px,5.4vw,72px);line-height:.92;letter-spacing:-.02em;overflow-wrap:anywhere;">{{ form.title }}</h1>
+      <p style="margin:12px 0 0;display:flex;align-items:center;gap:8px;font-size:13px;color:#5E5A52;"><span style="width:7px;height:7px;border-radius:50%;background:#5E8C61;"></span>Salvo automaticamente no rascunho</p>
+
+      <ol aria-label="Etapas" style="list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid #292824;padding-bottom:12px;">
+        <sc-for list="{{ form.tabs }}" as="tb">
+          <li><button type="button" onClick="{{ tb.onClick }}" aria-current="{{ tb.current }}" style="display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 12px;border:1px solid {{ tb.line }};border-radius:999px;background:{{ tb.bg }};color:{{ tb.fg }};font-size:12px;cursor:pointer;white-space:nowrap;"><span style="opacity:.7;">{{ tb.num }}</span>{{ tb.label }}<sc-if value="{{ tb.hasIssue }}"><span aria-label="campos pendentes" style="width:7px;height:7px;border-radius:50%;background:#D7A66D;"></span></sc-if></button></li>
+        </sc-for>
+      </ol>
+      <sc-if value="{{ form.hasHint }}"><p style="margin:20px 0 0;font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;line-height:1.2;color:#6D263D;">{{ form.hint }}</p></sc-if>
+
+      <div style="display:flex;flex-direction:column;gap:30px;margin-top:28px;">
+        <sc-for list="{{ form.fields }}" as="f">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;">
+              <label for="{{ f.id }}" style="font-size:14px;font-weight:600;line-height:1.35;">{{ f.label }}<sc-if value="{{ f.req }}"><span style="color:#6D263D;"> *</span></sc-if></label>
+              <span style="flex:0 0 auto;font-size:12px;color:{{ f.ccolor }};font-variant-numeric:tabular-nums;">{{ f.counter }}</span>
+            </div>
+
+            <sc-if value="{{ f.isInput }}">
+              <input id="{{ f.id }}" type="{{ f.inputType }}" value="{{ f.value }}" maxLength="{{ f.max }}" placeholder="{{ f.placeholder }}" onChange="{{ f.onChange }}" aria-invalid="{{ f.invalidStr }}" style="width:100%;box-sizing:border-box;min-height:46px;padding:10px 12px;border:1px solid {{ f.border }};border-radius:4px;background:#FBF8F2;color:#292824;font-size:15px;" style-focus="outline:none;border-color:#6D263D;box-shadow:0 0 0 3px rgba(109,38,61,.16);">
+            </sc-if>
+            <sc-if value="{{ f.isTextarea }}">
+              <textarea id="{{ f.id }}" value="{{ f.value }}" maxLength="{{ f.max }}" rows="{{ f.rows }}" placeholder="{{ f.placeholder }}" onChange="{{ f.onChange }}" aria-invalid="{{ f.invalidStr }}" style="width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid {{ f.border }};border-radius:4px;background:#FBF8F2;color:#292824;font-size:15px;line-height:1.55;resize:vertical;" style-focus="outline:none;border-color:#6D263D;box-shadow:0 0 0 3px rgba(109,38,61,.16);"></textarea>
+            </sc-if>
+            <sc-if value="{{ f.isSelect }}">
+              <select id="{{ f.id }}" value="{{ f.value }}" onChange="{{ f.onChange }}" style="width:100%;box-sizing:border-box;min-height:46px;padding:0 12px;border:1px solid rgba(41,40,36,.28);border-radius:4px;background:#FBF8F2;color:#292824;font-size:15px;">
+                <sc-for list="{{ f.options }}" as="o"><option value="{{ o.value }}">{{ o.label }}</option></sc-for>
+              </select>
+            </sc-if>
+            <sc-if value="{{ f.isToggle }}">
+              <button type="button" id="{{ f.id }}" role="switch" aria-checked="{{ f.state }}" onClick="{{ f.onToggle }}" style="display:inline-flex;align-self:flex-start;align-items:center;gap:12px;min-height:44px;padding:0;border:0;background:transparent;color:#292824;font-size:15px;cursor:pointer;"><span style="position:relative;flex:0 0 auto;width:44px;height:24px;border-radius:999px;background:{{ f.trackBg }};transition:background .2s;"><span style="position:absolute;top:2px;left:{{ f.knobX }};width:20px;height:20px;border-radius:50%;background:#FBF8F2;transition:left .2s;"></span></span><span>{{ f.toggleText }}</span></button>
+            </sc-if>
+            <sc-if value="{{ f.isMulti }}">
+              <div role="group" aria-label="{{ f.label }}" style="display:flex;flex-wrap:wrap;gap:8px;">
+                <sc-for list="{{ f.chips }}" as="ch"><button type="button" onClick="{{ ch.onClick }}" aria-pressed="{{ ch.pressed }}" style="min-height:38px;padding:0 14px;border:1px solid #292824;border-radius:999px;background:{{ ch.bg }};color:{{ ch.fg }};font-size:13px;cursor:pointer;">{{ ch.label }}</button></sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ f.isMedia }}">
+              <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:flex-start;padding:14px;border:1px solid rgba(41,40,36,.18);border-radius:4px;background:#FBF8F2;">
+                <div style="flex:0 0 132px;height:100px;position:relative;overflow:hidden;background:#E6DDCD;">
+                  <sc-if value="{{ f.mHas }}"><img src="{{ f.mSrc }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></sc-if>
+                  <sc-if value="{{ f.mNone }}"><div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:8px;background-image:repeating-linear-gradient(135deg, rgba(41,40,36,.09) 0 1px, transparent 1px 12px);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#4A4740;">Sem imagem</div></sc-if>
+                </div>
+                <div style="flex:1 1 240px;min-width:0;display:flex;flex-direction:column;gap:10px;">
+                  <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+                    <label style="position:relative;display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;background:#292824;color:#F4EFE6;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;overflow:hidden;">Enviar imagem<input type="file" accept="image/*" onChange="{{ f.onMFile }}" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;"></label>
+                    <sc-if value="{{ f.mHas }}"><button type="button" onClick="{{ f.onMClear }}" style="min-height:40px;padding:0 14px;border:1px solid rgba(41,40,36,.3);border-radius:999px;background:transparent;color:#292824;font-size:12px;cursor:pointer;">Remover</button></sc-if>
+                    <sc-if value="{{ f.mUploaded }}"><span style="font-size:12px;color:#5E5A52;">Enviada e otimizada</span></sc-if>
+                  </div>
+                  <input aria-label="Link da imagem" type="url" placeholder="ou cole um link: https://…" value="{{ f.mUrl }}" onChange="{{ f.onMUrl }}" style="width:100%;box-sizing:border-box;min-height:40px;padding:8px 10px;border:1px solid rgba(41,40,36,.25);border-radius:4px;background:#FFFFFF;color:#292824;font-size:14px;" style-focus="outline:none;border-color:#6D263D;">
+                  <div style="display:flex;gap:8px;align-items:center;">
+                    <input aria-label="Legenda e descrição da imagem" maxLength="90" placeholder="Legenda / descrição da imagem" value="{{ f.mLabel }}" onChange="{{ f.onMLabel }}" style="flex:1;min-width:0;box-sizing:border-box;min-height:40px;padding:8px 10px;border:1px solid rgba(41,40,36,.25);border-radius:4px;background:#FFFFFF;color:#292824;font-size:14px;" style-focus="outline:none;border-color:#6D263D;">
+                    <span style="flex:0 0 auto;font-size:12px;color:{{ f.mCcolor }};">{{ f.mCounter }}</span>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ f.isVideo }}">
+              <sc-if value="{{ f.vNone }}"><button type="button" onClick="{{ f.onVAdd }}" style="align-self:flex-start;min-height:44px;padding:0 18px;border:1px dashed #292824;border-radius:4px;background:transparent;color:#292824;font-size:14px;cursor:pointer;">+ Adicionar vídeo</button></sc-if>
+              <sc-if value="{{ f.vHas }}">
+                <div style="display:flex;flex-direction:column;gap:10px;padding:14px;border:1px solid rgba(41,40,36,.18);border-radius:4px;background:#FBF8F2;">
+                  <input id="{{ f.id }}" type="url" placeholder="https://youtube.com/watch?v=…" value="{{ f.vUrl }}" onChange="{{ f.onVUrl }}" style="width:100%;box-sizing:border-box;min-height:44px;padding:8px 10px;border:1px solid rgba(41,40,36,.25);border-radius:4px;background:#FFFFFF;color:#292824;font-size:14px;" style-focus="outline:none;border-color:#6D263D;">
+                  <sc-if value="{{ f.vHasVia }}"><span style="font-size:12px;color:{{ f.vViaColor }};">{{ f.vVia }}</span></sc-if>
+                  <input aria-label="Legenda do vídeo" maxLength="90" placeholder="Legenda do vídeo" value="{{ f.vLabel }}" onChange="{{ f.onVLabel }}" style="width:100%;box-sizing:border-box;min-height:40px;padding:8px 10px;border:1px solid rgba(41,40,36,.25);border-radius:4px;background:#FFFFFF;color:#292824;font-size:14px;" style-focus="outline:none;border-color:#6D263D;">
+                  <button type="button" onClick="{{ f.onVRemove }}" style="align-self:flex-start;min-height:36px;padding:0 14px;border:1px solid rgba(41,40,36,.3);border-radius:999px;background:transparent;color:#292824;font-size:12px;cursor:pointer;">Remover vídeo</button>
+                </div>
+              </sc-if>
+            </sc-if>
+
+            <sc-if value="{{ f.isStringList }}">
+              <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;">
+                <sc-for list="{{ f.items }}" as="it">
+                  <li style="display:flex;gap:8px;align-items:flex-start;">
+                    <sc-if value="{{ it.short }}"><input aria-label="{{ it.aria }}" value="{{ it.value }}" maxLength="{{ it.max }}" onChange="{{ it.onChange }}" style="flex:1;min-width:0;box-sizing:border-box;min-height:42px;padding:8px 12px;border:1px solid rgba(41,40,36,.28);border-radius:4px;background:#FBF8F2;color:#292824;font-size:15px;" style-focus="outline:none;border-color:#6D263D;box-shadow:0 0 0 3px rgba(109,38,61,.16);"></sc-if>
+                    <sc-if value="{{ it.long }}"><textarea aria-label="{{ it.aria }}" value="{{ it.value }}" maxLength="{{ it.max }}" rows="3" onChange="{{ it.onChange }}" style="flex:1;min-width:0;box-sizing:border-box;padding:8px 12px;border:1px solid rgba(41,40,36,.28);border-radius:4px;background:#FBF8F2;color:#292824;font-size:15px;line-height:1.5;resize:vertical;" style-focus="outline:none;border-color:#6D263D;box-shadow:0 0 0 3px rgba(109,38,61,.16);"></textarea></sc-if>
+                    <span style="flex:0 0 52px;padding-top:12px;font-size:12px;text-align:right;color:{{ it.ccolor }};font-variant-numeric:tabular-nums;">{{ it.counter }}</span>
+                    <button type="button" onClick="{{ it.onRemove }}" aria-label="{{ it.removeLabel }}" style="flex:0 0 auto;width:42px;height:42px;border:1px solid rgba(41,40,36,.25);border-radius:4px;background:transparent;color:#292824;font-size:18px;cursor:pointer;" style-hover="background:#EDE5D8;">×</button>
+                  </li>
+                </sc-for>
+              </ul>
+              <sc-if value="{{ f.canAdd }}"><button type="button" onClick="{{ f.onAdd }}" style="align-self:flex-start;min-height:40px;padding:0 16px;border:1px dashed #292824;border-radius:4px;background:transparent;color:#292824;font-size:13px;cursor:pointer;">{{ f.addLabel }}</button></sc-if>
+            </sc-if>
+
+            <sc-if value="{{ f.isRepeater }}">
+              <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;">
+                <sc-for list="{{ f.items }}" as="it">
+                  <li style="border:1px solid rgba(41,40,36,.2);border-radius:4px;background:#FBF8F2;">
+                    <div style="display:flex;align-items:center;gap:10px;padding:8px 8px 8px 14px;border-bottom:1px solid rgba(41,40,36,.12);">
+                      <span style="font-size:12px;letter-spacing:.1em;color:#6D263D;">{{ it.idx }}</span>
+                      <span style="flex:1;min-width:0;font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ it.title }}</span>
+                      <button type="button" onClick="{{ it.onUp }}" disabled="{{ it.noUp }}" aria-label="{{ it.upLabel }}" style="width:32px;height:32px;border:0;border-radius:4px;background:transparent;color:#292824;cursor:pointer;opacity:{{ it.upOp }};">↑</button>
+                      <button type="button" onClick="{{ it.onDown }}" disabled="{{ it.noDown }}" aria-label="{{ it.downLabel }}" style="width:32px;height:32px;border:0;border-radius:4px;background:transparent;color:#292824;cursor:pointer;opacity:{{ it.downOp }};">↓</button>
+                      <button type="button" onClick="{{ it.onRemove }}" aria-label="{{ it.removeLabel }}" style="width:32px;height:32px;border:0;border-radius:4px;background:transparent;color:#292824;font-size:18px;cursor:pointer;" style-hover="background:#EDE5D8;">×</button>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:16px;padding:14px;">
+                      <sc-for list="{{ it.sub }}" as="sf">
+                        <div style="display:flex;flex-direction:column;gap:6px;">
+                          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;">
+                            <label for="{{ sf.id }}" style="font-size:13px;font-weight:600;">{{ sf.label }}</label>
+                            <span style="font-size:12px;color:{{ sf.ccolor }};font-variant-numeric:tabular-nums;">{{ sf.counter }}</span>
+                          </div>
+                          <sc-if value="{{ sf.isInput }}"><input id="{{ sf.id }}" type="{{ sf.inputType }}" value="{{ sf.value }}" maxLength="{{ sf.max }}" placeholder="{{ sf.placeholder }}" onChange="{{ sf.onChange }}" style="width:100%;box-sizing:border-box;min-height:42px;padding:8px 12px;border:1px solid rgba(41,40,36,.25);border-radius:4px;background:#FFFFFF;color:#292824;font-size:15px;" style-focus="outline:none;border-color:#6D263D;box-shadow:0 0 0 3px rgba(109,38,61,.16);"></sc-if>
+                          <sc-if value="{{ sf.isTextarea }}"><textarea id="{{ sf.id }}" value="{{ sf.value }}" maxLength="{{ sf.max }}" rows="{{ sf.rows }}" placeholder="{{ sf.placeholder }}" onChange="{{ sf.onChange }}" style="width:100%;box-sizing:border-box;padding:8px 12px;border:1px solid rgba(41,40,36,.25);border-radius:4px;background:#FFFFFF;color:#292824;font-size:15px;line-height:1.5;resize:vertical;" style-focus="outline:none;border-color:#6D263D;box-shadow:0 0 0 3px rgba(109,38,61,.16);"></textarea></sc-if>
+                          <sc-if value="{{ sf.isSelect }}"><select id="{{ sf.id }}" value="{{ sf.value }}" onChange="{{ sf.onChange }}" style="width:100%;box-sizing:border-box;min-height:42px;padding:0 10px;border:1px solid rgba(41,40,36,.25);border-radius:4px;background:#FFFFFF;color:#292824;font-size:15px;"><sc-for list="{{ sf.options }}" as="o"><option value="{{ o.value }}">{{ o.label }}</option></sc-for></select></sc-if>
+                          <sc-if value="{{ sf.isToggle }}"><button type="button" id="{{ sf.id }}" role="switch" aria-checked="{{ sf.state }}" onClick="{{ sf.onToggle }}" style="display:inline-flex;align-self:flex-start;align-items:center;gap:12px;min-height:40px;padding:0;border:0;background:transparent;color:#292824;font-size:14px;cursor:pointer;"><span style="position:relative;flex:0 0 auto;width:44px;height:24px;border-radius:999px;background:{{ sf.trackBg }};transition:background .2s;"><span style="position:absolute;top:2px;left:{{ sf.knobX }};width:20px;height:20px;border-radius:50%;background:#FBF8F2;transition:left .2s;"></span></span><span>{{ sf.toggleText }}</span></button></sc-if>
+                          <sc-if value="{{ sf.isMedia }}">
+                            <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start;">
+                              <div style="flex:0 0 112px;height:84px;position:relative;overflow:hidden;background:#E6DDCD;">
+                                <sc-if value="{{ sf.mHas }}"><img src="{{ sf.mSrc }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></sc-if>
+                                <sc-if value="{{ sf.mNone }}"><div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:6px;background-image:repeating-linear-gradient(135deg, rgba(41,40,36,.09) 0 1px, transparent 1px 12px);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#4A4740;">Sem imagem</div></sc-if>
+                              </div>
+                              <div style="flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:8px;">
+                                <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+                                  <label style="position:relative;display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border-radius:999px;background:#292824;color:#F4EFE6;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;overflow:hidden;">Enviar imagem<input type="file" accept="image/*" onChange="{{ sf.onMFile }}" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;"></label>
+                                  <sc-if value="{{ sf.mHas }}"><button type="button" onClick="{{ sf.onMClear }}" style="min-height:36px;padding:0 12px;border:1px solid rgba(41,40,36,.3);border-radius:999px;background:transparent;color:#292824;font-size:12px;cursor:pointer;">Remover</button></sc-if>
+                                </div>
+                                <input aria-label="Link da imagem" type="url" placeholder="ou cole um link: https://…" value="{{ sf.mUrl }}" onChange="{{ sf.onMUrl }}" style="width:100%;box-sizing:border-box;min-height:38px;padding:6px 10px;border:1px solid rgba(41,40,36,.25);border-radius:4px;background:#FFFFFF;color:#292824;font-size:14px;" style-focus="outline:none;border-color:#6D263D;">
+                                <input aria-label="Legenda e descrição da imagem" maxLength="90" placeholder="Legenda / descrição da imagem" value="{{ sf.mLabel }}" onChange="{{ sf.onMLabel }}" style="width:100%;box-sizing:border-box;min-height:38px;padding:6px 10px;border:1px solid rgba(41,40,36,.25);border-radius:4px;background:#FFFFFF;color:#292824;font-size:14px;" style-focus="outline:none;border-color:#6D263D;">
+                              </div>
+                            </div>
+                          </sc-if>
+                          <sc-if value="{{ sf.hasHelp }}"><p style="margin:0;font-size:12px;line-height:1.45;color:#5E5A52;">{{ sf.help }}</p></sc-if>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </li>
+                </sc-for>
+              </ol>
+              <sc-if value="{{ f.canAdd }}"><button type="button" onClick="{{ f.onAdd }}" style="align-self:flex-start;min-height:44px;padding:0 18px;border:1px dashed #292824;border-radius:4px;background:transparent;color:#292824;font-size:14px;cursor:pointer;" style-hover="background:#EDE5D8;">{{ f.addLabel }}</button></sc-if>
+            </sc-if>
+
+            <sc-if value="{{ f.hasHelp }}"><p style="margin:0;font-size:13px;line-height:1.45;color:#5E5A52;">{{ f.help }}</p></sc-if>
+            <sc-if value="{{ f.invalid }}"><p role="alert" style="margin:0;font-size:13px;color:#6D263D;font-weight:600;">Campo obrigatório.</p></sc-if>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:48px;padding-top:20px;border-top:1px solid #292824;">
+        <sc-if value="{{ form.hasPrev }}"><button type="button" onClick="{{ form.onPrev }}" style="min-height:46px;padding:0 20px;border:1px solid #292824;border-radius:999px;background:transparent;color:#292824;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;">← {{ form.prevLabel }}</button></sc-if>
+        <sc-if value="{{ form.noPrev }}"><span></span></sc-if>
+        <button type="button" onClick="{{ form.onNext }}" style="min-height:46px;padding:0 22px;border:0;border-radius:999px;background:#292824;color:#F4EFE6;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;" style-hover="background:#6D263D;">{{ form.nextLabel }} →</button>
+      </div>
+    </sc-if>
+  </div>
+</main>
+
+<section aria-label="Prévia ao vivo" style="display:{{ L.prevDisplay }};flex:{{ L.prevFlex }};min-width:0;min-height:0;flex-direction:column;border-left:1px solid rgba(41,40,36,.16);background:#DDD3C3;">
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:10px 14px;background:#EDE5D8;border-bottom:1px solid rgba(41,40,36,.16);">
+    <sc-if value="{{ L.showPaneToggle }}"><button type="button" onClick="{{ showFormPane }}" style="min-height:36px;padding:0 12px;border:1px solid #292824;border-radius:999px;background:transparent;color:#292824;font-size:12px;cursor:pointer;">← Formulário</button></sc-if>
+    <span style="flex:1 1 auto;display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;"><span style="width:7px;height:7px;border-radius:50%;background:#6D263D;"></span>Prévia do rascunho</span>
+    <div role="group" aria-label="Dispositivo" style="display:flex;gap:4px;">
+      <sc-for list="{{ devices }}" as="d"><button type="button" onClick="{{ d.onClick }}" aria-pressed="{{ d.pressed }}" style="min-height:32px;padding:0 12px;border:0;border-radius:999px;background:{{ d.bg }};color:{{ d.fg }};font-size:12px;cursor:pointer;">{{ d.label }}</button></sc-for>
+    </div>
+  </div>
+  <div ref="{{ panelRef }}" style="flex:1 1 auto;position:relative;overflow:hidden;min-height:0;">
+    <iframe ref="{{ frameRef }}" onLoad="{{ onFrameLoad }}" src="Portfolio.dc.html?preview=1" title="Prévia do portfólio" style="position:absolute;top:{{ F.top }};left:{{ F.left }};width:{{ F.w }};height:{{ F.h }};transform:{{ F.t }};transform-origin:0 0;border:0;background:#F4EFE6;box-shadow:{{ F.shadow }};"></iframe>
+  </div>
+</section>
+
+<sc-if value="{{ showPublish }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(41,40,36,.55);">
+    <div role="dialog" aria-modal="true" aria-labelledby="pub-title" style="width:100%;max-width:580px;max-height:88vh;overflow-y:auto;box-sizing:border-box;padding:32px clamp(20px,4vw,36px);background:#F4EFE6;color:#292824;">
+      <p style="margin:0 0 12px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#6D263D;">Publicação</p>
+
+      <sc-if value="{{ pub.isReview }}">
+        <h2 id="pub-title" style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:44px;line-height:1;">Revisar e <em style="color:#6D263D;">publicar</em></h2>
+        <sc-if value="{{ pub.noChanges }}"><p style="margin:20px 0 0;font-size:15px;line-height:1.55;">Nenhuma alteração desde a última publicação.</p></sc-if>
+        <sc-if value="{{ hasChanges }}">
+          <h3 style="margin:24px 0 8px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;">O que muda</h3>
+          <ul style="list-style:none;margin:0;padding:0;border-top:1px solid #292824;">
+            <sc-for list="{{ changes }}" as="ch"><li style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid rgba(41,40,36,.16);font-size:15px;"><span>{{ ch.label }}</span><span style="color:#5E5A52;text-align:right;">{{ ch.detail }}</span></li></sc-for>
+          </ul>
+        </sc-if>
+        <sc-if value="{{ pub.hasIssues }}">
+          <h3 style="margin:24px 0 8px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6D263D;">Antes de publicar, complete</h3>
+          <ul style="list-style:none;margin:0;padding:0;border-top:1px solid #6D263D;">
+            <sc-for list="{{ issues }}" as="is"><li style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;padding:12px 0;border-bottom:1px solid rgba(41,40,36,.16);"><span style="flex:1 1 280px;font-size:14px;line-height:1.45;"><strong>{{ is.where }}</strong> — {{ is.labels }}</span><button type="button" onClick="{{ is.onFix }}" style="min-height:34px;padding:0 14px;border:1px solid #6D263D;border-radius:999px;background:transparent;color:#6D263D;font-size:12px;cursor:pointer;">Corrigir</button></li></sc-for>
+          </ul>
+        </sc-if>
+        <p style="margin:24px 0 0;padding:12px 14px;background:#EDE5D8;font-size:13px;line-height:1.5;color:#3D3B36;">Protótipo: a publicação no GitHub está simulada. Para aplicar de verdade, baixe os arquivos e substitua os da pasta <strong>/data</strong>.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;">
+          <button type="button" onClick="{{ doPublish }}" disabled="{{ pub.blocked }}" style="min-height:46px;padding:0 22px;border:0;border-radius:999px;background:{{ pub.btnBg }};color:#F4EFE6;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:{{ pub.cursor }};">Publicar agora</button>
+          <button type="button" onClick="{{ download }}" style="min-height:46px;padding:0 18px;border:1px solid #292824;border-radius:999px;background:transparent;color:#292824;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;">Baixar arquivos</button>
+          <button type="button" onClick="{{ closePublish }}" style="min-height:46px;padding:0 14px;border:0;background:transparent;color:#292824;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;">Cancelar</button>
+        </div>
+        <sc-if value="{{ hasChanges }}"><button type="button" onClick="{{ discard }}" style="margin-top:20px;padding:0;border:0;border-bottom:1px solid #6D263D;background:transparent;color:#6D263D;font-size:12px;cursor:pointer;">{{ discardLabel }}</button></sc-if>
+      </sc-if>
+
+      <sc-if value="{{ pub.isRunning }}">
+        <h2 id="pub-title" style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:44px;line-height:1;">Publicando…</h2>
+        <ol style="list-style:none;margin:24px 0 0;padding:0;border-top:1px solid #292824;">
+          <sc-for list="{{ pub.steps }}" as="st"><li style="display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(41,40,36,.16);font-size:15px;color:{{ st.fg }};"><span style="width:22px;text-align:center;color:#6D263D;">{{ st.mark }}</span>{{ st.label }}</li></sc-for>
+        </ol>
+      </sc-if>
+
+      <sc-if value="{{ pub.isDone }}">
+        <h2 id="pub-title" style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:44px;line-height:1;">Publicado.</h2>
+        <p style="margin:16px 0 0;font-size:15px;line-height:1.55;">O site foi atualizado com as alterações. <span style="color:#5E5A52;">(Simulação — baixe os arquivos para aplicar em /data.)</span></p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;">
+          <a href="Portfolio.dc.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:999px;background:#292824;color:#F4EFE6;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;">Ver site ↗</a>
+          <button type="button" onClick="{{ download }}" style="min-height:46px;padding:0 18px;border:1px solid #292824;border-radius:999px;background:transparent;color:#292824;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;">Baixar arquivos</button>
+          <button type="button" onClick="{{ closePublish }}" style="min-height:46px;padding:0 14px;border:0;background:transparent;color:#292824;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;">Fechar</button>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+  <div role="status" style="position:fixed;left:50%;bottom:24px;z-index:60;transform:translateX(-50%);max-width:calc(100vw - 40px);padding:12px 18px;border-radius:4px;background:#292824;color:#F4EFE6;font-size:14px;line-height:1.4;box-shadow:0 8px 24px rgba(41,40,36,.25);">{{ toast }}</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { ready: false, view: 'home', coll: null, index: -1, single: null, group: 0, device: 'desktop', pane: 'form', publish: null, pubStep: 0, toast: '', confirmDel: null, confirmDiscard: false, showErrors: false, pw: 600, ph: 700, w: 1400 };
+  KEY = 'rf-cms-draft-v1';
+  raw = {};
+  frameRef = React.createRef();
+  mainRef = el => { this.mainEl = el; };
+  panelRef = el => {
+    if (this.ro) this.ro.disconnect();
+    if (!el) return;
+    this.ro = new ResizeObserver(es => { const r = es[0].contentRect; this.setState({ pw: r.width, ph: r.height }); });
+    this.ro.observe(el);
+  };
+
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onKey = e => { if (e.key === 'Escape' && this.state.publish && this.state.publish !== 'running') this.setState({ publish: null }); };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('keydown', this.onKey);
+    this.setState({ w: window.innerWidth });
+    this.load();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('keydown', this.onKey);
+    if (this.ro) this.ro.disconnect();
+    clearTimeout(this.t); clearTimeout(this.tt);
+  }
+  componentDidUpdate(pp, ps) {
+    if (this.state.docs && ps.docs !== this.state.docs) this.sync();
+    const h = this.previewHash();
+    if (h !== this.lastHash) this.goFrame(h);
+  }
+
+  async load() {
+    try {
+      const get = p => fetch(p).then(r => { if (!r.ok) throw new Error(p + ' ' + r.status); return r.json(); });
+      const [schema, projects, profile, testimonials, media] = await Promise.all(['data/schema.json', 'data/projects.json', 'data/profile.json', 'data/testimonials.json', 'data/media.json'].map(get));
+      const orig = { projects, profile, testimonials, media };
+      let docs = orig;
+      try { const d = JSON.parse(localStorage.getItem(this.KEY) || 'null'); if (d && d.projects && d.profile) docs = d; } catch (e) {}
+      this.setState({ ready: true, schema, orig, docs: this.clone(docs) });
+    } catch (e) { console.error('[editor] falha ao carregar', e); this.flash('Não foi possível carregar o conteúdo.'); }
+  }
+
+  clone(o) { return JSON.parse(JSON.stringify(o)); }
+  pad(n) { return String(n).padStart(2, '0'); }
+  g(o, p) { return p.reduce((a, k) => (a == null ? undefined : a[k]), o); }
+  setIn(o, p, v) {
+    if (!p.length) return v;
+    const k = p[0], base = o == null ? (/^\d+$/.test(String(p[0])) ? [] : {}) : o;
+    const c = Array.isArray(base) ? base.slice() : { ...base };
+    c[k] = this.setIn(base[k], p.slice(1), v);
+    return c;
+  }
+  updMany(list) { this.setState(s => ({ docs: list.reduce((d, [p, v]) => this.setIn(d, p, v), s.docs) })); }
+  upd(p, v) { this.updMany([[p, v]]); }
+  isEmpty(v) { return v == null || (typeof v === 'string' && !v.trim()) || (Array.isArray(v) && !v.length); }
+  slugify(t) { return String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 50); }
+  move(arr, i, d) { const a = arr.slice(), j = i + d; if (j < 0 || j >= a.length) return a; [a[i], a[j]] = [a[j], a[i]]; this.raw = {}; return a; }
+  flash(msg) { this.setState({ toast: msg }); clearTimeout(this.tt); this.tt = setTimeout(() => this.setState({ toast: '' }), 3400); }
+  collPath(c) { return [c.file].concat(c.path ? c.path.split('.') : []); }
+
+  sync() {
+    clearTimeout(this.t);
+    this.t = setTimeout(() => {
+      try { localStorage.setItem(this.KEY, JSON.stringify(this.state.docs)); }
+      catch (e) { this.flash('O rascunho ficou grande demais para salvar neste navegador. Use imagens menores ou links.'); }
+      this.post();
+    }, 220);
+  }
+  post() {
+    const f = this.frameRef.current;
+    try { if (f && f.contentWindow) f.contentWindow.postMessage({ type: 'rf-cms-draft', docs: this.state.docs }, '*'); } catch (e) {}
+  }
+  goFrame(h) {
+    const f = this.frameRef.current;
+    if (!f || !f.contentWindow) return;
+    try { if (f.contentWindow.location.hash !== h) f.contentWindow.location.hash = h; this.lastHash = h; } catch (e) {}
+  }
+  onFrameLoad = () => { this.lastHash = null; this.post(); this.goFrame(this.previewHash()); };
+
+  previewHash() {
+    const s = this.state;
+    if (!s.schema) return '#/';
+    if (s.view === 'edit') { const c = s.schema.collections[s.coll], it = this.g(s.docs, this.base()) || {}; return c.preview.replace('{slug}', it.slug || ''); }
+    if (s.view === 'list') return s.schema.collections[s.coll].listPreview;
+    if (s.view === 'single') return s.schema.singletons[s.single].preview;
+    return '#/';
+  }
+
+  base() {
+    const s = this.state;
+    if (s.view === 'edit') return this.collPath(s.schema.collections[s.coll]).concat([s.index]);
+    if (s.view === 'single') { const g = s.schema.singletons[s.single]; return [g.file].concat(g.path ? g.path.split('.') : []); }
+    return [];
+  }
+  groups() {
+    const s = this.state;
+    if (s.view === 'edit') return s.schema.collections[s.coll].groups;
+    if (s.view === 'single') return s.schema.singletons[s.single].groups;
+    return [];
+  }
+  scrollTop() { if (this.mainEl) this.mainEl.scrollTop = 0; }
+
+  go(view, key) {
+    this.raw = {};
+    const patch = { view, confirmDel: null, showErrors: false, pane: 'form', group: 0 };
+    if (view === 'list') patch.coll = key;
+    if (view === 'single') patch.single = key;
+    this.setState(patch, () => this.scrollTop());
+  }
+  open(coll, index, group) {
+    this.raw = {};
+    this.setState({ view: 'edit', coll, index, group: group || 0, showErrors: false, confirmDel: null, pane: 'form' }, () => this.scrollTop());
+  }
+  newItem(coll) {
+    const c = this.state.schema.collections[coll], cp = this.collPath(c), arr = this.g(this.state.docs, cp) || [];
+    const order = Math.max(0, ...arr.map(x => x.order || 0)) + 1;
+    this.upd(cp, arr.concat([{ ...this.clone(c.defaults), order }]));
+    this.open(coll, arr.length, 0);
+  }
+  reorder(coll, rows, pos, d) {
+    const c = this.state.schema.collections[coll], cp = this.collPath(c);
+    const idx = rows.map(r => r.i), j = pos + d;
+    if (j < 0 || j >= idx.length) return;
+    [idx[pos], idx[j]] = [idx[j], idx[pos]];
+    this.updMany(idx.map((ri, p) => [cp.concat([ri, 'order']), p + 1]));
+  }
+
+  opts(f) {
+    const s = this.state;
+    if (typeof f.options === 'string') return s.schema.options[f.options] || [];
+    if (Array.isArray(f.options)) return f.options;
+    if (f.optionsFrom === 'taxonomy') return Object.entries((s.docs.projects && s.docs.projects.taxonomy) || {}).map(([value, label]) => ({ value, label }));
+    if (f.optionsFrom === 'projects') return [{ value: '', label: '— Nenhum —' }].concat(((s.docs.projects && s.docs.projects.projects) || []).map(p => ({ value: p.slug, label: p.title || '(sem título)' })));
+    return [];
+  }
+  counter(val, max) {
+    if (!max) return { counter: '', ccolor: '#5E5A52' };
+    const n = String(val || '').length;
+    return { counter: n + '/' + max, ccolor: n >= max ? '#6D263D' : n > max * 0.85 ? '#8A5A1F' : '#5E5A52' };
+  }
+  parseLines(x) {
+    return String(x).split('\n').map(l => l.trim()).filter(Boolean).map(l => {
+      const m = l.split(/\s+[—–-]\s+/);
+      return m.length > 1 ? { title: m[0], text: m.slice(1).join(' — ') } : { title: l };
+    });
+  }
+  toEmbed(u) {
+    let m;
+    if ((m = u.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{6,})/))) return { src: '', embed: 'https://www.youtube.com/embed/' + m[1], via: 'YouTube reconhecido ✓' };
+    if ((m = u.match(/vimeo\.com\/(?:video\/)?(\d+)/))) return { src: '', embed: 'https://player.vimeo.com/video/' + m[1], via: 'Vimeo reconhecido ✓' };
+    if ((m = u.match(/instagram\.com\/(?:reel|p)\/([^/?#]+)/))) return { src: '', embed: 'https://www.instagram.com/reel/' + m[1] + '/embed', via: 'Instagram reconhecido ✓' };
+    if (/\.(mp4|webm|mov)(\?|$)/i.test(u)) return { src: u, embed: '', via: 'Arquivo de vídeo ✓' };
+    return { src: '', embed: '', via: u ? 'Link não reconhecido — use YouTube, Vimeo, Instagram ou .mp4' : '', bad: !!u };
+  }
+  upload(e, path) {
+    const file = e.target.files && e.target.files[0];
+    e.target.value = '';
+    if (!file) return;
+    const r = new FileReader();
+    r.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const k = Math.min(1, 1600 / Math.max(img.width, img.height));
+        const c = document.createElement('canvas');
+        c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        this.upd(path, c.toDataURL('image/jpeg', 0.82));
+        this.flash('Imagem otimizada e adicionada.');
+      };
+      img.src = r.result;
+    };
+    r.readAsDataURL(file);
+  }
+
+  setField(f, path, raw, base) {
+    const s = this.state;
+    let v = raw;
+    if (f.type === 'slug') v = String(raw).toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-{2,}/g, '-').slice(0, f.max || 50);
+    const ups = [[path, v]];
+    if (s.view === 'edit' && s.coll === 'projects' && f.key === 'title') {
+      const it = this.g(s.docs, base) || {};
+      if (!it.slug || it.slug === this.slugify(it.title || '')) ups.push([base.concat('slug'), this.slugify(v)]);
+    }
+    if (f.key === 'contact.phone') ups.push([base.concat(['contact', 'phoneIntl']), v ? '+55' + String(v).replace(/\D/g, '') : '']);
+    if (s.single === 'media' && f.key === 'url') { const m = String(v).match(/instagram\.com\/(?:reel|p)\/([^/?#]+)/); ups.push([path.slice(0, -1).concat('id'), m ? m[1] : '']); }
+    this.updMany(ups);
+  }
+
+  fv(f, base) {
+    const s = this.state, t = f.type;
+    const path = f.key === '.' ? base : base.concat(f.key.split('.'));
+    const v = this.g(s.docs, path), pk = path.join('.');
+    const id = 'f-' + pk.replace(/[^a-z0-9]/gi, '-');
+    let value = v == null ? '' : String(v);
+    if (t === 'lines') value = this.raw[pk] ?? (Array.isArray(v) ? v.map(i => (i.text ? (i.title || '') + ' — ' + i.text : i.title || '')).join('\n') : '');
+    const invalid = !!(s.showErrors && f.required && this.isEmpty(v));
+    const o = {
+      id, label: f.label, help: f.help || '', hasHelp: !!f.help, req: !!f.required, placeholder: f.placeholder || '',
+      max: f.max || 5000, rows: (f.max || 0) >= 500 ? 7 : (f.max || 0) >= 200 ? 4 : 3,
+      isInput: ['text', 'url', 'email', 'slug'].includes(t), isTextarea: t === 'textarea' || t === 'lines', isSelect: t === 'select', isToggle: t === 'toggle',
+      isMulti: t === 'multiselect', isMedia: t === 'media', isVideo: t === 'video', isStringList: t === 'stringlist', isRepeater: t === 'repeater',
+      inputType: t === 'email' ? 'email' : t === 'url' ? 'url' : 'text',
+      value, invalid, invalidStr: String(invalid), border: invalid ? '#6D263D' : 'rgba(41,40,36,.28)',
+      ...this.counter(value, f.max),
+      onChange: e => { const x = e.target.value; if (t === 'lines') { this.raw[pk] = x; this.upd(path, this.parseLines(x)); } else this.setField(f, path, x, base); }
+    };
+    if (t === 'select') o.options = this.opts(f);
+    if (t === 'toggle') Object.assign(o, { state: String(!!v), toggleText: v ? f.onLabel || 'Sim' : f.offLabel || 'Não', trackBg: v ? '#6D263D' : 'rgba(41,40,36,.28)', knobX: v ? '22px' : '2px', onToggle: () => this.upd(path, !v) });
+    if (t === 'multiselect') {
+      const cur = Array.isArray(v) ? v : [];
+      o.chips = this.opts(f).map(op => { const on = cur.includes(op.value); return { label: op.label, pressed: String(on), bg: on ? '#292824' : 'transparent', fg: on ? '#F4EFE6' : '#292824', onClick: () => this.upd(path, on ? cur.filter(x => x !== op.value) : cur.concat(op.value)) }; });
+    }
+    if (t === 'media') {
+      const m = v || {}, src = m.src || '', lc = this.counter(m.label || '', 90);
+      Object.assign(o, {
+        mSrc: src, mHas: !!src, mNone: !src, mUploaded: src.startsWith('data:'), mUrl: src.startsWith('data:') ? '' : src, mLabel: m.label || '', mCounter: lc.counter, mCcolor: lc.ccolor,
+        onMUrl: e => this.upd(path.concat('src'), e.target.value.trim()), onMLabel: e => this.upd(path.concat('label'), e.target.value),
+        onMFile: e => this.upload(e, path.concat('src')), onMClear: () => this.upd(path.concat('src'), '')
+      });
+    }
+    if (t === 'video') {
+      const url = v ? v.url || v.embed || v.src || '' : '', det = this.toEmbed(url);
+      Object.assign(o, {
+        vHas: !!v, vNone: !v, vUrl: url, vLabel: (v && v.label) || '', vVia: det.via, vHasVia: !!det.via, vViaColor: det.bad ? '#6D263D' : '#3F6B45',
+        onVUrl: e => { const u = e.target.value.trim(), r = this.toEmbed(u); this.upd(path, { ...(v || {}), url: u, src: r.src, embed: r.embed, kind: 'video', tone: (v && v.tone) || 'ink' }); },
+        onVLabel: e => this.upd(path.concat('label'), e.target.value),
+        onVAdd: () => this.upd(path, { src: '', embed: '', url: '', kind: 'video', label: '', tone: 'ink' }),
+        onVRemove: () => this.upd(path, null)
+      });
+    }
+    if (t === 'stringlist') {
+      const arr = Array.isArray(v) ? v : [];
+      o.items = arr.map((x, i) => ({ value: x || '', max: f.max || 5000, long: !!f.long, short: !f.long, aria: f.label + ' ' + (i + 1), removeLabel: 'Remover ' + (x || 'item ' + (i + 1)), ...this.counter(x || '', f.max), onChange: e => this.upd(path.concat(i), e.target.value), onRemove: () => { this.raw = {}; this.upd(path, arr.filter((_, j) => j !== i)); } }));
+      o.canAdd = arr.length < (f.maxItems || 99); o.addLabel = '+ Adicionar'; o.onAdd = () => this.upd(path, arr.concat(''));
+      o.counter = arr.length + '/' + (f.maxItems || '∞'); o.ccolor = '#5E5A52';
+    }
+    if (t === 'repeater') {
+      const arr = Array.isArray(v) ? v : [];
+      o.items = arr.map((it, i) => {
+        let title = it && f.titleKey ? it[f.titleKey] : '';
+        if (f.titleOptions) { const op = (s.schema.options[f.titleOptions] || []).find(x => x.value === title); title = op ? op.label : title; }
+        title = title || (f.itemLabel || 'Item') + ' ' + (i + 1);
+        return {
+          idx: this.pad(i + 1), title,
+          sub: (f.fields || []).filter(sf => !sf.showIf || sf.showIf.in.includes(it && it[sf.showIf.key])).map(sf => this.fv(sf, path.concat(i))),
+          noUp: i === 0, noDown: i === arr.length - 1, upOp: i === 0 ? '.3' : '1', downOp: i === arr.length - 1 ? '.3' : '1',
+          upLabel: 'Mover ' + title + ' para cima', downLabel: 'Mover ' + title + ' para baixo', removeLabel: 'Remover ' + title,
+          onUp: () => this.upd(path, this.move(arr, i, -1)), onDown: () => this.upd(path, this.move(arr, i, 1)),
+          onRemove: () => { this.raw = {}; this.upd(path, arr.filter((_, j) => j !== i)); }
+        };
+      });
+      o.canAdd = arr.length < (f.maxItems || 99); o.addLabel = '+ ' + (f.itemLabel || 'Item');
+      o.onAdd = () => this.upd(path, arr.concat([this.clone(f.itemDefault || {})]));
+      o.counter = arr.length + '/' + (f.maxItems || '∞'); o.ccolor = '#5E5A52';
+    }
+    return o;
+  }
+
+  issuesFor(groups, base) {
+    const out = [];
+    groups.forEach((gr, gi) => gr.fields.forEach(f => {
+      if (f.required && this.isEmpty(this.g(this.state.docs, base.concat(f.key.split('.'))))) out.push({ gi, label: f.label });
+    }));
+    return out;
+  }
+  allIssues() {
+    const s = this.state, out = [];
+    Object.entries(s.schema.collections).forEach(([ck, c]) => {
+      const cp = this.collPath(c), arr = this.g(s.docs, cp) || [];
+      arr.forEach((it, i) => {
+        if (it.status === 'rascunho') return;
+        const iss = this.issuesFor(c.groups, cp.concat(i));
+        if (ck === 'projects' && it.slug && arr.filter(x => x.slug === it.slug).length > 1) iss.push({ gi: 0, label: 'endereço repetido' });
+        if (iss.length) out.push({ where: c.singular.charAt(0).toUpperCase() + c.singular.slice(1) + ' “' + (it[c.titleField] || 'sem título') + '”', labels: iss.map(x => x.label).join(', '), onFix: () => { this.setState({ publish: null, showErrors: true }); this.open(ck, i, iss[0].gi); setTimeout(() => this.setState({ showErrors: true }), 0); } });
+      });
+    });
+    Object.entries(s.schema.singletons).forEach(([sk, g]) => {
+      const iss = this.issuesFor(g.groups, [g.file].concat(g.path ? g.path.split('.') : []));
+      if (iss.length) out.push({ where: g.label, labels: iss.map(x => x.label).join(', '), onFix: () => { this.setState({ publish: null }); this.go('single', sk); setTimeout(() => this.setState({ group: iss[0].gi, showErrors: true }), 0); } });
+    });
+    return out;
+  }
+  changes() {
+    const s = this.state, out = [], changedKeys = {};
+    const J = x => JSON.stringify(x);
+    Object.entries(s.schema.collections).forEach(([ck, c]) => {
+      const cp = this.collPath(c), a = this.g(s.docs, cp) || [], b = this.g(s.orig, cp) || [];
+      const key = it => it.slug || it.name || '';
+      const bm = new Map(b.map(x => [key(x), J(x)])), am = new Set(a.map(key));
+      let n = 0, nw = 0;
+      changedKeys[ck] = new Set();
+      a.forEach(x => { const k = key(x); if (!bm.has(k)) { nw++; changedKeys[ck].add(k); } else if (bm.get(k) !== J(x)) { n++; changedKeys[ck].add(k); } });
+      const rm = b.filter(x => !am.has(key(x))).length;
+      const parts = [n && n + ' editado' + (n > 1 ? 's' : ''), nw && nw + ' novo' + (nw > 1 ? 's' : ''), rm && rm + ' removido' + (rm > 1 ? 's' : '')].filter(Boolean);
+      if (parts.length) out.push({ label: c.label, detail: parts.join(' · '), n: n + nw + rm });
+    });
+    const pa = s.docs.profile || {}, pb = s.orig.profile || {};
+    const cvKeys = ['cv', 'about'];
+    const strip = (o, keep) => { const r = {}; Object.keys(o).forEach(k => { if (keep ? cvKeys.includes(k) : !cvKeys.includes(k)) r[k] = o[k]; }); return r; };
+    if (J(strip(pa, false)) !== J(strip(pb, false))) out.push({ label: 'Home e perfil', detail: 'alterado', n: 1 });
+    if (J(strip(pa, true)) !== J(strip(pb, true))) out.push({ label: 'Currículo', detail: 'alterado', n: 1 });
+    if (J(s.docs.media) !== J(s.orig.media)) out.push({ label: 'Vídeos', detail: 'alterado', n: 1 });
+    return { out, changedKeys, total: out.reduce((a, x) => a + x.n, 0) };
+  }
+
+  doPublish = () => {
+    if (this.allIssues().length || !this.changes().total) return;
+    this.setState({ publish: 'running', pubStep: 0 });
+    [1, 2, 3].forEach(n => setTimeout(() => this.setState({ pubStep: n }), n * 750));
+    setTimeout(() => this.setState(s => ({ publish: 'done', orig: this.clone(s.docs) })), 2500);
+  };
+  download = () => {
+    const d = this.state.docs;
+    ['projects', 'profile', 'testimonials', 'media'].forEach((k, i) => setTimeout(() => {
+      const url = URL.createObjectURL(new Blob([JSON.stringify(d[k], null, 2)], { type: 'application/json' }));
+      const a = document.createElement('a'); a.href = url; a.download = k + '.json'; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
+    }, i * 250));
+  };
+  discard = () => {
+    if (!this.state.confirmDiscard) { this.setState({ confirmDiscard: true }); setTimeout(() => this.setState({ confirmDiscard: false }), 3500); return; }
+    this.raw = {};
+    try { localStorage.removeItem(this.KEY); } catch (e) {}
+    this.setState(s => ({ docs: this.clone(s.orig), publish: null, confirmDiscard: false, view: 'home' }));
+    this.flash('Rascunho descartado.');
+  };
+
+  renderVals() {
+    const s = this.state;
+    const wide = s.w >= 1200, narrow = s.w < 860;
+    const L = {
+      shellDir: narrow ? 'column' : 'row', sideFlex: narrow ? '0 0 auto' : '0 0 236px', sideDir: narrow ? 'row' : 'column', sideAlign: narrow ? 'center' : 'stretch',
+      sidePad: narrow ? '10px 14px' : '22px 14px', sideBR: narrow ? '0' : '1px solid rgba(41,40,36,.16)', sideBB: narrow ? '1px solid rgba(41,40,36,.16)' : '0',
+      brandPad: narrow ? '0 10px 0 0' : '0 10px 22px', footPad: narrow ? '0' : '16px 0 0', footML: narrow ? '12px' : '0',
+      mainDisplay: wide || s.pane === 'form' ? 'flex' : 'none', prevDisplay: wide || s.pane === 'preview' ? 'flex' : 'none',
+      prevFlex: wide ? '0 0 44%' : '1 1 auto', showPaneToggle: !wide
+    };
+    const mobile = s.device === 'mobile', devW = mobile ? 390 : 1280;
+    const availW = Math.max(100, s.pw - (mobile ? 48 : 0)), availH = Math.max(100, s.ph - (mobile ? 48 : 0));
+    const sc = Math.min(1, availW / devW);
+    const F = { w: devW + 'px', h: Math.round(availH / sc) + 'px', t: 'scale(' + sc.toFixed(4) + ')', left: Math.round((s.pw - devW * sc) / 2) + 'px', top: mobile ? '24px' : '0px', shadow: mobile ? '0 12px 40px rgba(41,40,36,.25)' : 'none' };
+    const devices = [{ k: 'desktop', label: 'Desktop' }, { k: 'mobile', label: 'Celular' }].map(d => ({ ...d, pressed: String(s.device === d.k), bg: s.device === d.k ? '#292824' : 'transparent', fg: s.device === d.k ? '#F4EFE6' : '#292824', onClick: () => this.setState({ device: d.k }) }));
+    const common = {
+      L, F, devices, frameRef: this.frameRef, panelRef: this.panelRef, mainRef: this.mainRef, onFrameLoad: this.onFrameLoad,
+      showPreviewPane: () => this.setState({ pane: 'preview' }), showFormPane: () => this.setState({ pane: 'form' }),
+      toast: s.toast, hasToast: !!s.toast
+    };
+    if (!s.ready) return { ...common, loading: true, navItems: [], tiles: [], isHome: false, isList: false, isForm: false, showPublish: false, hasChanges: false };
+
+    const { schema, docs } = s;
+    const C = schema.collections, projArr = this.g(docs, this.collPath(C.projects)) || [], testArr = this.g(docs, this.collPath(C.testimonials)) || [];
+    const reels = (docs.media && docs.media.reels) || [], pending = reels.filter(r => r.status === 'a classificar').length;
+    const ch = this.changes(), issues = this.allIssues();
+    const inColl = k => (s.view === 'list' || s.view === 'edit') && s.coll === k;
+    const navItems = [
+      { label: 'Início', on: s.view === 'home', count: '', onClick: () => this.go('home') },
+      { label: 'Projetos', on: inColl('projects'), count: this.pad(projArr.length), onClick: () => this.go('list', 'projects') },
+      { label: 'Depoimentos', on: inColl('testimonials'), count: this.pad(testArr.length), onClick: () => this.go('list', 'testimonials') },
+      { label: 'Home e perfil', on: s.view === 'single' && s.single === 'home', count: '', onClick: () => this.go('single', 'home') },
+      { label: 'Currículo', on: s.view === 'single' && s.single === 'cv', count: '', onClick: () => this.go('single', 'cv') },
+      { label: 'Vídeos', on: s.view === 'single' && s.single === 'media', count: pending ? pending + ' novos' : '', onClick: () => this.go('single', 'media') }
+    ].map(n => ({ ...n, current: n.on ? 'page' : 'false', bg: n.on ? '#FBF8F2' : 'transparent', weight: n.on ? '600' : '400' }));
+
+    const tiles = [
+      { title: 'Novo projeto', text: 'Campanha, conteúdo, roteiro, editorial, fotografia…', onClick: () => this.newItem('projects') },
+      { title: 'Editar projetos', text: projArr.length + ' projetos · ordem, destaque e status', onClick: () => this.go('list', 'projects') },
+      { title: 'Novo depoimento', text: 'Recebeu uma recomendação? Adicione aqui.', onClick: () => this.newItem('testimonials') },
+      { title: 'Depoimentos', text: testArr.length + ' depoimentos', onClick: () => this.go('list', 'testimonials') },
+      { title: 'Home e perfil', text: 'Abertura, manifesto, números e contato', onClick: () => this.go('single', 'home') },
+      { title: 'Currículo', text: 'Experiência, formação e competências', onClick: () => this.go('single', 'cv') },
+      { title: 'Vídeos a classificar', text: pending ? pending + ' vídeos aguardando curadoria' : 'Tudo classificado', onClick: () => this.go('single', 'media') }
+    ].map((t, i) => ({ ...t, n: this.pad(i + 1) }));
+
+    let list = { rows: [] };
+    if (s.view === 'list') {
+      const c = C[s.coll], cp = this.collPath(c), arr = this.g(docs, cp) || [];
+      const rows = arr.map((it, i) => ({ it, i })).sort((a, b) => (a.it.order ?? 999) - (b.it.order ?? 999));
+      const stMap = { publicado: ['Publicado', '#3F6B45', '#3F6B45'], rascunho: ['Rascunho', '#8A5A1F', '#8A5A1F'], oculto: ['Oculto', '#5E5A52', 'rgba(41,40,36,.3)'] };
+      list = {
+        label: c.label, singular: c.singular, onNew: () => this.newItem(s.coll),
+        hint: s.coll === 'projects' ? 'Use ↑ ↓ para mudar a ordem. ★ Home define quais aparecem em destaque na página inicial.' : 'A ordem aqui é a ordem na página. O primeiro de tamanho Grande abre a seção.',
+        rows: rows.map((r, pos) => {
+          const it = r.it, st = stMap[it.status] || stMap.publicado, dk = s.coll + ':' + r.i, confirming = s.confirmDel === dk;
+          const key = it.slug || it.name || '', title = it[c.titleField] || '(sem título)';
+          return {
+            num: this.pad(pos + 1), title, meta: (c.metaFields || []).map(k => it[k]).filter(Boolean).join(' · ') || '—',
+            changed: !!(ch.changedKeys[s.coll] && ch.changedKeys[s.coll].has(key)),
+            hasStatus: s.coll === 'projects', statusLabel: st[0], statusFg: st[1], statusLine: st[2],
+            isProj: s.coll === 'projects', featStr: String(!!it.featured), featBg: it.featured ? '#292824' : 'transparent', featFg: it.featured ? '#F4EFE6' : '#292824',
+            onFeat: () => this.upd(cp.concat([r.i, 'featured']), !it.featured),
+            noUp: pos === 0, noDown: pos === rows.length - 1, upOp: pos === 0 ? '.3' : '1', downOp: pos === rows.length - 1 ? '.3' : '1',
+            upLabel: 'Mover ' + title + ' para cima', downLabel: 'Mover ' + title + ' para baixo',
+            onUp: () => this.reorder(s.coll, rows, pos, -1), onDown: () => this.reorder(s.coll, rows, pos, 1),
+            onEdit: () => this.open(s.coll, r.i, 0),
+            delLabel: confirming ? 'Confirmar exclusão' : 'Excluir', delBg: confirming ? '#6D263D' : 'transparent', delFg: confirming ? '#F4EFE6' : '#6D263D', delLine: '#6D263D',
+            onDelete: () => {
+              if (!confirming) { this.setState({ confirmDel: dk }); setTimeout(() => this.state.confirmDel === dk && this.setState({ confirmDel: null }), 3500); return; }
+              this.upd(cp, arr.filter((_, j) => j !== r.i)); this.setState({ confirmDel: null }); this.flash('“' + title + '” excluído do rascunho.');
+            }
+          };
+        })
+      };
+    }
+
+    let form = { tabs: [], fields: [] };
+    if (s.view === 'edit' || s.view === 'single') {
+      const groups = this.groups(), base = this.base(), gi = Math.min(s.group, groups.length - 1), gr = groups[gi];
+      const iss = this.issuesFor(groups, base);
+      const isEdit = s.view === 'edit', c = isEdit ? C[s.coll] : null, item = isEdit ? this.g(docs, base) || {} : null;
+      const goGroup = n => this.setState({ group: n }, () => this.scrollTop());
+      const finish = () => {
+        if (iss.length) { this.setState({ showErrors: true, group: iss[0].gi }, () => this.scrollTop()); this.flash('Faltam ' + iss.length + ' campo(s) obrigatório(s).'); return; }
+        if (isEdit) { this.go('list', s.coll); this.flash(s.coll === 'projects' && item.status === 'rascunho' ? 'Salvo como rascunho. Mude o status para Publicado quando estiver pronto.' : 'Salvo no rascunho. Publique quando quiser.'); }
+        else { this.go('home'); this.flash('Salvo no rascunho. Publique quando quiser.'); }
+      };
+      form = {
+        title: isEdit ? item[c.titleField] || 'Novo ' + c.singular : schema.singletons[s.single].label,
+        backLabel: isEdit ? c.label : 'Início', onBack: () => (isEdit ? this.go('list', s.coll) : this.go('home')),
+        tabs: groups.map((g, i) => ({ num: this.pad(i + 1), label: g.label, current: i === gi ? 'step' : 'false', bg: i === gi ? '#292824' : 'transparent', fg: i === gi ? '#F4EFE6' : '#292824', line: i === gi ? '#292824' : 'rgba(41,40,36,.3)', hasIssue: iss.some(x => x.gi === i), onClick: () => goGroup(i) })),
+        hint: gr.hint || '', hasHint: !!gr.hint,
+        fields: gr.fields.map(f => this.fv(f, base)),
+        hasPrev: gi > 0, noPrev: gi === 0, prevLabel: gi > 0 ? groups[gi - 1].label : '', onPrev: () => goGroup(gi - 1),
+        nextLabel: gi < groups.length - 1 ? groups[gi + 1].label : 'Concluir', onNext: () => (gi < groups.length - 1 ? goGroup(gi + 1) : finish())
+      };
+    }
+
+    const blocked = !!issues.length || !ch.total;
+    const pub = {
+      isReview: s.publish === 'review', isRunning: s.publish === 'running', isDone: s.publish === 'done',
+      noChanges: !ch.total, hasIssues: !!issues.length, blocked, btnBg: blocked ? '#9A958B' : '#6D263D', cursor: blocked ? 'not-allowed' : 'pointer',
+      steps: ['Validando conteúdo', 'Salvando no GitHub', 'Atualizando o site'].map((label, i) => ({ label, mark: s.pubStep > i ? '✓' : s.pubStep === i ? '…' : '', fg: s.pubStep >= i ? '#292824' : '#8A857B' }))
+    };
+
+    return {
+      ...common, loading: false, navItems, tiles, list, form, pub, issues,
+      isHome: s.view === 'home', isList: s.view === 'list', isForm: s.view === 'edit' || s.view === 'single',
+      hasChanges: ch.total > 0, changeCount: String(ch.total), changes: ch.out,
+      statusLine: ch.total ? ch.total + ' alteraç' + (ch.total > 1 ? 'ões' : 'ão') + ' no rascunho, ainda não publicada' + (ch.total > 1 ? 's' : '') + '.' + (issues.length ? ' ' + issues.length + ' pendência(s) antes de publicar.' : '') : 'Tudo publicado. Nenhuma alteração pendente.',
+      statusDot: ch.total ? '#D7A66D' : '#3F6B45',
+      showPublish: !!s.publish, openPublish: () => this.setState({ publish: 'review', confirmDiscard: false }), closePublish: () => this.setState({ publish: null }),
+      doPublish: this.doPublish, download: this.download, discard: this.discard, discardLabel: s.confirmDiscard ? 'Clique de novo para descartar tudo' : 'Descartar rascunho'
+    };
+  }
+}
+</script>
+</body>
+</html>

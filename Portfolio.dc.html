@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Schibsted+Grotesk:ital,wght@0,400..800;1,400..800&amp;display=swap">
+<style>
+body{margin:0;background:#F4EFE6;color:#292824;font-family:'Schibsted Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+a:hover{color:#6D263D}
+::selection{background:#D7A66D;color:#292824}
+:focus-visible{outline:2px solid #6D263D;outline-offset:3px}
+button{font-family:inherit}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#F4EFE6;color:#292824;font-family:'Schibsted Grotesk',system-ui,sans-serif;">
+
+<a href="#main" style="position:absolute;left:-9999px;top:8px;z-index:100;background:#292824;color:#F4EFE6;padding:10px 16px;font-size:13px;" style-focus="left:8px;">Pular para o conteúdo</a>
+
+<header style="position:sticky;top:0;z-index:40;background:rgba(244,239,230,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(41,40,36,.14);">
+  <div style="max-width:1440px;margin:0 auto;padding:16px clamp(20px,4vw,56px);display:flex;align-items:center;justify-content:space-between;gap:24px;">
+    <a href="#/" aria-label="Raquel Frias — início" style="font-family:'Instrument Serif',serif;font-size:27px;line-height:1;letter-spacing:-.01em;color:#292824;">Raquel <em style="color:#6D263D;">Frias</em></a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Principal" style="display:flex;gap:30px;align-items:center;">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="4">
+          <a href="{{ n.href }}" aria-current="{{ n.current }}" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:6px 0;border-bottom:1px solid {{ n.line }};color:#292824;transition:color .2s;" style-hover="color:#6D263D;">{{ n.label }}</a>
+        </sc-for>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpenStr }}" aria-controls="menu-mobile" style="min-height:44px;padding:0 18px;border:1px solid #292824;border-radius:999px;background:transparent;color:#292824;font-size:12px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">{{ menuLabel }}</button>
+    </sc-if>
+  </div>
+</header>
+
+<sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+  <nav id="menu-mobile" aria-label="Menu" style="position:fixed;left:0;right:0;top:77px;bottom:0;z-index:39;background:#F4EFE6;padding:24px 20px 40px;display:flex;flex-direction:column;overflow-y:auto;">
+    <sc-for list="{{ nav }}" as="n">
+      <a href="{{ n.href }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(41,40,36,.16);font-family:'Instrument Serif',serif;font-size:52px;line-height:1.05;color:#292824;"><span>{{ n.label }}</span><span style="font-family:'Schibsted Grotesk',sans-serif;font-size:12px;letter-spacing:.14em;color:#6D263D;">{{ n.num }}</span></a>
+    </sc-for>
+    <a href="{{ contact.emailHref }}" style="margin-top:auto;padding-top:32px;font-size:14px;color:#6D263D;">{{ contact.email }}</a>
+  </nav>
+</sc-if>
+
+<main id="main">
+
+<!-- ═════════ HOME ═════════ -->
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+
+  <section data-screen-label="Home · Hero" style="max-width:1440px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(20px,4vw,56px) clamp(56px,7vw,104px);">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 32px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#5E5A52;padding-bottom:14px;border-bottom:1px solid #292824;">
+      <span>Portfólio — Edição {{ profile.edition }}</span>
+      <span>{{ rolesLine }}</span>
+      <span>{{ profile.city }}</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(40px,5vw,72px);align-items:flex-end;margin-top:clamp(28px,4vw,56px);">
+      <div style="flex:1 1 560px;min-width:0;">
+        <h1 data-reveal="" style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(88px,16.5vw,264px);line-height:.84;letter-spacing:-.035em;margin:0;">
+          <span style="display:block;">Raquel</span>
+          <span style="display:block;font-style:italic;color:#6D263D;padding-left:clamp(0px,14vw,260px);">Frias</span>
+        </h1>
+        <div style="display:flex;flex-wrap:wrap;gap:28px 56px;margin-top:clamp(36px,4.5vw,64px);align-items:flex-start;">
+          <p data-reveal="" style="flex:1 1 300px;margin:0;font-family:'Instrument Serif',serif;font-size:clamp(30px,2.9vw,42px);line-height:1.06;letter-spacing:-.01em;text-wrap:balance;">{{ profile.positioning.a }} <em style="color:#6D263D;">{{ profile.positioning.b }}</em></p>
+          <div data-reveal="" style="flex:1 1 280px;max-width:400px;">
+            <p style="margin:0 0 28px;font-size:16px;line-height:1.65;color:#3D3B36;text-wrap:pretty;">{{ profile.intro }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+              <a href="#/projetos" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;background:#292824;color:#F4EFE6;font-size:12px;letter-spacing:.14em;text-transform:uppercase;transition:background .3s;" style-hover="background:#6D263D;color:#F4EFE6;">Ver projetos <span aria-hidden="true">→</span></a>
+              <a href="#/curriculo" style="display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;border:1px solid #292824;color:#292824;font-size:12px;letter-spacing:.14em;text-transform:uppercase;transition:background .3s,color .3s;" style-hover="background:#EBE3D6;color:#6D263D;">Currículo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <figure style="flex:0 1 400px;min-width:260px;margin:0;">
+        <div style="position:relative;aspect-ratio:4/5;overflow:hidden;">
+          <div data-parallax="" style="position:absolute;inset:-4% 0;">
+            <dc-import name="Media" src="{{ heroPhoto.src }}" alt="{{ heroPhoto.alt }}" label="{{ heroPhoto.label }}" tone="{{ heroPhoto.tone }}" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import>
+          </div>
+        </div>
+        <figcaption style="display:flex;justify-content:space-between;gap:12px;margin-top:10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#5E5A52;"><span>Fig. 01</span><span>{{ profile.fullName }}</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div style="border-top:1px solid #292824;border-bottom:1px solid #292824;">
+    <ul aria-label="Áreas de atuação" style="list-style:none;max-width:1440px;margin:0 auto;padding:16px clamp(20px,4vw,56px);display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;">
+      <sc-for list="{{ disciplines }}" as="d" hint-placeholder-count="8">
+        <li style="display:flex;gap:20px;align-items:center;"><span>{{ d.label }}</span><span aria-hidden="true" style="color:#B07F45;">{{ d.sep }}</span></li>
+      </sc-for>
+    </ul>
+  </div>
+
+  <section id="manifesto" data-screen-label="Home · Manifesto" style="background:#6D263D;color:#F4EFE6;margin-top:clamp(72px,9vw,128px);">
+    <div style="max-width:1440px;margin:0 auto;padding:clamp(88px,12vw,184px) clamp(20px,4vw,56px);display:flex;flex-wrap:wrap;gap:32px 64px;">
+      <h2 style="flex:0 0 200px;margin:0;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#D7A66D;">({{ hn.manifesto }}) — Manifesto</h2>
+      <div style="flex:1 1 600px;min-width:0;">
+        <p data-reveal="" style="margin:0;font-family:'Instrument Serif',serif;font-size:clamp(42px,6.2vw,104px);line-height:.98;letter-spacing:-.02em;text-wrap:balance;">
+          <sc-for list="{{ manifesto }}" as="l" hint-placeholder-count="4"><sc-if value="{{ l.i }}"><em style="color:#D7A66D;">{{ l.t }} </em></sc-if><sc-if value="{{ l.r }}"><span>{{ l.t }} </span></sc-if></sc-for>
+        </p>
+        <p data-reveal="" style="max-width:440px;margin:clamp(48px,6vw,88px) 0 0 auto;padding-top:16px;border-top:1px solid rgba(244,239,230,.4);font-size:16px;line-height:1.65;color:#F4EFE6;">{{ profile.manifesto.footnote }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Home · Números" style="max-width:1440px;margin:0 auto;padding:clamp(80px,10vw,150px) clamp(20px,4vw,56px) 0;">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-bottom:14px;border-bottom:1px solid #292824;font-size:11px;letter-spacing:.18em;text-transform:uppercase;">
+      <h2 style="margin:0;font-size:11px;font-weight:500;"><span style="color:#6D263D;">({{ hn.stats }})</span> — Em números</h2>
+      <span style="color:#5E5A52;">Resultados de campanhas · 2025</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;">
+      <sc-for list="{{ homeStats }}" as="s" hint-placeholder-count="4">
+        <a href="{{ s.href }}" data-reveal="" style="flex:1 1 240px;display:flex;flex-direction:column;gap:16px;padding:32px 24px 28px 0;border-bottom:1px solid rgba(41,40,36,.16);color:#292824;">
+          <span style="font-family:'Instrument Serif',serif;font-size:clamp(68px,7.6vw,124px);line-height:.85;letter-spacing:-.03em;">{{ s.value }}<span style="font-size:.42em;font-style:italic;color:#6D263D;margin-left:6px;">{{ s.unit }}</span></span>
+          <span style="font-size:15px;line-height:1.45;max-width:240px;">{{ s.label }}</span>
+          <span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6D263D;">{{ s.projectTitle }} →</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Home · Projetos" style="max-width:1440px;margin:0 auto;padding:clamp(104px,13vw,200px) clamp(20px,4vw,56px) 0;">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:clamp(56px,7vw,112px);">
+      <h2 data-reveal="" style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(60px,9.4vw,156px);line-height:.86;letter-spacing:-.03em;">Projetos<br><em style="color:#6D263D;">selecionados</em></h2>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:12px;">
+        <span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#5E5A52;">({{ hn.projects }}) — {{ featuredCount }} de {{ projectCount }} projetos</span>
+        <a href="#/projetos" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding-bottom:4px;border-bottom:1px solid #292824;">Ver todos os projetos →</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:clamp(104px,13vw,208px);">
+      <sc-for list="{{ featured }}" as="p" hint-placeholder-count="3">
+
+        <sc-if value="{{ p.isWide }}">
+          <article data-reveal="">
+            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;padding-top:14px;margin-bottom:20px;border-top:1px solid #292824;font-size:11px;letter-spacing:.16em;text-transform:uppercase;">
+              <span style="color:#6D263D;">{{ p.num }} / {{ p.total }}</span><span>{{ p.type }}</span><span style="color:#5E5A52;">{{ p.client }} · {{ p.year }}</span>
+            </div>
+            <a href="{{ p.href }}" aria-label="{{ p.ariaLabel }}" style="display:block;position:relative;aspect-ratio:21/9;min-height:240px;">
+              <dc-import name="Media" src="{{ p.cover.src }}" alt="{{ p.cover.alt }}" label="{{ p.cover.label }}" tone="{{ p.cover.tone }}" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import>
+            </a>
+            <div style="display:flex;flex-wrap:wrap;gap:24px 64px;margin-top:32px;align-items:flex-start;">
+              <h3 style="flex:2 1 480px;margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(52px,7.4vw,120px);line-height:.88;letter-spacing:-.03em;"><a href="{{ p.href }}" style="color:#292824;transition:color .3s;" style-hover="color:#6D263D;">{{ p.title }}</a></h3>
+              <div style="flex:1 1 300px;max-width:420px;">
+                <sc-if value="{{ p.hasSubtitle }}"><p style="margin:0 0 14px;font-family:'Instrument Serif',serif;font-style:italic;font-size:24px;line-height:1.15;color:#6D263D;">{{ p.subtitle }}</p></sc-if>
+                <p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:#3D3B36;">{{ p.summary }}</p>
+                <p style="margin:0 0 24px;font-size:11px;line-height:1.6;letter-spacing:.14em;text-transform:uppercase;color:#5E5A52;">{{ p.categoryLine }}</p>
+                <a href="{{ p.href }}" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding-bottom:4px;border-bottom:1px solid #292824;">Ver projeto →</a>
+              </div>
+            </div>
+          </article>
+        </sc-if>
+
+        <sc-if value="{{ p.isSplit }}">
+          <article data-reveal="" style="display:flex;flex-wrap:wrap;gap:32px clamp(32px,5vw,80px);align-items:flex-end;">
+            <a href="{{ p.href }}" aria-label="{{ p.ariaLabel }}" style="flex:1.4 1 520px;display:block;position:relative;aspect-ratio:4/3;min-width:0;">
+              <dc-import name="Media" src="{{ p.cover.src }}" alt="{{ p.cover.alt }}" label="{{ p.cover.label }}" tone="{{ p.cover.tone }}" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import>
+            </a>
+            <div style="flex:1 1 300px;max-width:440px;">
+              <div style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(64px,7vw,112px);line-height:.8;color:#6D263D;margin-bottom:28px;">{{ p.num }}</div>
+              <p style="margin:0 0 14px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#5E5A52;">{{ p.client }} · {{ p.year }}</p>
+              <h3 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(44px,4.8vw,76px);line-height:.92;letter-spacing:-.025em;"><a href="{{ p.href }}" style="color:#292824;transition:color .3s;" style-hover="color:#6D263D;">{{ p.title }}</a></h3>
+              <sc-if value="{{ p.hasSubtitle }}"><p style="margin:12px 0 0;font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;line-height:1.15;color:#6D263D;">{{ p.subtitle }}</p></sc-if>
+              <p style="margin:20px 0 16px;font-size:15px;line-height:1.6;color:#3D3B36;">{{ p.summary }}</p>
+              <p style="margin:0 0 24px;font-size:11px;line-height:1.6;letter-spacing:.14em;text-transform:uppercase;color:#5E5A52;">{{ p.type }}</p>
+              <a href="{{ p.href }}" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding-bottom:4px;border-bottom:1px solid #292824;">Ver projeto →</a>
+            </div>
+          </article>
+        </sc-if>
+
+        <sc-if value="{{ p.isSplitR }}">
+          <article data-reveal="" style="display:flex;flex-wrap:wrap-reverse;justify-content:flex-end;gap:32px clamp(32px,5vw,80px);align-items:flex-start;padding-left:clamp(0px,9vw,160px);">
+            <div style="flex:1 1 300px;max-width:440px;padding-top:clamp(0px,6vw,96px);">
+              <div style="display:flex;gap:16px;align-items:baseline;margin-bottom:24px;"><span style="font-family:'Instrument Serif',serif;font-style:italic;font-size:44px;line-height:1;color:#6D263D;">{{ p.num }}</span><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#5E5A52;">{{ p.client }} · {{ p.year }}</span></div>
+              <h3 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(48px,5.4vw,88px);line-height:.9;letter-spacing:-.025em;"><a href="{{ p.href }}" style="color:#292824;transition:color .3s;" style-hover="color:#6D263D;">{{ p.title }}</a></h3>
+              <p style="margin:24px 0 16px;font-size:15px;line-height:1.6;color:#3D3B36;">{{ p.summary }}</p>
+              <p style="margin:0 0 24px;font-size:11px;line-height:1.6;letter-spacing:.14em;text-transform:uppercase;color:#5E5A52;">{{ p.categoryLine }}</p>
+              <a href="{{ p.href }}" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding-bottom:4px;border-bottom:1px solid #292824;">Ver projeto →</a>
+            </div>
+            <a href="{{ p.href }}" aria-label="{{ p.ariaLabel }}" style="flex:0 1 500px;display:block;position:relative;aspect-ratio:4/5;min-width:260px;">
+              <dc-import name="Media" src="{{ p.cover.src }}" alt="{{ p.cover.alt }}" label="{{ p.cover.label }}" tone="{{ p.cover.tone }}" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import>
+            </a>
+          </article>
+        </sc-if>
+
+      </sc-for>
+    </div>
+  </section>
+
+  <sc-if value="{{ showReels }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Home · Em movimento" style="margin-top:clamp(104px,13vw,200px);background:#292824;color:#F4EFE6;">
+      <div style="max-width:1440px;margin:0 auto;padding:clamp(80px,10vw,136px) clamp(20px,4vw,56px);">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;">
+          <div>
+            <p style="margin:0 0 20px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#D7A66D;">({{ hn.reels }}) — Vídeos</p>
+            <h2 data-reveal="" style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(60px,9vw,148px);line-height:.86;letter-spacing:-.03em;">Em <em style="color:#D7A66D;">movimento</em></h2>
+          </div>
+          <p style="margin:0;max-width:340px;font-size:15px;line-height:1.6;color:rgba(244,239,230,.82);">Reels no Instagram. Curadoria em andamento — cada vídeo será vinculado ao seu projeto.</p>
+        </div>
+        <ul style="list-style:none;margin:clamp(40px,5vw,72px) 0 0;padding:0 0 16px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;">
+          <sc-for list="{{ reels }}" as="r" hint-placeholder-count="4">
+            <li style="flex:0 0 clamp(240px,23vw,320px);scroll-snap-align:start;">
+              <div style="position:relative;aspect-ratio:9/16;">
+                <dc-import name="Media" embed="{{ r.embed }}" label="{{ r.label }}" alt="{{ r.label }}" tone="graphite" kind="video" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import>
+              </div>
+              <div style="display:flex;justify-content:space-between;gap:12px;margin-top:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,239,230,.82);">
+                <span>{{ r.label }}</span>
+                <a href="{{ r.url }}" target="_blank" rel="noopener" style="color:#D7A66D;">Instagram ↗</a>
+              </div>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+    </section>
+  </sc-if>
+
+  <section id="depoimentos" data-screen-label="Home · Depoimentos" style="max-width:1440px;margin:0 auto;padding:clamp(104px,13vw,200px) clamp(20px,4vw,56px);">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-bottom:14px;border-bottom:1px solid #292824;font-size:11px;letter-spacing:.18em;text-transform:uppercase;">
+      <h2 style="margin:0;font-size:11px;font-weight:500;"><span style="color:#6D263D;">({{ hn.testimonials }})</span> — Depoimentos</h2>
+      <span style="color:#5E5A52;">{{ testimonialCount }} vozes</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(64px,8vw,128px) clamp(32px,5vw,80px);margin-top:clamp(48px,6vw,88px);">
+      <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="3">
+        <sc-if value="{{ t.isLarge }}">
+          <figure data-reveal="" style="flex:1 1 100%;margin:0;display:flex;flex-wrap:wrap;gap:16px clamp(24px,4vw,64px);">
+            <span aria-hidden="true" style="flex:0 0 auto;font-family:'Instrument Serif',serif;font-size:clamp(140px,15vw,240px);line-height:.72;color:#D7A66D;">“</span>
+            <div style="flex:1 1 560px;min-width:0;">
+              <blockquote style="margin:0;">
+                <p style="margin:0;font-family:'Instrument Serif',serif;font-size:clamp(36px,4.6vw,76px);line-height:1;letter-spacing:-.02em;text-wrap:balance;">{{ t.highlight }}</p>
+                <p style="margin:clamp(28px,3vw,40px) 0 0;max-width:720px;font-size:17px;line-height:1.65;color:#3D3B36;">{{ t.quote }}</p>
+              </blockquote>
+              <figcaption style="display:flex;gap:16px;align-items:center;margin-top:32px;">
+                <sc-if value="{{ t.hasPhoto }}"><img src="{{ t.photo }}" alt="{{ t.name }}" loading="lazy" style="width:64px;height:64px;border-radius:50%;object-fit:cover;flex:0 0 auto;"></sc-if>
+                <sc-if value="{{ t.noPhoto }}"><span aria-hidden="true" style="width:64px;height:64px;flex:0 0 auto;border-radius:50%;background:#D7A66D;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:24px;color:#292824;">{{ t.initials }}</span></sc-if>
+                <div style="min-width:0;">
+                  <div style="font-size:16px;font-weight:600;">{{ t.name }}</div>
+                  <div style="font-size:13px;line-height:1.45;color:#5E5A52;margin:2px 0 6px;">{{ t.roleLine }}</div>
+                  <a href="{{ t.linkedin }}" target="_blank" rel="noopener" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6D263D;">LinkedIn ↗</a>
+                </div>
+              </figcaption>
+            </div>
+          </figure>
+        </sc-if>
+        <sc-if value="{{ t.isSmall }}">
+          <figure data-reveal="" style="flex:1 1 380px;margin:0;padding-top:24px;border-top:1px solid #292824;min-width:0;">
+            <blockquote style="margin:0;"><p style="margin:0;font-family:'Instrument Serif',serif;font-size:clamp(22px,1.9vw,28px);line-height:1.25;text-wrap:pretty;">“{{ t.quote }}”</p></blockquote>
+            <figcaption style="display:flex;gap:14px;align-items:center;margin-top:28px;">
+              <sc-if value="{{ t.hasPhoto }}"><img src="{{ t.photo }}" alt="{{ t.name }}" loading="lazy" style="width:52px;height:52px;border-radius:50%;object-fit:cover;flex:0 0 auto;"></sc-if>
+              <sc-if value="{{ t.noPhoto }}"><span aria-hidden="true" style="width:52px;height:52px;flex:0 0 auto;border-radius:50%;background:#E6DDCD;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:20px;color:#292824;">{{ t.initials }}</span></sc-if>
+              <div style="min-width:0;">
+                <div style="font-size:15px;font-weight:600;">{{ t.name }}</div>
+                <div style="font-size:13px;line-height:1.45;color:#5E5A52;margin:2px 0 6px;">{{ t.roleLine }}</div>
+                <a href="{{ t.linkedin }}" target="_blank" rel="noopener" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6D263D;">LinkedIn ↗</a>
+              </div>
+            </figcaption>
+          </figure>
+        </sc-if>
+      </sc-for>
+    </div>
+  </section>
+</sc-if>
+
+<!-- ═════════ PROJETOS ═════════ -->
+<sc-if value="{{ isProjects }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Projetos" style="max-width:1440px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(20px,4vw,56px) clamp(104px,13vw,180px);">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 32px;padding-bottom:14px;border-bottom:1px solid #292824;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#5E5A52;">
+      <span>Índice de projetos</span><span>{{ yearsRange }}</span>
+    </div>
+    <h1 data-reveal="" style="margin:clamp(28px,4vw,56px) 0 0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(88px,17vw,280px);line-height:.84;letter-spacing:-.04em;">Projetos<sup style="font-family:'Schibsted Grotesk',sans-serif;font-size:clamp(14px,1.4vw,20px);letter-spacing:.08em;vertical-align:top;color:#6D263D;margin-left:10px;line-height:2;">({{ projectCount }})</sup></h1>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:32px;margin-top:clamp(32px,4vw,56px);">
+      <p style="flex:1 1 360px;max-width:560px;margin:0;font-size:18px;line-height:1.6;color:#3D3B36;text-wrap:pretty;">{{ profile.projectsIntro }}</p>
+      <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start;">
+        <div role="group" aria-label="Filtrar por categoria" style="display:flex;flex-wrap:wrap;gap:8px;">
+          <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+            <button type="button" onClick="{{ f.onClick }}" aria-pressed="{{ f.pressed }}" style="min-height:40px;padding:0 16px;border-radius:999px;border:1px solid #292824;background:{{ f.bg }};color:{{ f.fg }};font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .25s,color .25s;">{{ f.label }} <span style="opacity:.65;margin-left:4px;">{{ f.count }}</span></button>
+          </sc-for>
+        </div>
+        <div role="group" aria-label="Modo de visualização" style="display:flex;gap:18px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;">
+          <sc-for list="{{ views }}" as="v">
+            <button type="button" onClick="{{ v.onClick }}" aria-pressed="{{ v.pressed }}" style="min-height:32px;padding:0;border:0;border-bottom:1px solid {{ v.line }};background:transparent;color:#292824;font-size:11px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;">{{ v.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <sc-if value="{{ isMosaic }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(56px,7vw,112px) clamp(24px,3vw,48px);margin-top:clamp(56px,7vw,104px);align-items:flex-start;">
+        <sc-for list="{{ grid }}" as="p" hint-placeholder-count="4">
+          <article data-reveal="" style="flex:{{ p.flex }};margin-top:{{ p.mt }};min-width:0;">
+            <a href="{{ p.href }}" aria-label="{{ p.ariaLabel }}" style="display:block;position:relative;aspect-ratio:{{ p.ratio }};min-height:220px;">
+              <dc-import name="Media" src="{{ p.cover.src }}" alt="{{ p.cover.alt }}" label="{{ p.cover.label }}" tone="{{ p.cover.tone }}" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import>
+            </a>
+            <div style="display:flex;gap:18px;align-items:baseline;margin-top:20px;">
+              <span style="font-family:'Instrument Serif',serif;font-style:italic;font-size:30px;line-height:1;color:#6D263D;">{{ p.num }}</span>
+              <div style="flex:1;min-width:0;">
+                <h2 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(34px,3.4vw,56px);line-height:.95;letter-spacing:-.02em;"><a href="{{ p.href }}" style="color:#292824;transition:color .3s;" style-hover="color:#6D263D;">{{ p.title }}</a></h2>
+                <p style="margin:10px 0 0;font-size:11px;line-height:1.6;letter-spacing:.14em;text-transform:uppercase;color:#5E5A52;">{{ p.type }} · {{ p.client }} · {{ p.year }}</p>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isIndex }}" hint-placeholder-val="{{ false }}">
+      <ol style="list-style:none;margin:clamp(48px,6vw,88px) 0 0;padding:0;border-top:1px solid #292824;">
+        <sc-for list="{{ grid }}" as="p">
+          <li>
+            <a href="{{ p.href }}" style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 32px;padding:24px 8px;border-bottom:1px solid rgba(41,40,36,.2);color:#292824;transition:background .3s,padding .3s,color .3s;" style-hover="background:#EBE3D6;padding-left:20px;color:#6D263D;">
+              <span style="flex:0 0 44px;font-size:12px;letter-spacing:.14em;color:#6D263D;">{{ p.num }}</span>
+              <span style="flex:1 1 320px;font-family:'Instrument Serif',serif;font-size:clamp(36px,4.2vw,68px);line-height:1;letter-spacing:-.02em;">{{ p.title }}</span>
+              <span style="flex:0 1 220px;font-size:13px;line-height:1.5;">{{ p.client }}</span>
+              <span style="flex:0 1 260px;font-size:13px;line-height:1.5;color:#5E5A52;">{{ p.type }}</span>
+              <span style="flex:0 0 110px;font-size:13px;">{{ p.year }}</span>
+            </a>
+          </li>
+        </sc-for>
+      </ol>
+    </sc-if>
+  </section>
+</sc-if>
+
+<!-- ═════════ CASE ═════════ -->
+<sc-if value="{{ isCase }}" hint-placeholder-val="{{ false }}">
+  <article data-screen-label="Case">
+    <header style="max-width:1440px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(20px,4vw,56px) 0;">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 32px;padding-bottom:14px;border-bottom:1px solid #292824;font-size:11px;letter-spacing:.18em;text-transform:uppercase;">
+        <a href="#/projetos" style="color:#292824;">← Projetos</a>
+        <span style="color:#6D263D;">Case {{ c.num }} / {{ c.total }}</span>
+        <span style="color:#5E5A52;">{{ c.categoryLine }}</span>
+      </div>
+      <h1 data-reveal="" style="margin:clamp(36px,5vw,80px) 0 0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(64px,11.5vw,196px);line-height:.86;letter-spacing:-.035em;text-wrap:balance;">{{ c.title }}</h1>
+      <sc-if value="{{ c.hasSubtitle }}"><p data-reveal="" style="margin:20px 0 0;font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(26px,3vw,46px);line-height:1.1;color:#6D263D;">{{ c.subtitle }}</p></sc-if>
+      <dl style="display:flex;flex-wrap:wrap;gap:0 32px;margin:clamp(40px,5vw,72px) 0 0;">
+        <sc-for list="{{ c.info }}" as="i" hint-placeholder-count="5">
+          <div style="flex:1 1 180px;padding:12px 0 20px;border-top:1px solid #292824;">
+            <dt style="margin-bottom:8px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#5E5A52;">{{ i.k }}</dt>
+            <dd style="margin:0;font-size:15px;line-height:1.5;">{{ i.v }}</dd>
+          </div>
+        </sc-for>
+      </dl>
+    </header>
+
+    <figure style="max-width:1440px;margin:clamp(24px,3vw,40px) auto 0;padding:0 clamp(20px,4vw,56px);">
+      <div style="position:relative;aspect-ratio:16/9;min-height:260px;overflow:hidden;">
+        <dc-import name="Media" src="{{ c.cover.src }}" alt="{{ c.cover.alt }}" label="{{ c.cover.label }}" tone="{{ c.cover.tone }}" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import>
+      </div>
+      <figcaption style="display:flex;justify-content:space-between;gap:12px;margin-top:10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#5E5A52;"><span>Capa</span><span>{{ c.client }} · {{ c.year }}</span></figcaption>
+    </figure>
+
+    <div style="max-width:1440px;margin:0 auto;padding:clamp(64px,8vw,128px) clamp(20px,4vw,56px) 0;display:flex;flex-wrap:wrap;gap:24px clamp(32px,5vw,96px);">
+      <div style="flex:0 0 240px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#6D263D;">Em uma frase</div>
+      <p data-reveal="" style="flex:1 1 560px;min-width:0;margin:0;font-family:'Instrument Serif',serif;font-size:clamp(30px,3.6vw,58px);line-height:1.06;letter-spacing:-.015em;text-wrap:pretty;">{{ c.summary }}</p>
+    </div>
+
+    <sc-for list="{{ c.sections }}" as="s">
+      <section style="max-width:1440px;margin:0 auto;padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px) 0;">
+        <div style="display:flex;flex-wrap:wrap;gap:28px clamp(32px,5vw,96px);padding-top:18px;border-top:1px solid #292824;">
+          <h2 style="flex:{{ s.labelFlex }};margin:0;display:flex;gap:14px;align-items:baseline;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;"><span style="color:#6D263D;">{{ s.num }}</span><span>{{ s.title }}</span></h2>
+          <div style="flex:1 1 560px;min-width:0;display:flex;flex-direction:column;gap:clamp(36px,4.5vw,64px);">
+            <sc-for list="{{ s.blocks }}" as="b">
+
+              <sc-if value="{{ b.isText }}">
+                <div data-reveal="" style="max-width:700px;display:flex;flex-direction:column;gap:18px;">
+                  <sc-for list="{{ b.paras }}" as="t"><p style="margin:0;font-size:clamp(17px,1.35vw,20px);line-height:1.62;text-wrap:pretty;">{{ t.text }}</p></sc-for>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ b.isQuote }}">
+                <blockquote data-reveal="" style="margin:0;font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(38px,4.8vw,80px);line-height:1;letter-spacing:-.02em;color:#6D263D;text-wrap:balance;">“{{ b.text }}”</blockquote>
+              </sc-if>
+
+              <sc-if value="{{ b.isList }}">
+                <div data-reveal="">
+                  <sc-if value="{{ b.hasTitle }}"><h3 style="margin:0 0 6px;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#5E5A52;">{{ b.title }}</h3></sc-if>
+                  <ol style="list-style:none;margin:0;padding:0;">
+                    <sc-for list="{{ b.items }}" as="it">
+                      <li style="display:flex;flex-wrap:wrap;gap:6px 24px;padding:20px 0;border-bottom:1px solid rgba(41,40,36,.18);">
+                        <span style="flex:0 0 36px;padding-top:9px;font-size:12px;letter-spacing:.12em;color:#6D263D;">{{ it.idx }}</span>
+                        <div style="flex:1 1 300px;min-width:0;">
+                          <sc-if value="{{ it.hasTitle }}"><div style="font-family:'Instrument Serif',serif;font-size:clamp(26px,2.4vw,38px);line-height:1.08;">{{ it.title }}</div></sc-if>
+                          <sc-if value="{{ it.hasText }}"><p style="margin:8px 0 0;max-width:640px;font-size:16px;line-height:1.6;color:#3D3B36;">{{ it.text }}</p></sc-if>
+                        </div>
+                      </li>
+                    </sc-for>
+                  </ol>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ b.isTags }}">
+                <ul data-reveal="" style="list-style:none;margin:0;padding:0;border-top:1px solid rgba(41,40,36,.18);">
+                  <sc-for list="{{ b.items }}" as="tg">
+                    <li style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid rgba(41,40,36,.18);">
+                      <span style="font-family:'Instrument Serif',serif;font-size:clamp(36px,4.6vw,76px);line-height:1;text-transform:uppercase;letter-spacing:-.005em;">{{ tg.label }}</span>
+                      <span style="font-size:12px;letter-spacing:.14em;color:#6D263D;">{{ tg.idx }}</span>
+                    </li>
+                  </sc-for>
+                </ul>
+              </sc-if>
+
+              <sc-if value="{{ b.isStats }}">
+                <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:0 32px;">
+                  <sc-for list="{{ b.items }}" as="st">
+                    <div style="flex:1 1 240px;padding:22px 0 28px;border-top:1px solid #292824;">
+                      <div style="font-family:'Instrument Serif',serif;font-size:clamp(52px,5.4vw,92px);line-height:.9;letter-spacing:-.03em;">{{ st.value }}</div>
+                      <div style="margin-top:14px;max-width:280px;font-size:14px;line-height:1.5;color:#3D3B36;">{{ st.label }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ b.isNotes }}">
+                <div data-reveal="" style="max-width:720px;">
+                  <sc-if value="{{ b.hasTitle }}"><h3 style="margin:0 0 10px;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#6D263D;">{{ b.title }}</h3></sc-if>
+                  <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;">
+                    <sc-for list="{{ b.items }}" as="nt"><li style="display:flex;gap:14px;font-size:17px;line-height:1.55;"><span aria-hidden="true" style="color:#B07F45;">—</span><span>{{ nt.text }}</span></li></sc-for>
+                  </ul>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ b.isImage }}">
+                <figure data-reveal="" style="margin:0;">
+                  <div style="position:relative;aspect-ratio:{{ b.media.ratio }};min-height:200px;overflow:hidden;">
+                    <dc-import name="Media" src="{{ b.media.src }}" alt="{{ b.media.alt }}" label="{{ b.media.label }}" tone="{{ b.media.tone }}" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import>
+                  </div>
+                  <sc-if value="{{ b.hasCaption }}"><figcaption style="margin-top:10px;font-size:13px;line-height:1.5;color:#5E5A52;">{{ b.media.caption }}</figcaption></sc-if>
+                </figure>
+              </sc-if>
+
+              <sc-if value="{{ b.isPair }}">
+                <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;">
+                  <sc-for list="{{ b.items }}" as="m">
+                    <figure style="flex:1 1 280px;margin:0;min-width:0;">
+                      <div style="position:relative;aspect-ratio:{{ m.ratio }};overflow:hidden;">
+                        <dc-import name="Media" src="{{ m.src }}" alt="{{ m.alt }}" label="{{ m.label }}" tone="{{ m.tone }}" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import>
+                      </div>
+                    </figure>
+                  </sc-for>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ b.isGallery }}">
+                <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;">
+                  <sc-for list="{{ b.items }}" as="g">
+                    <figure data-reveal="" style="flex:{{ g.flex }};margin:0;min-width:0;">
+                      <div style="position:relative;aspect-ratio:{{ g.ratio }};min-height:200px;overflow:hidden;">
+                        <dc-import name="Media" src="{{ g.src }}" alt="{{ g.alt }}" label="{{ g.label }}" tone="{{ g.tone }}" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import>
+                      </div>
+                    </figure>
+                  </sc-for>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ b.isVideo }}">
+                <figure data-reveal="" style="margin:0;background:#292824;padding:clamp(12px,2vw,28px);">
+                  <div style="position:relative;aspect-ratio:16/9;min-height:200px;overflow:hidden;">
+                    <dc-import name="Media" src="{{ b.media.src }}" embed="{{ b.media.embed }}" alt="{{ b.media.alt }}" label="{{ b.media.label }}" tone="{{ b.media.tone }}" kind="video" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import>
+                  </div>
+                  <figcaption style="display:flex;justify-content:space-between;gap:12px;margin-top:14px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,239,230,.82);"><span>Vídeo</span><span>{{ b.media.label }}</span></figcaption>
+                </figure>
+              </sc-if>
+
+            </sc-for>
+          </div>
+        </div>
+      </section>
+    </sc-for>
+
+    <sc-if value="{{ c.hasLink }}">
+      <div style="max-width:1440px;margin:0 auto;padding:clamp(48px,6vw,80px) clamp(20px,4vw,56px) 0;">
+        <a href="{{ c.link }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;border:1px solid #292824;font-size:12px;letter-spacing:.14em;text-transform:uppercase;">Ver online ↗</a>
+      </div>
+    </sc-if>
+
+    <nav aria-label="Navegação entre projetos" style="max-width:1440px;margin:clamp(104px,13vw,184px) auto 0;padding:0 clamp(20px,4vw,56px) clamp(88px,11vw,152px);display:flex;flex-wrap:wrap;gap:40px 32px;">
+      <a href="{{ c.prev.href }}" style="flex:1 1 360px;padding-top:18px;border-top:1px solid #292824;color:#292824;transition:color .3s;" style-hover="color:#6D263D;">
+        <span style="display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#5E5A52;">← Projeto anterior</span>
+        <span style="display:block;margin-top:16px;font-family:'Instrument Serif',serif;font-size:clamp(40px,5vw,84px);line-height:.92;letter-spacing:-.02em;">{{ c.prev.title }}</span>
+      </a>
+      <a href="{{ c.next.href }}" style="flex:1 1 360px;padding-top:18px;border-top:1px solid #292824;text-align:right;color:#292824;transition:color .3s;" style-hover="color:#6D263D;">
+        <span style="display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#5E5A52;">Próximo projeto →</span>
+        <span style="display:block;margin-top:16px;font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(40px,5vw,84px);line-height:.92;letter-spacing:-.02em;color:#6D263D;">{{ c.next.title }}</span>
+      </a>
+    </nav>
+  </article>
+</sc-if>
+
+<sc-if value="{{ caseMissing }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:1440px;margin:0 auto;padding:clamp(80px,12vw,180px) clamp(20px,4vw,56px);">
+    <h1 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(56px,9vw,140px);line-height:.9;">Projeto não <em style="color:#6D263D;">encontrado.</em></h1>
+    <a href="#/projetos" style="display:inline-block;margin-top:32px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid #292824;padding-bottom:4px;">← Ver todos os projetos</a>
+  </section>
+</sc-if>
+
+<!-- ═════════ CURRÍCULO ═════════ -->
+<sc-if value="{{ isCV }}" hint-placeholder-val="{{ false }}">
+  <article data-screen-label="Currículo">
+    <header style="max-width:1440px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(20px,4vw,56px) 0;">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 32px;padding-bottom:14px;border-bottom:1px solid #292824;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#5E5A52;">
+        <span>Sobre / CV</span><span>{{ profile.city }}</span>
+      </div>
+      <h1 data-reveal="" style="margin:clamp(36px,5vw,80px) 0 0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(60px,10.5vw,176px);line-height:.86;letter-spacing:-.035em;">Raquel de Oliveira <em style="color:#6D263D;">Frias</em></h1>
+      <ul style="list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;">
+        <sc-for list="{{ roles }}" as="r"><li style="display:flex;gap:18px;"><span>{{ r.label }}</span><span aria-hidden="true" style="color:#B07F45;">{{ r.sep }}</span></li></sc-for>
+      </ul>
+    </header>
+
+    <section style="max-width:1440px;margin:0 auto;padding:clamp(56px,7vw,104px) clamp(20px,4vw,56px) 0;display:flex;flex-wrap:wrap;gap:40px clamp(32px,5vw,96px);align-items:flex-start;">
+      <figure style="flex:1 1 440px;margin:0;min-width:0;">
+        <div style="position:relative;aspect-ratio:3/2;overflow:hidden;">
+          <dc-import name="Media" src="{{ aboutPhoto.src }}" alt="{{ aboutPhoto.alt }}" label="{{ aboutPhoto.label }}" tone="{{ aboutPhoto.tone }}" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import>
+        </div>
+      </figure>
+      <div style="flex:1 1 400px;min-width:0;max-width:600px;">
+        <h2 data-reveal="" style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(34px,3.6vw,56px);line-height:1.02;letter-spacing:-.015em;">{{ profile.about.headline.a }} <em style="color:#6D263D;">{{ profile.about.headline.b }}</em></h2>
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:28px;">
+          <sc-for list="{{ aboutParas }}" as="t"><p style="margin:0;font-size:17px;line-height:1.65;color:#3D3B36;text-wrap:pretty;">{{ t.text }}</p></sc-for>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;">
+          <a href="{{ cvPdf }}" download="" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;background:#292824;color:#F4EFE6;font-size:12px;letter-spacing:.14em;text-transform:uppercase;transition:background .3s;" style-hover="background:#6D263D;color:#F4EFE6;">Baixar CV em PDF <span aria-hidden="true">↓</span></a>
+          <a href="#/projetos" style="display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;border:1px solid #292824;font-size:12px;letter-spacing:.14em;text-transform:uppercase;">Ver projetos</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1440px;margin:0 auto;padding:clamp(88px,11vw,160px) clamp(20px,4vw,56px) 0;">
+      <div style="display:flex;flex-wrap:wrap;gap:28px clamp(32px,5vw,96px);padding-top:18px;border-top:1px solid #292824;">
+        <h2 style="flex:0 0 240px;margin:0;display:flex;gap:14px;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;"><span style="color:#6D263D;">01</span><span>Experiência</span></h2>
+        <ol style="flex:1 1 560px;min-width:0;list-style:none;margin:0;padding:0;">
+          <sc-for list="{{ experience }}" as="e" hint-placeholder-count="5">
+            <li data-reveal="" style="display:flex;flex-wrap:wrap;gap:4px 40px;">
+              <div style="flex:0 0 190px;padding:28px 0 8px;">
+                <sc-if value="{{ e.hasPeriod }}"><div style="font-family:'Instrument Serif',serif;font-size:clamp(26px,2.4vw,36px);line-height:1;">{{ e.period }}</div></sc-if>
+                <sc-if value="{{ e.noPeriod }}"><div style="font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;line-height:1.1;color:#5E5A52;">Período a confirmar</div></sc-if>
+                <sc-if value="{{ e.hasDates }}"><div style="margin-top:8px;font-size:12px;letter-spacing:.08em;color:#5E5A52;">{{ e.dates }}</div></sc-if>
+              </div>
+              <div style="flex:1 1 360px;min-width:0;position:relative;padding:28px 0 32px 32px;border-left:1px solid #292824;" style-before="content:'';position:absolute;left:-5px;top:36px;width:9px;height:9px;border-radius:50%;background:#6D263D;">
+                <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6D263D;">{{ e.role }}</div>
+                <h3 style="margin:8px 0 0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(30px,3vw,48px);line-height:1;letter-spacing:-.015em;">{{ e.company }}</h3>
+                <sc-if value="{{ e.hasDesc }}"><p style="margin:12px 0 0;max-width:620px;font-size:16px;line-height:1.6;color:#3D3B36;">{{ e.description }}</p></sc-if>
+                <sc-if value="{{ e.hasProject }}"><a href="{{ e.projectHref }}" style="display:inline-block;margin-top:14px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid #292824;padding-bottom:3px;">Ver projeto →</a></sc-if>
+              </div>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+    </section>
+
+    <section style="max-width:1440px;margin:0 auto;padding:clamp(88px,11vw,160px) clamp(20px,4vw,56px) 0;">
+      <div style="display:flex;flex-wrap:wrap;gap:28px clamp(32px,5vw,96px);padding-top:18px;border-top:1px solid #292824;">
+        <h2 style="flex:0 0 240px;margin:0;display:flex;gap:14px;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;"><span style="color:#6D263D;">02</span><span>Formação</span></h2>
+        <ol style="flex:1 1 560px;min-width:0;list-style:none;margin:0;padding:0;">
+          <sc-for list="{{ education }}" as="ed">
+            <li data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 32px;padding:22px 0;border-bottom:1px solid rgba(41,40,36,.18);">
+              <div style="flex:1 1 420px;min-width:0;">
+                <div style="font-family:'Instrument Serif',serif;font-size:clamp(26px,2.4vw,38px);line-height:1.08;">{{ ed.course }}</div>
+                <div style="margin-top:6px;font-size:14px;color:#5E5A52;">{{ ed.institution }}</div>
+              </div>
+              <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6D263D;">{{ ed.year }}</span>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+    </section>
+
+    <section style="max-width:1440px;margin:0 auto;padding:clamp(88px,11vw,160px) clamp(20px,4vw,56px) 0;">
+      <div style="display:flex;flex-wrap:wrap;gap:28px clamp(32px,5vw,96px);padding-top:18px;border-top:1px solid #292824;">
+        <h2 style="flex:0 0 240px;margin:0;display:flex;gap:14px;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;"><span style="color:#6D263D;">03</span><span>Especializações</span></h2>
+        <ol style="flex:1 1 560px;min-width:0;list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:0 40px;">
+          <sc-for list="{{ specializations }}" as="sp">
+            <li data-reveal="" style="flex:1 1 320px;display:flex;gap:18px;align-items:baseline;padding:20px 0;border-bottom:1px solid rgba(41,40,36,.18);">
+              <span style="font-size:12px;letter-spacing:.12em;color:#6D263D;">{{ sp.idx }}</span>
+              <span style="font-family:'Instrument Serif',serif;font-size:clamp(26px,2.3vw,36px);line-height:1.08;">{{ sp.label }}</span>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+    </section>
+
+    <section style="max-width:1440px;margin:0 auto;padding:clamp(88px,11vw,160px) clamp(20px,4vw,56px) 0;">
+      <div style="display:flex;flex-wrap:wrap;gap:28px clamp(32px,5vw,96px);padding-top:18px;border-top:1px solid #292824;">
+        <h2 style="flex:0 0 240px;margin:0;display:flex;gap:14px;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;"><span style="color:#6D263D;">04</span><span>Cursos e extensões</span></h2>
+        <ul style="flex:1 1 560px;min-width:0;list-style:none;margin:0;padding:0;">
+          <sc-for list="{{ courses }}" as="co">
+            <li style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 32px;padding:16px 0;border-bottom:1px solid rgba(41,40,36,.18);font-size:16px;line-height:1.5;">
+              <span style="flex:1 1 380px;min-width:0;">{{ co.course }}</span>
+              <span style="color:#5E5A52;">{{ co.meta }}</span>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+    </section>
+
+    <section style="max-width:1440px;margin:0 auto;padding:clamp(88px,11vw,160px) clamp(20px,4vw,56px) 0;">
+      <div style="display:flex;flex-wrap:wrap;gap:28px clamp(32px,5vw,96px);padding-top:18px;border-top:1px solid #292824;">
+        <h2 style="flex:0 0 240px;margin:0;display:flex;gap:14px;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;"><span style="color:#6D263D;">05</span><span>Competências</span></h2>
+        <p data-reveal="" style="flex:1 1 560px;min-width:0;margin:0;font-family:'Instrument Serif',serif;font-size:clamp(36px,4.4vw,72px);line-height:1.08;letter-spacing:-.015em;">
+          <sc-for list="{{ skills }}" as="sk"><sc-if value="{{ sk.it }}"><em style="color:#6D263D;">{{ sk.label }}</em></sc-if><sc-if value="{{ sk.rm }}"><span>{{ sk.label }}</span></sc-if><span aria-hidden="true" style="color:#B07F45;"> {{ sk.sep }} </span></sc-for>
+        </p>
+      </div>
+    </section>
+
+    <section style="max-width:1440px;margin:0 auto;padding:clamp(88px,11vw,160px) clamp(20px,4vw,56px) 0;display:flex;flex-wrap:wrap;gap:48px clamp(32px,5vw,96px);">
+      <div style="flex:1 1 420px;min-width:0;padding-top:18px;border-top:1px solid #292824;">
+        <h2 style="margin:0 0 24px;display:flex;gap:14px;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;"><span style="color:#6D263D;">06</span><span>Ferramentas</span></h2>
+        <sc-if value="{{ hasTools }}">
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;">
+            <sc-for list="{{ tools }}" as="tl"><li style="padding:8px 14px;border:1px solid rgba(41,40,36,.3);border-radius:999px;font-size:13px;">{{ tl.label }}</li></sc-for>
+          </ul>
+        </sc-if>
+        <sc-if value="{{ noTools }}">
+          <p style="margin:0;padding:20px;border:1px dashed rgba(41,40,36,.35);font-size:14px;line-height:1.5;color:#5E5A52;">Lista de ferramentas a preencher — agrupar por uso (escrita, design, gestão, análise).</p>
+        </sc-if>
+      </div>
+      <div style="flex:1 1 420px;min-width:0;padding-top:18px;border-top:1px solid #292824;">
+        <h2 style="margin:0 0 24px;display:flex;gap:14px;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;"><span style="color:#6D263D;">07</span><span>Idiomas</span></h2>
+        <sc-for list="{{ languages }}" as="lg">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:14px;border-bottom:1px solid rgba(41,40,36,.18);">
+            <span style="font-family:'Instrument Serif',serif;font-size:36px;line-height:1;">{{ lg.language }}</span>
+            <span style="font-size:14px;color:#5E5A52;">{{ lg.detail }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="max-width:1440px;margin:clamp(88px,11vw,160px) auto 0;padding:0 clamp(20px,4vw,56px) clamp(88px,11vw,152px);">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;padding:clamp(28px,4vw,48px) 0;border-top:1px solid #292824;border-bottom:1px solid #292824;">
+        <p style="margin:0;font-family:'Instrument Serif',serif;font-size:clamp(32px,3.6vw,56px);line-height:1;">Currículo completo, <em style="color:#6D263D;">em PDF.</em></p>
+        <a href="{{ cvPdf }}" download="" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;background:#292824;color:#F4EFE6;font-size:12px;letter-spacing:.14em;text-transform:uppercase;transition:background .3s;" style-hover="background:#6D263D;color:#F4EFE6;">Baixar CV <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+  </article>
+</sc-if>
+
+</main>
+
+<!-- ═════════ CONTATO (todas as páginas) ═════════ -->
+<footer id="contato" data-screen-label="Contato" style="background:#6D263D;color:#F4EFE6;">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(96px,12vw,184px) clamp(20px,4vw,56px) 28px;">
+    <div style="padding-bottom:14px;border-bottom:1px solid rgba(244,239,230,.4);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#D7A66D;">Contato</div>
+    <h2 data-reveal="" style="margin:clamp(40px,5vw,72px) 0 0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(58px,10vw,172px);line-height:.88;letter-spacing:-.035em;">
+      <sc-for list="{{ contactLines }}" as="l" hint-placeholder-count="2"><sc-if value="{{ l.i }}"><em style="display:block;color:#D7A66D;">{{ l.t }}</em></sc-if><sc-if value="{{ l.r }}"><span style="display:block;">{{ l.t }}</span></sc-if></sc-for>
+    </h2>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:40px;margin-top:clamp(56px,7vw,104px);">
+      <a href="{{ contact.emailHref }}" style="flex:1 1 480px;min-width:0;font-family:'Instrument Serif',serif;font-size:clamp(28px,3.8vw,60px);line-height:1.05;color:#F4EFE6;overflow-wrap:anywhere;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.14em;transition:color .3s;" style-hover="color:#D7A66D;">{{ contact.email }}</a>
+      <dl style="flex:0 1 460px;margin:0;display:flex;flex-wrap:wrap;gap:24px 40px;">
+        <div><dt style="margin-bottom:6px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#D7A66D;">LinkedIn</dt><dd style="margin:0;font-size:15px;"><a href="{{ contact.linkedinHref }}" target="_blank" rel="noopener" style="color:#F4EFE6;" style-hover="color:#D7A66D;">raquel-frias ↗</a></dd></div>
+        <div><dt style="margin-bottom:6px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#D7A66D;">Telefone</dt><dd style="margin:0;font-size:15px;"><a href="{{ contact.phoneHref }}" style="color:#F4EFE6;" style-hover="color:#D7A66D;">{{ contact.phone }}</a></dd></div>
+        <sc-if value="{{ contact.hasInstagram }}"><div><dt style="margin-bottom:6px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#D7A66D;">Instagram</dt><dd style="margin:0;font-size:15px;"><a href="{{ contact.instagramHref }}" target="_blank" rel="noopener" style="color:#F4EFE6;">{{ contact.instagram }} ↗</a></dd></div></sc-if>
+        <div><dt style="margin-bottom:6px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#D7A66D;">Base</dt><dd style="margin:0;font-size:15px;">{{ profile.city }}</dd></div>
+      </dl>
+    </div>
+    <a href="{{ contact.emailHref }}" style="display:inline-flex;align-items:center;gap:12px;min-height:52px;margin-top:48px;padding:0 28px;border-radius:999px;background:#D7A66D;color:#292824;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:background .3s;" style-hover="background:#F4EFE6;color:#292824;">Entrar em contato <span aria-hidden="true">→</span></a>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;margin-top:clamp(80px,10vw,144px);padding-top:18px;border-top:1px solid rgba(244,239,230,.4);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,230,.85);">
+      <span>© {{ year }} {{ profile.fullName }}</span>
+      <span>Portfólio — Edição {{ profile.edition }}</span>
+      <button type="button" onClick="{{ toTop }}" style="padding:0;border:0;background:transparent;color:#F4EFE6;font-size:11px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;">Voltar ao topo ↑</button>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;motion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Experiência&quot;},&quot;showReels&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Home&quot;},&quot;projectsView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;mosaico&quot;,&quot;indice&quot;],&quot;default&quot;:&quot;mosaico&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Projetos&quot;}}">
+class Component extends DCLogic {
+  state = { ready: false, route: { page: 'home' }, filter: 'todos', view: null, menuOpen: false, w: 1280 };
+
+  componentDidMount() {
+    this.isPreview = /[?&]preview=1/.test(location.search);
+    this.onMsg = e => { if (e.data && e.data.type === 'rf-cms-draft' && e.data.docs) this.applyDocs(e.data.docs, false); };
+    window.addEventListener('message', this.onMsg);
+    this.onHash = () => this.setState({ route: this.parse(), menuOpen: false }, () => this.afterNav());
+    this.onResize = () => { if (window.innerWidth !== this.state.w) this.setState({ w: window.innerWidth }); };
+    this.onScroll = () => { if (this.raf) return; this.raf = requestAnimationFrame(() => { this.raf = null; this.parallax(); }); };
+    this.onClick = e => {
+      const a = e.target.closest && e.target.closest('a[href^="#/"]');
+      if (a && a.getAttribute('href') === location.hash) { this.setState({ menuOpen: false }); this.afterNav(); }
+    };
+    window.addEventListener('hashchange', this.onHash);
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    document.addEventListener('click', this.onClick);
+    this.setState({ w: window.innerWidth, route: this.parse() });
+    this.load();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('hashchange', this.onHash);
+    window.removeEventListener('message', this.onMsg);
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    document.removeEventListener('click', this.onClick);
+    if (this.io) this.io.disconnect();
+  }
+
+  componentDidUpdate() { this.reveal(); }
+
+  async load() {
+    try {
+      const get = p => fetch(p).then(r => { if (!r.ok) throw new Error(p + ' ' + r.status); return r.json(); });
+      const [pj, pf, ts, md] = await Promise.all(['data/projects.json', 'data/profile.json', 'data/testimonials.json', 'data/media.json'].map(get));
+      let docs = { projects: pj, profile: pf, testimonials: ts, media: md };
+      if (this.isPreview) { try { const d = JSON.parse(localStorage.getItem('rf-cms-draft-v1') || 'null'); if (d && d.projects) docs = d; } catch (e) {} }
+      this.applyDocs(docs, true);
+    } catch (e) { console.error('[portfolio] conteúdo não carregado', e); }
+  }
+
+  applyDocs(d, nav) {
+    this.setState({
+      ready: true, projects: (d.projects && d.projects.projects) || [], taxonomy: (d.projects && d.projects.taxonomy) || {},
+      profile: d.profile, testimonials: (d.testimonials && d.testimonials.testimonials) || [], media: d.media
+    }, () => (nav ? this.afterNav() : this.reveal()));
+  }
+
+  parse() {
+    const parts = (location.hash || '').replace(/^#\/?/, '').split('/').filter(Boolean);
+    const cur = (this.state && this.state.route) || { page: 'home' };
+    if (parts[0] === 'projetos' && parts[1]) return { page: 'case', slug: decodeURIComponent(parts[1]) };
+    if (parts[0] === 'projetos') return { page: 'projects' };
+    if (parts[0] === 'curriculo') return { page: 'cv' };
+    if (parts[0] === 'depoimentos') return { page: 'home', anchor: 'depoimentos' };
+    if (parts[0] === 'contato') return { page: cur.page, slug: cur.slug, anchor: 'contato' };
+    return { page: 'home' };
+  }
+
+  reduced() { return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+  motionOn() { return (this.props.motion ?? true) && !this.reduced(); }
+
+  afterNav() {
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const a = this.state.route.anchor, el = a && document.getElementById(a);
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 64, behavior: this.reduced() ? 'auto' : 'smooth' });
+      else window.scrollTo(0, 0);
+      this.reveal();
+    }));
+  }
+
+  reveal() {
+    if (!this.motionOn()) {
+      document.querySelectorAll('[data-rv]').forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+      return;
+    }
+    if (!this.io) this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; this.io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -6% 0px', threshold: 0.01 });
+    document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => {
+      el.setAttribute('data-rv', '');
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity 1s cubic-bezier(.2,.8,.2,1), transform 1s cubic-bezier(.2,.8,.2,1)';
+      this.io.observe(el);
+    });
+  }
+
+  parallax() {
+    if (!this.motionOn()) return;
+    const h = window.innerHeight;
+    document.querySelectorAll('[data-parallax]').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > h) return;
+      el.style.transform = 'translate3d(0,' + ((r.top + r.height / 2 - h / 2) * -0.04).toFixed(1) + 'px,0)';
+    });
+  }
+
+  sections(p, pad, M) {
+    const S = [];
+    const add = (title, blocks, wide) => { blocks = blocks.filter(Boolean); if (blocks.length) S.push({ title, blocks, wide: !!wide }); };
+    const text = t => (t ? { type: 'text', paras: String(t).split(/\n\n+/).map(x => ({ text: x })) } : null);
+    const list = (title, items) => (items && items.length ? { type: 'list', title: title || '', items } : null);
+    add('Contexto', [text(p.context)]);
+    add('Objetivo', [text(p.objective)]);
+    add('Público', [text(p.audience)]);
+    if (p.concept) add('Conceito', [p.concept.quote ? { type: 'quote', text: p.concept.quote } : null, text(p.concept.text)]);
+    if (p.strategy) add('Estratégia', [text(p.strategy.text), list('', p.strategy.items)]);
+    if (p.role) add('Papel da Raquel', [p.role.tags && p.role.tags.length ? { type: 'tags', items: p.role.tags } : null, text(p.role.text)]);
+    add('Desenvolvimento', (p.body || []).map(b => (b.type === 'text' ? text(b.text) : b)));
+    if (p.results) add('Resultados', [
+      p.results.stats && p.results.stats.length ? { type: 'stats', items: p.results.stats } : null,
+      p.results.notes && p.results.notes.length ? { type: 'notes', title: '', items: p.results.notes } : null,
+      p.results.learnings && p.results.learnings.length ? { type: 'notes', title: 'Aprendizados', items: p.results.learnings } : null
+    ]);
+    add('Galeria', [p.gallery && p.gallery.length ? { type: 'gallery', items: p.gallery } : null], true);
+    add('Vídeo', [p.video ? { type: 'video', media: p.video } : null], true);
+
+    const sizes = { full: '1 1 100%', half: '1 1 420px', third: '1 1 280px', portrait: '0 1 440px' };
+    const deco = b => {
+      const t = b.type;
+      const o = { ...b, isText: t === 'text', isQuote: t === 'quote', isList: t === 'list', isTags: t === 'tags', isStats: t === 'stats', isNotes: t === 'notes', isImage: t === 'image', isPair: t === 'pair', isGallery: t === 'gallery', isVideo: t === 'video', hasTitle: !!b.title };
+      if (t === 'list') o.items = b.items.map((it, i) => ({ ...it, idx: pad(i + 1), hasTitle: !!it.title, hasText: !!it.text }));
+      if (t === 'tags') o.items = b.items.map((x, i) => ({ label: x, idx: pad(i + 1) }));
+      if (t === 'notes') o.items = b.items.map(x => ({ text: x }));
+      if (t === 'image') { o.media = M(b); o.hasCaption = !!b.caption; }
+      if (t === 'pair') o.items = (b.images || []).map(x => M(x, { ratio: '4/5' }));
+      if (t === 'gallery') o.items = b.items.map(x => ({ ...M(x), flex: sizes[x.size] || sizes.half }));
+      if (t === 'video') o.media = M(b.media, { kind: 'video', tone: 'ink' });
+      return o;
+    };
+    return S.map((s, i) => ({ ...s, num: pad(i + 1), labelFlex: s.wide ? '1 1 100%' : '0 0 240px', blocks: s.blocks.map(deco) }));
+  }
+
+  renderVals() {
+    const s = this.state, P = this.props;
+    const pad = n => String(n).padStart(2, '0');
+    const pf = s.profile || { positioning: {}, manifesto: {}, about: { headline: {} }, photos: {}, contact: {}, cv: {} };
+    const tax = s.taxonomy || {};
+    const route = s.route || { page: 'home' };
+    const M = (m, d) => { const o = { src: '', alt: '', label: '', ratio: '16/9', tone: 'light', embed: '', kind: 'image', caption: '', ...(d || {}), ...(m || {}) }; if (!o.alt) o.alt = o.label; return o; };
+
+    const all = (s.projects || []).filter(p => p.status !== 'oculto' && (this.isPreview || p.status !== 'rascunho')).sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+    const total = pad(all.length);
+    const cards = all.map((p, i) => ({
+      ...p, num: pad(i + 1), total, href: '#/projetos/' + p.slug,
+      cover: M(p.cover, { alt: 'Capa do projeto ' + p.title }),
+      hasSubtitle: !!p.subtitle, categoryLine: (p.categories || []).join(' · '), ariaLabel: 'Ver projeto ' + p.title
+    }));
+    const bySlug = Object.fromEntries(cards.map(c => [c.slug, c]));
+    const cycle = ['wide', 'split', 'splitR'];
+    const featured = cards.filter(p => p.featured).map((p, i) => {
+      const l = p.layout || cycle[i % 3];
+      return { ...p, isWide: l === 'wide', isSplit: l === 'split', isSplitR: l === 'splitR' };
+    });
+
+    const counts = {};
+    cards.forEach(p => (p.filters || []).forEach(f => { counts[f] = (counts[f] || 0) + 1; }));
+    const filt = s.filter;
+    const filters = [{ k: 'todos', label: 'Todos', n: cards.length }]
+      .concat(Object.keys(tax).filter(k => counts[k]).map(k => ({ k, label: tax[k], n: counts[k] })))
+      .map(f => ({ label: f.label, count: pad(f.n), pressed: String(filt === f.k), bg: filt === f.k ? '#292824' : 'transparent', fg: filt === f.k ? '#F4EFE6' : '#292824', onClick: () => this.setState({ filter: f.k }) }));
+    const view = s.view || P.projectsView || 'mosaico';
+    const views = [{ k: 'mosaico', label: 'Mosaico' }, { k: 'indice', label: 'Índice' }].map(v => ({ ...v, pressed: String(view === v.k), line: view === v.k ? '#292824' : 'transparent', onClick: () => this.setState({ view: v.k }) }));
+    const pat = [
+      { flex: '1 1 100%', ratio: '21/9', mt: '0px' },
+      { flex: '1.5 1 520px', ratio: '4/3', mt: '0px' },
+      { flex: '1 1 300px', ratio: '3/4', mt: 'clamp(0px, 9vw, 160px)' },
+      { flex: '1 1 300px', ratio: '3/4', mt: '0px' },
+      { flex: '1.5 1 520px', ratio: '4/3', mt: 'clamp(0px, 9vw, 160px)' }
+    ];
+    const grid = cards.filter(p => filt === 'todos' || (p.filters || []).includes(filt)).map((p, i) => ({ ...p, ...pat[i % pat.length] }));
+    const years = all.flatMap(p => String(p.year || '').match(/\d{4}/g) || []).map(Number);
+    const yearsRange = years.length ? Math.min(...years) + ' — ' + Math.max(...years) : '';
+
+    let c = { info: [], sections: [], prev: {}, next: {}, cover: M() }, caseMissing = false;
+    if (route.page === 'case') {
+      const i = cards.findIndex(p => p.slug === route.slug);
+      if (i < 0) caseMissing = !!s.ready;
+      else {
+        const p = cards[i], prev = cards[(i - 1 + cards.length) % cards.length], next = cards[(i + 1) % cards.length];
+        c = {
+          ...p,
+          info: [
+            { k: 'Cliente', v: p.client }, { k: 'Ano', v: p.year }, { k: 'Tipo', v: p.type },
+            { k: 'Área', v: (p.categories || []).join(', ') },
+            { k: 'Atuação', v: ((p.role && p.role.tags) || []).join(', ') }
+          ].filter(x => x.v),
+          sections: this.sections(p, pad, M),
+          prev: { title: prev.title, href: prev.href }, next: { title: next.title, href: next.href },
+          hasLink: !!p.link
+        };
+      }
+    }
+
+    const cv = pf.cv || {};
+    const skills = (cv.skills || []);
+    const ct = pf.contact || {};
+    const showReels = P.showReels ?? true;
+    const nav = [
+      { label: 'Projetos', href: '#/projetos', on: route.page === 'projects' || route.page === 'case' },
+      { label: 'Sobre / CV', href: '#/curriculo', on: route.page === 'cv' },
+      { label: 'Depoimentos', href: '#/depoimentos', on: false },
+      { label: 'Contato', href: '#/contato', on: false }
+    ].map((n, i) => ({ ...n, num: pad(i + 1), current: n.on ? 'page' : 'false', line: n.on ? '#292824' : 'transparent' }));
+    const isMobile = s.w < 820;
+    const lines = arr => (arr || []).map(l => ({ t: l.text, i: !!l.italic, r: !l.italic }));
+    const initials = n => String(n || '').split(/\s+/).filter(Boolean).slice(0, 2).map(x => x[0]).join('').toUpperCase();
+
+    return {
+      isMobile, isDesktop: !isMobile, showMobileMenu: isMobile && s.menuOpen,
+      menuLabel: s.menuOpen ? 'Fechar' : 'Menu', menuOpenStr: String(!!s.menuOpen),
+      toggleMenu: () => this.setState({ menuOpen: !s.menuOpen }),
+      toTop: () => window.scrollTo({ top: 0, behavior: this.reduced() ? 'auto' : 'smooth' }),
+      nav,
+      isHome: route.page === 'home', isProjects: route.page === 'projects', isCase: route.page === 'case' && !caseMissing && !!c.slug, isCV: route.page === 'cv', caseMissing,
+      profile: pf, year: new Date().getFullYear(),
+      rolesLine: (pf.roles || []).slice(0, 3).join(' · '),
+      roles: (pf.roles || []).map((r, i, a) => ({ label: r, sep: i < a.length - 1 ? '·' : '' })),
+      heroPhoto: M(pf.photos && pf.photos.hero, { alt: 'Retrato de ' + (pf.fullName || 'Raquel Frias') }),
+      aboutPhoto: M(pf.photos && pf.photos.about, { alt: 'Foto de ' + (pf.fullName || 'Raquel Frias') }),
+      disciplines: (pf.disciplines || []).map((d, i, a) => ({ label: d, sep: i < a.length - 1 ? '·' : '' })),
+      manifesto: lines(pf.manifesto && pf.manifesto.lines),
+      hn: { manifesto: '01', stats: '02', projects: '03', reels: '04', testimonials: showReels ? '05' : '04' },
+      homeStats: (pf.homeStats || []).map(x => ({ ...x, href: '#/projetos/' + x.project, projectTitle: (bySlug[x.project] || {}).title || '' })),
+      featured, featuredCount: pad(featured.length), projectCount: total,
+      showReels,
+      reels: ((s.media && s.media.reels) || []).filter(r => r.status !== 'descartar' && (r.id || r.url)).map((r, i) => ({ ...r, label: r.title || 'Reel ' + pad(i + 1), embed: r.embed || 'https://www.instagram.com/reel/' + r.id + '/embed' })),
+      testimonials: (s.testimonials || []).slice().sort((a, b) => (a.order ?? 99) - (b.order ?? 99)).map(t => ({
+        ...t, isLarge: t.size === 'large', isSmall: t.size !== 'large', highlight: t.highlight || t.quote,
+        hasPhoto: !!t.photo, noPhoto: !t.photo, initials: initials(t.name), roleLine: t.company ? t.role + ' · ' + t.company : t.role
+      })),
+      testimonialCount: pad((s.testimonials || []).length),
+      filters, views, isMosaic: view !== 'indice', isIndex: view === 'indice', grid, yearsRange,
+      c,
+      aboutParas: ((pf.about && pf.about.paragraphs) || []).map(t => ({ text: t })),
+      cvPdf: cv.pdf || '#',
+      experience: (cv.experience || []).map(e => ({ ...e, hasPeriod: !!e.period, noPeriod: !e.period, hasDates: !!e.dates, hasDesc: !!e.description, hasProject: !!(e.project && bySlug[e.project]), projectHref: '#/projetos/' + e.project })),
+      education: cv.education || [],
+      specializations: (cv.specializations || []).map((x, i) => ({ label: x, idx: pad(i + 1) })),
+      courses: (cv.courses || []).map(x => ({ ...x, meta: [x.institution, x.year].filter(Boolean).join(' · ') })),
+      skills: skills.map((x, i) => ({ label: x, it: i % 2 === 1, rm: i % 2 === 0, sep: i < skills.length - 1 ? '·' : '' })),
+      tools: (cv.tools || []).map(x => ({ label: x })), hasTools: !!(cv.tools && cv.tools.length), noTools: !(cv.tools && cv.tools.length),
+      languages: cv.languages || [],
+      contactLines: lines(ct.headline),
+      contact: {
+        ...ct, emailHref: 'mailto:' + (ct.email || ''), phoneHref: 'tel:' + (ct.phoneIntl || ''),
+        linkedinHref: ct.linkedin ? 'https://' + ct.linkedin.replace(/^https?:\/\//, '') : '#',
+        hasInstagram: !!ct.instagram, instagramHref: ct.instagram ? 'https://instagram.com/' + ct.instagram.replace(/^@/, '') : '#'
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
