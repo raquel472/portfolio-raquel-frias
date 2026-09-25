@@ -19,7 +19,19 @@ a:hover{color:#6D263D}
 button,input,select,textarea{font-family:inherit}
 ::selection{background:#D7A66D;color:#292824}
 </style>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </helmet>
+<sc-if value="{{ needLogin }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:24px;background:#F4EFE6;">
+    <div style="width:100%;max-width:440px;">
+      <div style="font-family:'Instrument Serif',serif;font-size:30px;line-height:1;">Raquel <em style="color:#6D263D;">Frias</em></div>
+      <p style="margin:8px 0 0;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#5E5A52;">Editor de conteúdo</p>
+      <h1 style="margin:40px 0 0;font-family:'Instrument Serif',serif;font-weight:400;font-size:56px;line-height:.95;letter-spacing:-.02em;">Entre para <em style="color:#6D263D;">editar.</em></h1>
+      <p style="margin:18px 0 0;font-size:15px;line-height:1.55;color:#3D3B36;">Acesso restrito. Use o e-mail e a senha criados pelo convite.</p>
+      <button type="button" onClick="{{ doLogin }}" style="margin-top:28px;min-height:48px;padding:0 26px;border:0;border-radius:999px;background:#292824;color:#F4EFE6;font-size:12px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;" style-hover="background:#6D263D;">Entrar →</button>
+    </div>
+  </div>
+</sc-if>
 <div style="height:100vh;display:flex;flex-direction:{{ L.shellDir }};background:#F4EFE6;color:#292824;font-family:'Schibsted Grotesk',system-ui,sans-serif;overflow:hidden;">
 
 <aside aria-label="Navegação do editor" style="flex:{{ L.sideFlex }};display:flex;flex-direction:{{ L.sideDir }};align-items:{{ L.sideAlign }};gap:8px;padding:{{ L.sidePad }};background:#EDE5D8;border-right:{{ L.sideBR }};border-bottom:{{ L.sideBB }};overflow-x:auto;min-width:0;box-sizing:border-box;">
@@ -35,6 +47,8 @@ button,input,select,textarea{font-family:inherit}
   <div style="margin-top:auto;margin-left:{{ L.footML }};display:flex;flex-direction:{{ L.sideDir }};gap:8px;padding:{{ L.footPad }};flex:0 0 auto;align-items:stretch;">
     <button type="button" onClick="{{ openPublish }}" style="display:flex;justify-content:center;align-items:center;gap:10px;min-height:44px;padding:0 18px;border:0;border-radius:999px;background:#6D263D;color:#F4EFE6;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;white-space:nowrap;" style-hover="background:#571E31;">Publicar<sc-if value="{{ hasChanges }}"><span style="min-width:20px;height:20px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:#D7A66D;color:#292824;font-size:11px;letter-spacing:0;display:inline-flex;align-items:center;justify-content:center;">{{ changeCount }}</span></sc-if></button>
     <a href="Portfolio.dc.html" target="_blank" rel="noopener" style="display:flex;justify-content:center;align-items:center;min-height:40px;padding:0 14px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;white-space:nowrap;">Ver site ↗</a>
+    <sc-if value="{{ hasUser }}"><div style="display:flex;flex-direction:column;align-items:center;gap:2px;padding-top:6px;font-size:12px;color:#5E5A52;"><span style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ userEmail }}</span><button type="button" onClick="{{ doLogout }}" style="padding:4px;border:0;background:transparent;color:#6D263D;font-size:12px;cursor:pointer;">Sair</button></div></sc-if>
+    <sc-if value="{{ isDemo }}"><span style="padding-top:6px;font-size:11px;text-align:center;color:#5E5A52;">Modo demonstração</span></sc-if>
   </div>
 </aside>
 
@@ -293,7 +307,9 @@ button,input,select,textarea{font-family:inherit}
             <sc-for list="{{ issues }}" as="is"><li style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;padding:12px 0;border-bottom:1px solid rgba(41,40,36,.16);"><span style="flex:1 1 280px;font-size:14px;line-height:1.45;"><strong>{{ is.where }}</strong> — {{ is.labels }}</span><button type="button" onClick="{{ is.onFix }}" style="min-height:34px;padding:0 14px;border:1px solid #6D263D;border-radius:999px;background:transparent;color:#6D263D;font-size:12px;cursor:pointer;">Corrigir</button></li></sc-for>
           </ul>
         </sc-if>
-        <p style="margin:24px 0 0;padding:12px 14px;background:#EDE5D8;font-size:13px;line-height:1.5;color:#3D3B36;">Protótipo: a publicação no GitHub está simulada. Para aplicar de verdade, baixe os arquivos e substitua os da pasta <strong>/data</strong>.</p>
+        <sc-if value="{{ isDemo }}"><p style="margin:24px 0 0;padding:12px 14px;background:#EDE5D8;font-size:13px;line-height:1.5;color:#3D3B36;">Modo demonstração: a publicação está simulada. Para aplicar, baixe os arquivos e substitua os da pasta <strong>/data</strong>.</p></sc-if>
+        <sc-if value="{{ isLive }}"><p style="margin:24px 0 0;padding:12px 14px;background:#EDE5D8;font-size:13px;line-height:1.5;color:#3D3B36;">Ao publicar, as alterações vão para o GitHub e o site é atualizado em cerca de 1 minuto.</p></sc-if>
+        <sc-if value="{{ pub.hasError }}"><p role="alert" style="margin:16px 0 0;padding:12px 14px;border:1px solid #6D263D;font-size:13px;line-height:1.5;color:#6D263D;"><strong>Não foi possível publicar.</strong> {{ pub.error }}</p></sc-if>
         <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;">
           <button type="button" onClick="{{ doPublish }}" disabled="{{ pub.blocked }}" style="min-height:46px;padding:0 22px;border:0;border-radius:999px;background:{{ pub.btnBg }};color:#F4EFE6;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:{{ pub.cursor }};">Publicar agora</button>
           <button type="button" onClick="{{ download }}" style="min-height:46px;padding:0 18px;border:1px solid #292824;border-radius:999px;background:transparent;color:#292824;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;">Baixar arquivos</button>
@@ -311,7 +327,8 @@ button,input,select,textarea{font-family:inherit}
 
       <sc-if value="{{ pub.isDone }}">
         <h2 id="pub-title" style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:44px;line-height:1;">Publicado.</h2>
-        <p style="margin:16px 0 0;font-size:15px;line-height:1.55;">O site foi atualizado com as alterações. <span style="color:#5E5A52;">(Simulação — baixe os arquivos para aplicar em /data.)</span></p>
+        <sc-if value="{{ isLive }}"><p style="margin:16px 0 0;font-size:15px;line-height:1.55;">Alterações salvas. O site estará atualizado em cerca de 1 minuto.</p></sc-if>
+        <sc-if value="{{ isDemo }}"><p style="margin:16px 0 0;font-size:15px;line-height:1.55;">O site foi atualizado com as alterações. <span style="color:#5E5A52;">(Simulação — baixe os arquivos para aplicar em /data.)</span></p></sc-if>
         <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;">
           <a href="Portfolio.dc.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:999px;background:#292824;color:#F4EFE6;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;">Ver site ↗</a>
           <button type="button" onClick="{{ download }}" style="min-height:46px;padding:0 18px;border:1px solid #292824;border-radius:999px;background:transparent;color:#292824;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;">Baixar arquivos</button>
@@ -330,7 +347,7 @@ button,input,select,textarea{font-family:inherit}
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { ready: false, view: 'home', coll: null, index: -1, single: null, group: 0, device: 'desktop', pane: 'form', publish: null, pubStep: 0, toast: '', confirmDel: null, confirmDiscard: false, showErrors: false, pw: 600, ph: 700, w: 1400 };
+  state = { mode: 'checking', user: null, pubError: '', ready: false, view: 'home', coll: null, index: -1, single: null, group: 0, device: 'desktop', pane: 'form', publish: null, pubStep: 0, toast: '', confirmDel: null, confirmDiscard: false, showErrors: false, pw: 600, ph: 700, w: 1400 };
   KEY = 'rf-cms-draft-v1';
   raw = {};
   frameRef = React.createRef();
@@ -349,6 +366,66 @@ class Component extends DCLogic {
     window.addEventListener('keydown', this.onKey);
     this.setState({ w: window.innerWidth });
     this.load();
+    this.detectMode();
+  }
+
+  async detectMode() {
+    try {
+      const r = await fetch('/.netlify/functions/publish', { cache: 'no-store' });
+      const j = r.ok ? await r.json() : null;
+      if (!j || !j.ok) throw new Error('sem função');
+      this.setState({ mode: 'live' });
+      this.initIdentity(0);
+    } catch (e) { this.setState({ mode: 'demo' }); }
+  }
+  initIdentity(tries) {
+    const ni = window.netlifyIdentity;
+    if (!ni) { if (tries < 40) setTimeout(() => this.initIdentity(tries + 1), 150); return; }
+    ni.on('init', u => this.setState({ user: u || null }));
+    ni.on('login', u => { this.setState({ user: u }); ni.close(); });
+    ni.on('logout', () => this.setState({ user: null }));
+    ni.init({ locale: 'pt' });
+    this.setState({ user: ni.currentUser() });
+  }
+
+  async call(files, message, skipDeploy) {
+    const u = window.netlifyIdentity && window.netlifyIdentity.currentUser();
+    if (!u) throw new Error('Sessão expirada. Entre novamente.');
+    const token = await u.jwt();
+    const r = await fetch('/.netlify/functions/publish', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token }, body: JSON.stringify({ files, message, skipDeploy }) });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.error || 'Erro ' + r.status);
+    return j;
+  }
+
+  async realPublish() {
+    this.setState({ publish: 'running', pubStep: 0, pubError: '' });
+    try {
+      const docs = this.clone(this.state.docs); delete docs.__publishedAt;
+      const imgs = [], stamp = Date.now().toString(36);
+      const reg = d => {
+        const m = d.match(/^data:image\/(\w+);base64,(.*)$/);
+        if (!m) return d;
+        const path = 'assets/uploads/' + stamp + '-' + (imgs.length + 1) + '.' + (m[1] === 'jpeg' ? 'jpg' : m[1]);
+        imgs.push({ path, content: m[2], encoding: 'base64' });
+        return path;
+      };
+      const walk = o => { if (o && typeof o === 'object') Object.keys(o).forEach(k => { const x = o[k]; if (typeof x === 'string' && x.startsWith('data:image/')) o[k] = reg(x); else walk(x); }); };
+      walk(docs);
+      this.setState({ pubStep: 1 });
+      let batch = [], size = 0;
+      const flush = async () => { if (batch.length) { await this.call(batch, 'Imagens do portfólio', true); batch = []; size = 0; } };
+      for (const im of imgs) { if (size + im.content.length > 3500000) await flush(); batch.push(im); size += im.content.length; }
+      await flush();
+      this.setState({ pubStep: 2 });
+      await this.call(['projects', 'profile', 'testimonials', 'media'].map(k => ({ path: 'data/' + k + '.json', content: JSON.stringify(docs[k], null, 2) + '\n' })), 'Conteúdo atualizado pelo editor', false);
+      this.setState({ pubStep: 3 });
+      try { localStorage.setItem(this.KEY, JSON.stringify({ ...docs, __publishedAt: Date.now() })); } catch (e) {}
+      this.raw = {};
+      setTimeout(() => this.setState({ publish: 'done', docs, orig: this.clone(docs) }), 600);
+    } catch (e) {
+      this.setState({ publish: 'review', pubError: e.message || 'Erro desconhecido.' });
+    }
   }
   componentWillUnmount() {
     window.removeEventListener('resize', this.onResize);
@@ -367,9 +444,17 @@ class Component extends DCLogic {
       const get = p => fetch(p).then(r => { if (!r.ok) throw new Error(p + ' ' + r.status); return r.json(); });
       const [schema, projects, profile, testimonials, media] = await Promise.all(['data/schema.json', 'data/projects.json', 'data/profile.json', 'data/testimonials.json', 'data/media.json'].map(get));
       const orig = { projects, profile, testimonials, media };
-      let docs = orig;
-      try { const d = JSON.parse(localStorage.getItem(this.KEY) || 'null'); if (d && d.projects && d.profile) docs = d; } catch (e) {}
-      this.setState({ ready: true, schema, orig, docs: this.clone(docs) });
+      let docs = orig, base = orig;
+      try {
+        const d = JSON.parse(localStorage.getItem(this.KEY) || 'null');
+        if (d && d.projects && d.profile) {
+          if (d.__publishedAt) {
+            // Publicado há pouco: o site pode ainda estar atualizando — usa a versão publicada como base.
+            if (Date.now() - d.__publishedAt < 10 * 60 * 1000) { delete d.__publishedAt; docs = d; base = this.clone(d); }
+          } else docs = d;
+        }
+      } catch (e) {}
+      this.setState({ ready: true, schema, orig: base, docs: this.clone(docs) });
     } catch (e) { console.error('[editor] falha ao carregar', e); this.flash('Não foi possível carregar o conteúdo.'); }
   }
 
@@ -638,6 +723,7 @@ class Component extends DCLogic {
 
   doPublish = () => {
     if (this.allIssues().length || !this.changes().total) return;
+    if (this.state.mode === 'live') { this.realPublish(); return; }
     this.setState({ publish: 'running', pubStep: 0 });
     [1, 2, 3].forEach(n => setTimeout(() => this.setState({ pubStep: n }), n * 750));
     setTimeout(() => this.setState(s => ({ publish: 'done', orig: this.clone(s.docs) })), 2500);
@@ -673,7 +759,11 @@ class Component extends DCLogic {
     const sc = Math.min(1, availW / devW);
     const F = { w: devW + 'px', h: Math.round(availH / sc) + 'px', t: 'scale(' + sc.toFixed(4) + ')', left: Math.round((s.pw - devW * sc) / 2) + 'px', top: mobile ? '24px' : '0px', shadow: mobile ? '0 12px 40px rgba(41,40,36,.25)' : 'none' };
     const devices = [{ k: 'desktop', label: 'Desktop' }, { k: 'mobile', label: 'Celular' }].map(d => ({ ...d, pressed: String(s.device === d.k), bg: s.device === d.k ? '#292824' : 'transparent', fg: s.device === d.k ? '#F4EFE6' : '#292824', onClick: () => this.setState({ device: d.k }) }));
+    const ni = () => window.netlifyIdentity;
     const common = {
+      isLive: s.mode === 'live', isDemo: s.mode === 'demo',
+      needLogin: s.mode === 'live' && !s.user, hasUser: s.mode === 'live' && !!s.user, userEmail: (s.user && s.user.email) || '',
+      doLogin: () => ni() && ni().open('login'), doLogout: () => ni() && ni().logout(),
       L, F, devices, frameRef: this.frameRef, panelRef: this.panelRef, mainRef: this.mainRef, onFrameLoad: this.onFrameLoad,
       showPreviewPane: () => this.setState({ pane: 'preview' }), showFormPane: () => this.setState({ pane: 'form' }),
       toast: s.toast, hasToast: !!s.toast
@@ -761,7 +851,8 @@ class Component extends DCLogic {
     const pub = {
       isReview: s.publish === 'review', isRunning: s.publish === 'running', isDone: s.publish === 'done',
       noChanges: !ch.total, hasIssues: !!issues.length, blocked, btnBg: blocked ? '#9A958B' : '#6D263D', cursor: blocked ? 'not-allowed' : 'pointer',
-      steps: ['Validando conteúdo', 'Salvando no GitHub', 'Atualizando o site'].map((label, i) => ({ label, mark: s.pubStep > i ? '✓' : s.pubStep === i ? '…' : '', fg: s.pubStep >= i ? '#292824' : '#8A857B' }))
+      hasError: !!s.pubError, error: s.pubError,
+      steps: (s.mode === 'live' ? ['Validando conteúdo', 'Enviando imagens', 'Salvando no GitHub'] : ['Validando conteúdo', 'Salvando no GitHub', 'Atualizando o site']).map((label, i) => ({ label, mark: s.pubStep > i ? '✓' : s.pubStep === i ? '…' : '', fg: s.pubStep >= i ? '#292824' : '#8A857B' }))
     };
 
     return {
@@ -770,7 +861,7 @@ class Component extends DCLogic {
       hasChanges: ch.total > 0, changeCount: String(ch.total), changes: ch.out,
       statusLine: ch.total ? ch.total + ' alteraç' + (ch.total > 1 ? 'ões' : 'ão') + ' no rascunho, ainda não publicada' + (ch.total > 1 ? 's' : '') + '.' + (issues.length ? ' ' + issues.length + ' pendência(s) antes de publicar.' : '') : 'Tudo publicado. Nenhuma alteração pendente.',
       statusDot: ch.total ? '#D7A66D' : '#3F6B45',
-      showPublish: !!s.publish, openPublish: () => this.setState({ publish: 'review', confirmDiscard: false }), closePublish: () => this.setState({ publish: null }),
+      showPublish: !!s.publish, openPublish: () => this.setState({ publish: 'review', confirmDiscard: false, pubError: '' }), closePublish: () => this.setState({ publish: null }),
       doPublish: this.doPublish, download: this.download, discard: this.discard, discardLabel: s.confirmDiscard ? 'Clique de novo para descartar tudo' : 'Descartar rascunho'
     };
   }
