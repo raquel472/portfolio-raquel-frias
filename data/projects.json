@@ -14,13 +14,21 @@
       "status": "publicado",
       "featured": true,
       "layout": "wide",
-      "title": "Outubro Rosa",
-      "subtitle": "Cuidado que Floresce, Esperança que Renasce",
+      "title": "Outubro Rosa,",
+      "subtitle": "Cuidado que Floresce, Esperança que Renasce...",
       "year": "2025",
       "client": "Unimed Uberlândia",
       "type": "Campanha institucional de conscientização",
-      "categories": ["Branding", "Comunicação Institucional", "Endomarketing", "Ação Presencial"],
-      "filters": ["campanhas", "institucional"],
+      "categories": [
+        "Branding",
+        "Comunicação Institucional",
+        "Endomarketing",
+        "Ação Presencial"
+      ],
+      "filters": [
+        "campanhas",
+        "institucional"
+      ],
       "summary": "A campanha ressignificou o Ipê Amarelo — símbolo da Oncologia da Unimed — florescendo em rosa para representar cuidado, renascimento e a força da rede de apoio no combate ao câncer de mama.",
       "context": "Tornar tangível e emocional um símbolo já consolidado — o Ipê Amarelo — trazendo o conceito de rede de apoio ao tratamento.",
       "objective": "Fortalecer a rede de apoio ao cuidado e à prevenção do câncer de mama, promovendo conscientização, engajamento e acolhimento, reforçando a Unimed como referência em saúde integral e humanizada.",
@@ -31,7 +39,12 @@
       },
       "strategy": null,
       "role": {
-        "tags": ["Estratégia", "Conceito criativo", "Narrativa", "Storytelling"],
+        "tags": [
+          "Estratégia",
+          "Conceito criativo",
+          "Narrativa",
+          "Storytelling"
+        ],
         "text": "Responsável por toda a estratégia, o conceito criativo e a construção da narrativa da campanha — do desenvolvimento da ideia “ninguém floresce sozinho” à condução do storytelling que uniu o símbolo do Ipê Rosa, a rede de apoio e as ativações em todos os pontos de contato (presencial, mídia e digital)."
       },
       "body": [
@@ -39,36 +52,85 @@
           "type": "list",
           "title": "Ações",
           "items": [
-            { "title": "Espaços instagramáveis", "text": "Nas unidades, com pétalas de ipê para mensagens de incentivo entregues a pacientes oncológicos, e pins de mobilização interna." },
-            { "title": "Empresas parceiras", "text": "Palestras, rodas de conversa e materiais informativos sobre a Linha de Cuidado da Mama." },
-            { "title": "Caminhada Outubro Rosa", "text": "25/10, Parque Marileusa, em parceria com o Instituto Unimed Uberlândia: ativações, kit com camiseta, bucket e bolsa, plantio simbólico do ipê rosa e arrecadação de itens de higiene pessoal para o Instituto Unimed e a Casa Santa Gema." }
+            {
+              "title": "Espaços instagramáveis",
+              "text": "Nas unidades, com pétalas de ipê para mensagens de incentivo entregues a pacientes oncológicos, e pins de mobilização interna."
+            },
+            {
+              "title": "Empresas parceiras",
+              "text": "Palestras, rodas de conversa e materiais informativos sobre a Linha de Cuidado da Mama."
+            },
+            {
+              "title": "Caminhada Outubro Rosa",
+              "text": "25/10, Parque Marileusa, em parceria com o Instituto Unimed Uberlândia: ativações, kit com camiseta, bucket e bolsa, plantio simbólico do ipê rosa e arrecadação de itens de higiene pessoal para o Instituto Unimed e a Casa Santa Gema."
+            }
           ]
         },
-        { "type": "image", "src": "", "label": "Caminhada Outubro Rosa · Parque Marileusa", "ratio": "16/9", "tone": "wine" },
+        {
+          "type": "image",
+          "src": "",
+          "label": "Caminhada Outubro Rosa · Parque Marileusa",
+          "ratio": "16/9",
+          "tone": "wine"
+        },
         {
           "type": "list",
           "title": "Mídia",
           "items": [
-            { "title": "TV Paranaíba", "text": "Programa Você com Mônica Cunha: 8 conteúdos de 5 min, 16 inserts de 10s, 16 citações de 5s e 8 merchans de 60s." },
-            { "title": "Instagram da TV Paranaíba", "text": "2 publieditoriais e 8 Reels." }
+            {
+              "title": "TV Paranaíba",
+              "text": "Programa Você com Mônica Cunha: 8 conteúdos de 5 min, 16 inserts de 10s, 16 citações de 5s e 8 merchans de 60s."
+            },
+            {
+              "title": "Instagram da TV Paranaíba",
+              "text": "2 publieditoriais e 8 Reels."
+            }
           ]
         },
         {
           "type": "pair",
           "images": [
-            { "src": "", "label": "Pétalas de ipê com mensagens de incentivo", "ratio": "4/5", "tone": "caramel" },
-            { "src": "", "label": "Pins de mobilização interna", "ratio": "4/5", "tone": "light" }
+            {
+              "src": "",
+              "label": "Pétalas de ipê com mensagens de incentivo",
+              "ratio": "4/5",
+              "tone": "caramel"
+            },
+            {
+              "src": "",
+              "label": "Pins de mobilização interna",
+              "ratio": "4/5",
+              "tone": "light"
+            }
           ]
         }
       ],
       "results": {
         "stats": [
-          { "value": "71.497", "label": "alcance médio por post no Instagram" },
-          { "value": "290", "label": "interações médias por post" },
-          { "value": "10,49%", "label": "engajamento do vídeo de abertura, com Mônica Cunha (impulsionado)" },
-          { "value": "7,19%", "label": "engajamento do post geral da campanha, 01/10 (impulsionado)" },
-          { "value": "76", "label": "stories publicados no mês" },
-          { "value": "80%", "label": "dos stories com conteúdo gerado pelo público (UGC)" }
+          {
+            "value": "71.497",
+            "label": "alcance médio por post no Instagram"
+          },
+          {
+            "value": "290",
+            "label": "interações médias por post"
+          },
+          {
+            "value": "10,49%",
+            "label": "engajamento do vídeo de abertura, com Mônica Cunha (impulsionado)"
+          },
+          {
+            "value": "7,19%",
+            "label": "engajamento do post geral da campanha, 01/10 (impulsionado)"
+          },
+          {
+            "value": "76",
+            "label": "stories publicados no mês"
+          },
+          {
+            "value": "80%",
+            "label": "dos stories com conteúdo gerado pelo público (UGC)"
+          }
         ],
         "notes": [
           "Fortalecimento da rede de apoio ao cuidado oncológico.",
@@ -77,13 +139,41 @@
         ],
         "learnings": []
       },
-      "cover": { "src": "", "label": "Capa · Ipê rosa", "tone": "wine" },
+      "cover": {
+        "src": "",
+        "label": "Capa · Ipê rosa",
+        "tone": "wine"
+      },
       "gallery": [
-        { "src": "", "label": "Key visual da campanha", "size": "full", "ratio": "21/9", "tone": "wine" },
-        { "src": "", "label": "Espaço instagramável nas unidades", "size": "half", "ratio": "4/3", "tone": "light" },
-        { "src": "", "label": "Kit da caminhada", "size": "half", "ratio": "4/3", "tone": "caramel" }
+        {
+          "src": "",
+          "label": "Key visual da campanha",
+          "size": "full",
+          "ratio": "21/9",
+          "tone": "wine"
+        },
+        {
+          "src": "",
+          "label": "Espaço instagramável nas unidades",
+          "size": "half",
+          "ratio": "4/3",
+          "tone": "light"
+        },
+        {
+          "src": "",
+          "label": "Kit da caminhada",
+          "size": "half",
+          "ratio": "4/3",
+          "tone": "caramel"
+        }
       ],
-      "video": { "src": "", "embed": "", "kind": "video", "label": "Vídeo de abertura da campanha, com Mônica Cunha", "tone": "ink" },
+      "video": {
+        "src": "",
+        "embed": "",
+        "kind": "video",
+        "label": "Vídeo de abertura da campanha, com Mônica Cunha",
+        "tone": "ink"
+      },
       "link": ""
     },
     {
@@ -97,8 +187,14 @@
       "year": "2025",
       "client": "Unimed Uberlândia",
       "type": "Campanha institucional multicanal",
-      "categories": ["Branding Institucional", "Mídia"],
-      "filters": ["campanhas", "institucional"],
+      "categories": [
+        "Branding Institucional",
+        "Mídia"
+      ],
+      "filters": [
+        "campanhas",
+        "institucional"
+      ],
       "summary": "Campanha multicanal — mídia externa, TV, digital e redes sociais — para fortalecer a presença da marca e valorizar os serviços próprios da cooperativa, alcançando 9,46 milhões de pessoas únicas.",
       "context": "",
       "objective": "Fortalecer a presença institucional da Unimed Uberlândia e valorizar os serviços próprios da cooperativa.",
@@ -107,36 +203,103 @@
       "strategy": {
         "text": "",
         "items": [
-          { "title": "Mídia externa", "text": "Uberlândia Shopping e Center Shopping." },
-          { "title": "TV e YouTube", "text": "Vídeo institucional em TV Integração, TV Paranaíba e YouTube." },
-          { "title": "Redes sociais", "text": "Publicações orgânicas." },
-          { "title": "Landing page", "text": "Página de apoio à campanha." }
+          {
+            "title": "Mídia externa",
+            "text": "Uberlândia Shopping e Center Shopping."
+          },
+          {
+            "title": "TV e YouTube",
+            "text": "Vídeo institucional em TV Integração, TV Paranaíba e YouTube."
+          },
+          {
+            "title": "Redes sociais",
+            "text": "Publicações orgânicas."
+          },
+          {
+            "title": "Landing page",
+            "text": "Página de apoio à campanha."
+          }
         ]
       },
       "role": {
-        "tags": ["Estratégia", "Conceito", "Copywriting", "Coordenação"],
+        "tags": [
+          "Estratégia",
+          "Conceito",
+          "Copywriting",
+          "Coordenação"
+        ],
         "text": "Responsável pela estratégia, pelo conceito e pelo copywriting da campanha, integrando mídia externa, TV, digital e redes sociais. Coordenou o alinhamento com as áreas envolvidas e as aprovações internas."
       },
       "body": [],
       "results": {
         "stats": [
-          { "value": "9.464.740", "label": "pessoas únicas alcançadas (total estimado)" },
-          { "value": "6 mi", "label": "pessoas impactadas · TV Integração" },
-          { "value": "3 mi", "label": "pessoas impactadas · TV Paranaíba" },
-          { "value": "364.740", "label": "pessoas únicas · Center Shopping (média de 5,86 impactos por pessoa)" },
-          { "value": "100 mil", "label": "pessoas · Uberlândia Shopping" },
-          { "value": "R$ 7,16", "label": "CPM aproximado · custo por pessoa impactada de ~R$ 0,0072" }
+          {
+            "value": "9.464.740",
+            "label": "pessoas únicas alcançadas (total estimado)"
+          },
+          {
+            "value": "6 mi",
+            "label": "pessoas impactadas · TV Integração"
+          },
+          {
+            "value": "3 mi",
+            "label": "pessoas impactadas · TV Paranaíba"
+          },
+          {
+            "value": "364.740",
+            "label": "pessoas únicas · Center Shopping (média de 5,86 impactos por pessoa)"
+          },
+          {
+            "value": "100 mil",
+            "label": "pessoas · Uberlândia Shopping"
+          },
+          {
+            "value": "R$ 7,16",
+            "label": "CPM aproximado · custo por pessoa impactada de ~R$ 0,0072"
+          }
         ],
-        "notes": ["Nas redes sociais, o primeiro post foi o mais engajado do mês."],
-        "learnings": ["A landing page não teve mensuração por falta de tags do Google Analytics — aprendizado para as próximas campanhas."]
+        "notes": [
+          "Nas redes sociais, o primeiro post foi o mais engajado do mês."
+        ],
+        "learnings": [
+          "A landing page não teve mensuração por falta de tags do Google Analytics — aprendizado para as próximas campanhas."
+        ]
       },
-      "cover": { "src": "", "label": "Capa · Sempre Perto", "tone": "caramel" },
+      "cover": {
+        "src": "",
+        "label": "Capa · Sempre Perto",
+        "tone": "caramel"
+      },
       "gallery": [
-        { "src": "", "label": "Mídia externa · Uberlândia Shopping", "size": "half", "ratio": "3/4", "tone": "light" },
-        { "src": "", "label": "Mídia externa · Center Shopping", "size": "half", "ratio": "3/4", "tone": "caramel" },
-        { "src": "", "label": "Landing page de apoio", "size": "full", "ratio": "16/9", "tone": "light" }
+        {
+          "src": "",
+          "label": "Mídia externa · Uberlândia Shopping",
+          "size": "half",
+          "ratio": "3/4",
+          "tone": "light"
+        },
+        {
+          "src": "",
+          "label": "Mídia externa · Center Shopping",
+          "size": "half",
+          "ratio": "3/4",
+          "tone": "caramel"
+        },
+        {
+          "src": "",
+          "label": "Landing page de apoio",
+          "size": "full",
+          "ratio": "16/9",
+          "tone": "light"
+        }
       ],
-      "video": { "src": "", "embed": "", "kind": "video", "label": "Vídeo institucional · TV Integração, TV Paranaíba e YouTube", "tone": "ink" },
+      "video": {
+        "src": "",
+        "embed": "",
+        "kind": "video",
+        "label": "Vídeo institucional · TV Integração, TV Paranaíba e YouTube",
+        "tone": "ink"
+      },
       "link": ""
     },
     {
@@ -150,8 +313,14 @@
       "year": "2025",
       "client": "Unimed Uberlândia",
       "type": "Campanha institucional de conscientização",
-      "categories": ["Comunicação Digital", "Branding Institucional"],
-      "filters": ["campanhas", "conteudo"],
+      "categories": [
+        "Comunicação Digital",
+        "Branding Institucional"
+      ],
+      "filters": [
+        "campanhas",
+        "conteudo"
+      ],
       "summary": "Campanha digital multicanal — e-mail, redes sociais e YouTube — de conscientização sobre a saúde do homem, incentivando o autocuidado e a prevenção.",
       "context": "",
       "objective": "Conscientizar o público masculino sobre a importância da prevenção, incentivar o autocuidado e fortalecer o posicionamento institucional da marca como promotora de saúde integral.",
@@ -160,28 +329,62 @@
       "strategy": {
         "text": "Abordagem digital integrada, com um papel claro para cada canal.",
         "items": [
-          { "title": "E-mail marketing", "text": "Foco informativo e educativo." },
-          { "title": "Redes sociais", "text": "Alcance e proximidade." },
-          { "title": "YouTube", "text": "Conteúdo audiovisual." }
+          {
+            "title": "E-mail marketing",
+            "text": "Foco informativo e educativo."
+          },
+          {
+            "title": "Redes sociais",
+            "text": "Alcance e proximidade."
+          },
+          {
+            "title": "YouTube",
+            "text": "Conteúdo audiovisual."
+          }
         ]
       },
       "role": {
-        "tags": ["Estratégia digital", "Copywriting", "Coordenação"],
+        "tags": [
+          "Estratégia digital",
+          "Copywriting",
+          "Coordenação"
+        ],
         "text": "Responsável pela estratégia de comunicação digital e pelo copywriting da campanha, integrando e-mail, redes sociais e YouTube em uma mensagem única de prevenção e autocuidado masculino. Coordenou o alinhamento com as áreas internas e as aprovações, garantindo a coerência com o posicionamento institucional da marca."
       },
       "body": [],
       "results": {
         "stats": [
-          { "value": "98,7 mil", "label": "visualizações no YouTube" },
-          { "value": "3.069", "label": "cliques totais em 14 dias de campanha" },
-          { "value": "393", "label": "contas alcançadas no Instagram" }
+          {
+            "value": "98,7 mil",
+            "label": "visualizações no YouTube"
+          },
+          {
+            "value": "3.069",
+            "label": "cliques totais em 14 dias de campanha"
+          },
+          {
+            "value": "393",
+            "label": "contas alcançadas no Instagram"
+          }
         ],
-        "notes": ["Desempenho positivo e consistente, mesmo sem histórico comparativo para análise evolutiva."],
+        "notes": [
+          "Desempenho positivo e consistente, mesmo sem histórico comparativo para análise evolutiva."
+        ],
         "learnings": []
       },
-      "cover": { "src": "", "label": "Capa · Novembro Azul", "tone": "ink" },
+      "cover": {
+        "src": "",
+        "label": "Capa · Novembro Azul",
+        "tone": "ink"
+      },
       "gallery": [],
-      "video": { "src": "", "embed": "", "kind": "video", "label": "Vídeo da campanha · YouTube", "tone": "ink" },
+      "video": {
+        "src": "",
+        "embed": "",
+        "kind": "video",
+        "label": "Vídeo da campanha · YouTube",
+        "tone": "ink"
+      },
       "link": ""
     },
     {
@@ -195,8 +398,15 @@
       "year": "2025",
       "client": "Unimed Uberlândia",
       "type": "Material institucional (cartilha/apresentação)",
-      "categories": ["Comunicação Institucional", "Branding", "Conteúdo"],
-      "filters": ["institucional", "editorial"],
+      "categories": [
+        "Comunicação Institucional",
+        "Branding",
+        "Conteúdo"
+      ],
+      "filters": [
+        "institucional",
+        "editorial"
+      ],
       "summary": "Material institucional que traduziu um modelo assistencial complexo em linguagem clara e humanizada, apresentando as cinco Linhas de Cuidado da Unimed Uberlândia.",
       "context": "Tornar compreensível para o beneficiário um modelo assistencial complexo e técnico, com padronização de linguagem e alinhamento ao propósito da marca.",
       "objective": "Desenvolver um material institucional didático e estratégico, explicando o conceito das Linhas de Cuidado, seus benefícios e o compromisso da Unimed com a excelência assistencial.",
@@ -205,13 +415,27 @@
       "strategy": {
         "text": "Três pilares.",
         "items": [
-          { "title": "Humanização do discurso", "text": "Linguagem acessível e centrada no beneficiário." },
-          { "title": "Organização e clareza", "text": "Estrutura padronizada por objetivo, público, serviços, benefícios e acesso." },
-          { "title": "Fortalecimento institucional", "text": "Reforço do papel da Unimed e valorização de cooperados e serviços próprios." }
+          {
+            "title": "Humanização do discurso",
+            "text": "Linguagem acessível e centrada no beneficiário."
+          },
+          {
+            "title": "Organização e clareza",
+            "text": "Estrutura padronizada por objetivo, público, serviços, benefícios e acesso."
+          },
+          {
+            "title": "Fortalecimento institucional",
+            "text": "Reforço do papel da Unimed e valorização de cooperados e serviços próprios."
+          }
         ]
       },
       "role": {
-        "tags": ["Redação", "Estruturação", "Conceito", "Curadoria de conteúdo"],
+        "tags": [
+          "Redação",
+          "Estruturação",
+          "Conceito",
+          "Curadoria de conteúdo"
+        ],
         "text": "Conduziu toda a parte de redação e estruturação do material — redação, conceito e curadoria de conteúdo."
       },
       "body": [
@@ -219,19 +443,42 @@
           "type": "list",
           "title": "As cinco linhas apresentadas",
           "items": [
-            { "title": "Do Idoso" },
-            { "title": "Materno Infantil" },
-            { "title": "Da Mama" },
-            { "title": "TEA" },
-            { "title": "Mente Saudável" }
+            {
+              "title": "Do Idoso"
+            },
+            {
+              "title": "Materno Infantil"
+            },
+            {
+              "title": "Da Mama"
+            },
+            {
+              "title": "TEA"
+            },
+            {
+              "title": "Mente Saudável"
+            }
           ]
         },
-        { "type": "text", "text": "Cada linha foi apresentada com objetivo, público-alvo, serviços, impacto na qualidade de vida e canais de acesso." },
+        {
+          "type": "text",
+          "text": "Cada linha foi apresentada com objetivo, público-alvo, serviços, impacto na qualidade de vida e canais de acesso."
+        },
         {
           "type": "pair",
           "images": [
-            { "src": "", "label": "Página do material · abertura", "ratio": "3/4", "tone": "light" },
-            { "src": "", "label": "Página do material · linha de cuidado", "ratio": "3/4", "tone": "caramel" }
+            {
+              "src": "",
+              "label": "Página do material · abertura",
+              "ratio": "3/4",
+              "tone": "light"
+            },
+            {
+              "src": "",
+              "label": "Página do material · linha de cuidado",
+              "ratio": "3/4",
+              "tone": "caramel"
+            }
           ]
         }
       ],
@@ -244,7 +491,11 @@
         ],
         "learnings": []
       },
-      "cover": { "src": "", "label": "Capa · Linhas de Cuidado", "tone": "light" },
+      "cover": {
+        "src": "",
+        "label": "Capa · Linhas de Cuidado",
+        "tone": "light"
+      },
       "gallery": [],
       "video": null,
       "link": ""
@@ -260,8 +511,15 @@
       "year": "2015 — 2023",
       "client": "Historinhas da Maricota",
       "type": "Produção editorial",
-      "categories": ["Escrita", "Edição", "Revisão de texto"],
-      "filters": ["editorial", "autoral"],
+      "categories": [
+        "Escrita",
+        "Edição",
+        "Revisão de texto"
+      ],
+      "filters": [
+        "editorial",
+        "autoral"
+      ],
       "summary": "Textos infantis escritos, editados e revisados com foco em linguagem adequada ao público-alvo.",
       "context": "Projeto autoral criado após conquistar o 1º lugar em um concurso de histórias infantis em Varginha (MG).",
       "objective": "",
@@ -269,16 +527,29 @@
       "concept": null,
       "strategy": null,
       "role": {
-        "tags": ["Escrita", "Edição", "Revisão"],
+        "tags": [
+          "Escrita",
+          "Edição",
+          "Revisão"
+        ],
         "text": "Escreveu, editou e revisou textos voltados ao público infantil e os compartilhou voluntariamente em leituras em escolas e no Instagram, com acesso aberto a todos."
       },
       "body": [],
       "results": {
-        "stats": [{ "value": "1º", "label": "lugar em concurso de histórias infantis em Varginha (MG)" }],
+        "stats": [
+          {
+            "value": "1º",
+            "label": "lugar em concurso de histórias infantis em Varginha (MG)"
+          }
+        ],
         "notes": [],
         "learnings": []
       },
-      "cover": { "src": "", "label": "Capa · Historinhas da Maricota", "tone": "caramel" },
+      "cover": {
+        "src": "",
+        "label": "Capa · Historinhas da Maricota",
+        "tone": "caramel"
+      },
       "gallery": [],
       "video": null,
       "link": ""
@@ -294,8 +565,13 @@
       "year": "2009 — 2015",
       "client": "Mondelez International",
       "type": "Trade marketing / ponto de venda",
-      "categories": ["Trade Marketing", "Análise de Indicadores"],
-      "filters": ["trade"],
+      "categories": [
+        "Trade Marketing",
+        "Análise de Indicadores"
+      ],
+      "filters": [
+        "trade"
+      ],
       "summary": "Conjunto de ativações de trade marketing no ponto de venda, com apoio à área comercial e acompanhamento de indicadores, para sustentar a presença e a performance das marcas da Mondelez no varejo.",
       "context": "Garantir visibilidade e execução das marcas no ponto de venda e dar suporte à equipe comercial com ações, materiais e indicadores que sustentassem a performance no varejo.",
       "objective": "Sustentação das marcas no ponto de venda e suporte à área comercial.",
@@ -303,12 +579,21 @@
       "concept": null,
       "strategy": null,
       "role": {
-        "tags": ["Análise de indicadores", "Planejamento", "Execução", "Materiais de venda"],
+        "tags": [
+          "Análise de indicadores",
+          "Planejamento",
+          "Execução",
+          "Materiais de venda"
+        ],
         "text": "Análise de indicadores de desempenho, planejamento e execução das ações, estruturação de campanhas e materiais de apoio à venda."
       },
       "body": [],
       "results": null,
-      "cover": { "src": "", "label": "Capa · Ponto de venda", "tone": "ink" },
+      "cover": {
+        "src": "",
+        "label": "Capa · Ponto de venda",
+        "tone": "ink"
+      },
       "gallery": [],
       "video": null,
       "link": ""
