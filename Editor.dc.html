@@ -433,11 +433,6 @@ class Component extends DCLogic {
     if (this.ro) this.ro.disconnect();
     clearTimeout(this.t); clearTimeout(this.tt);
   }
-  componentDidUpdate(pp, ps) {
-    if (this.state.docs && ps.docs !== this.state.docs) this.sync();
-    const h = this.previewHash();
-    if (h !== this.lastHash) this.goFrame(h);
-  }
 
   async load() {
     try {
@@ -468,7 +463,7 @@ class Component extends DCLogic {
     c[k] = this.setIn(base[k], p.slice(1), v);
     return c;
   }
-  updMany(list) { this.setState(s => ({ docs: list.reduce((d, [p, v]) => this.setIn(d, p, v), s.docs) })); }
+  updMany(list) { this.setState(s => ({ docs: list.reduce((d, [p, v]) => this.setIn(d, p, v), s.docs) }), () => this.sync()); }
   upd(p, v) { this.updMany([[p, v]]); }
   isEmpty(v) { return v == null || (typeof v === 'string' && !v.trim()) || (Array.isArray(v) && !v.length); }
   slugify(t) { return String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 50); }
@@ -525,15 +520,16 @@ class Component extends DCLogic {
     if (view === 'single') patch.single = key;
     this.setState(patch, () => this.scrollTop());
   }
-  open(coll, index, group) {
+  open(coll, index, group, isNew) {
     this.raw = {};
+    this.autoSlug = !!isNew;
     this.setState({ view: 'edit', coll, index, group: group || 0, showErrors: false, confirmDel: null, pane: 'form' }, () => this.scrollTop());
   }
   newItem(coll) {
     const c = this.state.schema.collections[coll], cp = this.collPath(c), arr = this.g(this.state.docs, cp) || [];
     const order = Math.max(0, ...arr.map(x => x.order || 0)) + 1;
     this.upd(cp, arr.concat([{ ...this.clone(c.defaults), order }]));
-    this.open(coll, arr.length, 0);
+    this.open(coll, arr.length, 0, true);
   }
   reorder(coll, rows, pos, d) {
     const c = this.state.schema.collections[coll], cp = this.collPath(c);
@@ -597,7 +593,7 @@ class Component extends DCLogic {
     const ups = [[path, v]];
     if (s.view === 'edit' && s.coll === 'projects' && f.key === 'title') {
       const it = this.g(s.docs, base) || {};
-      if (!it.slug || it.slug === this.slugify(it.title || '')) ups.push([base.concat('slug'), this.slugify(v)]);
+      if (!it.slug || (this.autoSlug && it.slug === this.slugify(it.title || ''))) ups.push([base.concat('slug'), this.slugify(v)]);
     }
     if (f.key === 'contact.phone') ups.push([base.concat(['contact', 'phoneIntl']), v ? '+55' + String(v).replace(/\D/g, '') : '']);
     if (s.single === 'media' && f.key === 'url') { const m = String(v).match(/instagram\.com\/(?:reel|p)\/([^/?#]+)/); ups.push([path.slice(0, -1).concat('id'), m ? m[1] : '']); }
@@ -740,12 +736,14 @@ class Component extends DCLogic {
     if (!this.state.confirmDiscard) { this.setState({ confirmDiscard: true }); setTimeout(() => this.setState({ confirmDiscard: false }), 3500); return; }
     this.raw = {};
     try { localStorage.removeItem(this.KEY); } catch (e) {}
-    this.setState(s => ({ docs: this.clone(s.orig), publish: null, confirmDiscard: false, view: 'home' }));
+    this.setState(s => ({ docs: this.clone(s.orig), publish: null, confirmDiscard: false, view: 'home' }), () => this.post());
     this.flash('Rascunho descartado.');
   };
 
   renderVals() {
     const s = this.state;
+    const ph = this.previewHash();
+    if (ph !== this.lastHash) setTimeout(() => this.goFrame(ph), 0);
     const wide = s.w >= 1200, narrow = s.w < 860;
     const L = {
       shellDir: narrow ? 'column' : 'row', sideFlex: narrow ? '0 0 auto' : '0 0 236px', sideDir: narrow ? 'row' : 'column', sideAlign: narrow ? 'center' : 'stretch',

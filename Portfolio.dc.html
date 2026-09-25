@@ -698,7 +698,7 @@ class Component extends DCLogic {
     if (this.io) this.io.disconnect();
   }
 
-  componentDidUpdate() { this.reveal(); }
+
 
   async load() {
     try {
@@ -805,6 +805,7 @@ class Component extends DCLogic {
 
   renderVals() {
     const s = this.state, P = this.props;
+    setTimeout(() => this.reveal(), 0);
     const pad = n => String(n).padStart(2, '0');
     const pf = s.profile || { positioning: {}, manifesto: {}, about: { headline: {} }, photos: {}, contact: {}, cv: {} };
     const tax = s.taxonomy || {};
