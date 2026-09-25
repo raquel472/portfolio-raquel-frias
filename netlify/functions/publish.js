@@ -7,7 +7,17 @@ const out = (statusCode, obj) => ({ statusCode, headers: H, body: JSON.stringify
 
 exports.handler = async (event, context) => {
   const { GITHUB_TOKEN: token, GITHUB_REPO: repo, GITHUB_BRANCH: branch = 'main' } = process.env;
-  if (event.httpMethod === 'GET') return out(200, { ok: true, configured: !!(token && repo) });
+  if (event.httpMethod === 'GET') {
+    const info = { ok: true, configured: !!(token && repo), repo: repo || null, branch };
+    if (token && repo) {
+      const hd = { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json', 'User-Agent': 'rf-portfolio-editor' };
+      const a = await fetch(API + '/repos/' + repo, { headers: hd });
+      info.tokenOk = a.status !== 401;
+      info.repoOk = a.ok;
+      if (a.ok) { const b = await fetch(API + '/repos/' + repo + '/git/ref/heads/' + branch, { headers: hd }); info.branchOk = b.ok; }
+    }
+    return out(200, info);
+  }
   if (event.httpMethod !== 'POST') return out(405, { error: 'Método não permitido.' });
 
   const user = context.clientContext && context.clientContext.user;
