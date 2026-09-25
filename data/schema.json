@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "_nota": "Fonte única das regras de conteúdo. O editor usa estes limites; o layout do site foi desenhado para comportá-los.",
+  "options": {
+    "status": [{ "value": "publicado", "label": "Publicado" }, { "value": "rascunho", "label": "Rascunho (só na prévia)" }, { "value": "oculto", "label": "Oculto" }],
+    "layout": [{ "value": "", "label": "Automático" }, { "value": "wide", "label": "Panorâmico (imagem larga)" }, { "value": "split", "label": "Imagem à esquerda" }, { "value": "splitR", "label": "Imagem vertical à direita" }],
+    "ratio": [{ "value": "16/9", "label": "Horizontal 16:9" }, { "value": "21/9", "label": "Panorâmica 21:9" }, { "value": "4/3", "label": "Horizontal 4:3" }, { "value": "4/5", "label": "Vertical 4:5" }, { "value": "3/4", "label": "Vertical 3:4" }, { "value": "1/1", "label": "Quadrada" }, { "value": "9/16", "label": "Stories 9:16" }],
+    "size": [{ "value": "full", "label": "Largura total" }, { "value": "half", "label": "Metade" }, { "value": "third", "label": "Um terço" }, { "value": "portrait", "label": "Vertical" }],
+    "block": [{ "value": "text", "label": "Texto" }, { "value": "image", "label": "Imagem" }, { "value": "pair", "label": "Duas imagens" }, { "value": "list", "label": "Lista" }],
+    "tsize": [{ "value": "large", "label": "Grande (destaque)" }, { "value": "small", "label": "Pequeno" }],
+    "reelStatus": [{ "value": "a classificar", "label": "A classificar" }, { "value": "usar", "label": "Usar no site" }, { "value": "descartar", "label": "Não usar" }]
+  },
+  "collections": {
+    "projects": {
+      "label": "Projetos", "singular": "projeto", "file": "projects", "path": "projects",
+      "titleField": "title", "metaFields": ["client", "year"], "preview": "#/projetos/{slug}", "listPreview": "#/projetos",
+      "defaults": { "slug": "", "status": "rascunho", "featured": false, "layout": "", "title": "", "subtitle": "", "year": "", "client": "", "type": "", "categories": [], "filters": [], "summary": "", "context": "", "objective": "", "audience": "", "concept": null, "strategy": null, "role": { "tags": [], "text": "" }, "body": [], "results": { "stats": [], "notes": [], "learnings": [] }, "cover": { "src": "", "label": "", "tone": "light" }, "gallery": [], "video": null, "link": "" },
+      "groups": [
+        { "id": "basico", "label": "Básico", "hint": "O essencial: aparece nos cards e no topo do case.", "fields": [
+          { "key": "title", "label": "Título do projeto", "type": "text", "max": 40, "required": true, "placeholder": "Ex.: Novembro Azul" },
+          { "key": "subtitle", "label": "Subtítulo ou mote", "type": "text", "max": 70, "help": "Opcional. Aparece em itálico abaixo do título." },
+          { "key": "slug", "label": "Endereço da página", "type": "slug", "max": 50, "required": true, "help": "Gerado a partir do título. Só minúsculas, números e hífens." },
+          { "key": "client", "label": "Cliente ou empresa", "type": "text", "max": 40, "required": true },
+          { "key": "year", "label": "Ano", "type": "text", "max": 15, "required": true, "placeholder": "2025 ou 2015 — 2023" },
+          { "key": "type", "label": "Tipo de projeto", "type": "text", "max": 60, "required": true, "placeholder": "Ex.: Campanha institucional" },
+          { "key": "categories", "label": "Áreas", "type": "stringlist", "max": 30, "maxItems": 4, "help": "Até 4. Ex.: Branding, Copywriting." },
+          { "key": "filters", "label": "Filtros na página Projetos", "type": "multiselect", "optionsFrom": "taxonomy" },
+          { "key": "summary", "label": "Resumo em uma frase", "type": "textarea", "max": 240, "required": true, "help": "Aparece no card e em destaque no case." }
+        ]},
+        { "id": "capa", "label": "Capa e exibição", "hint": "Como o projeto aparece no site.", "fields": [
+          { "key": "cover", "label": "Imagem de capa", "type": "media" },
+          { "key": "status", "label": "Status", "type": "select", "options": "status" },
+          { "key": "featured", "label": "Destaque na Home", "type": "toggle", "onLabel": "Aparece na Home", "offLabel": "Só na página Projetos" },
+          { "key": "layout", "label": "Composição na Home", "type": "select", "options": "layout" }
+        ]},
+        { "id": "historia", "label": "História", "hint": "Contexto, objetivo e raciocínio. Deixe em branco o que não se aplica — a seção some.", "fields": [
+          { "key": "context", "label": "Contexto — qual era o problema?", "type": "textarea", "max": 600 },
+          { "key": "objective", "label": "Objetivo — o que precisava ser alcançado?", "type": "textarea", "max": 400 },
+          { "key": "audience", "label": "Público", "type": "textarea", "max": 200 },
+          { "key": "concept.quote", "label": "Conceito — frase-chave", "type": "text", "max": 90, "help": "Vira uma citação grande em itálico." },
+          { "key": "concept.text", "label": "Conceito — explicação", "type": "textarea", "max": 300 },
+          { "key": "strategy.text", "label": "Estratégia — raciocínio", "type": "textarea", "max": 400 },
+          { "key": "strategy.items", "label": "Estratégia — frentes", "type": "repeater", "maxItems": 6, "itemLabel": "Frente", "titleKey": "title", "itemDefault": { "title": "", "text": "" }, "fields": [
+            { "key": "title", "label": "Nome", "type": "text", "max": 40 },
+            { "key": "text", "label": "Descrição", "type": "textarea", "max": 160 }
+          ]}
+        ]},
+        { "id": "papel", "label": "Papel da Raquel", "hint": "Deixe muito claro o que foi responsabilidade sua.", "fields": [
+          { "key": "role.tags", "label": "Funções", "type": "stringlist", "max": 24, "maxItems": 6, "required": true, "help": "Ex.: Copywriting, Estratégia, Roteiro." },
+          { "key": "role.text", "label": "O que você fez", "type": "textarea", "max": 600, "required": true }
+        ]},
+        { "id": "desenvolvimento", "label": "Desenvolvimento", "hint": "Monte a sequência livremente: texto, imagem, texto, lista…", "fields": [
+          { "key": "body", "label": "Blocos", "type": "repeater", "maxItems": 12, "itemLabel": "Bloco", "titleKey": "type", "titleOptions": "block", "itemDefault": { "type": "text", "text": "" }, "fields": [
+            { "key": "type", "label": "Tipo de bloco", "type": "select", "options": "block" },
+            { "key": "text", "label": "Texto", "type": "textarea", "max": 700, "showIf": { "key": "type", "in": ["text"] } },
+            { "key": "title", "label": "Título da lista", "type": "text", "max": 40, "showIf": { "key": "type", "in": ["list"] } },
+            { "key": "items", "label": "Itens — um por linha: Título — descrição", "type": "lines", "max": 1400, "showIf": { "key": "type", "in": ["list"] } },
+            { "key": ".", "label": "Imagem", "type": "media", "showIf": { "key": "type", "in": ["image"] } },
+            { "key": "ratio", "label": "Proporção", "type": "select", "options": "ratio", "showIf": { "key": "type", "in": ["image"] } },
+            { "key": "images.0", "label": "Imagem 1", "type": "media", "showIf": { "key": "type", "in": ["pair"] } },
+            { "key": "images.1", "label": "Imagem 2", "type": "media", "showIf": { "key": "type", "in": ["pair"] } }
+          ]}
+        ]},
+        { "id": "resultados", "label": "Resultados", "hint": "Só dados reais. Sem números, a seção não aparece.", "fields": [
+          { "key": "results.stats", "label": "Números", "type": "repeater", "maxItems": 6, "itemLabel": "Número", "titleKey": "value", "itemDefault": { "value": "", "label": "" }, "fields": [
+            { "key": "value", "label": "Valor", "type": "text", "max": 12, "placeholder": "98,7 mil" },
+            { "key": "label", "label": "O que significa", "type": "text", "max": 90, "placeholder": "visualizações no YouTube" }
+          ]},
+          { "key": "results.notes", "label": "Resultados qualitativos", "type": "stringlist", "long": true, "max": 180, "maxItems": 5 },
+          { "key": "results.learnings", "label": "Aprendizados", "type": "stringlist", "long": true, "max": 180, "maxItems": 3 }
+        ]},
+        { "id": "midia", "label": "Galeria e vídeo", "hint": "Opcional. Sem imagens ou vídeo, os blocos não aparecem.", "fields": [
+          { "key": "video", "label": "Vídeo principal", "type": "video", "help": "Link do YouTube, Vimeo, Instagram ou arquivo .mp4." },
+          { "key": "gallery", "label": "Galeria", "type": "repeater", "maxItems": 12, "itemLabel": "Imagem", "titleKey": "label", "itemDefault": { "src": "", "label": "", "size": "half", "ratio": "4/3", "tone": "light" }, "fields": [
+            { "key": ".", "label": "Imagem", "type": "media" },
+            { "key": "size", "label": "Tamanho", "type": "select", "options": "size" },
+            { "key": "ratio", "label": "Proporção", "type": "select", "options": "ratio" }
+          ]},
+          { "key": "link", "label": "Link externo", "type": "url", "max": 200, "placeholder": "https://" }
+        ]}
+      ]
+    },
+    "testimonials": {
+      "label": "Depoimentos", "singular": "depoimento", "file": "testimonials", "path": "testimonials",
+      "titleField": "name", "metaFields": ["company"], "preview": "#/depoimentos", "listPreview": "#/depoimentos",
+      "defaults": { "size": "small", "name": "", "role": "", "company": "", "photo": "", "linkedin": "", "highlight": "", "quote": "" },
+      "groups": [
+        { "id": "depoimento", "label": "Depoimento", "hint": "Use o texto exatamente como a pessoa escreveu.", "fields": [
+          { "key": "name", "label": "Nome", "type": "text", "max": 40, "required": true },
+          { "key": "role", "label": "Cargo", "type": "text", "max": 110 },
+          { "key": "company", "label": "Empresa", "type": "text", "max": 40 },
+          { "key": "linkedin", "label": "LinkedIn", "type": "url", "max": 120, "placeholder": "https://linkedin.com/in/…" },
+          { "key": "photo", "label": "Foto (link)", "type": "url", "max": 300, "help": "Opcional. Sem foto, aparecem as iniciais." },
+          { "key": "quote", "label": "Depoimento completo", "type": "textarea", "max": 700, "required": true },
+          { "key": "size", "label": "Tamanho na página", "type": "select", "options": "tsize" },
+          { "key": "highlight", "label": "Trecho em destaque", "type": "textarea", "max": 140, "help": "Só para o tamanho Grande. Copie um trecho literal do depoimento." }
+        ]}
+      ]
+    }
+  },
+  "singletons": {
+    "home": { "label": "Home e perfil", "file": "profile", "path": "", "preview": "#/", "groups": [
+      { "id": "hero", "label": "Abertura", "hint": "Primeira tela do site.", "fields": [
+        { "key": "positioning.a", "label": "Posicionamento — parte 1", "type": "text", "max": 40, "required": true },
+        { "key": "positioning.b", "label": "Posicionamento — parte 2 (itálico)", "type": "text", "max": 40 },
+        { "key": "intro", "label": "Apresentação curta", "type": "textarea", "max": 260, "required": true },
+        { "key": "roles", "label": "Funções (linha do topo)", "type": "stringlist", "max": 40, "maxItems": 4 },
+        { "key": "photos.hero", "label": "Retrato vertical", "type": "media" },
+        { "key": "disciplines", "label": "Faixa de áreas de atuação", "type": "stringlist", "max": 32, "maxItems": 12 }
+      ]},
+      { "id": "manifesto", "label": "Manifesto", "hint": "Pouco texto, uma ideia. Alterne linhas normais e em itálico.", "fields": [
+        { "key": "manifesto.lines", "label": "Linhas", "type": "repeater", "maxItems": 5, "itemLabel": "Linha", "titleKey": "text", "itemDefault": { "text": "", "italic": false }, "fields": [
+          { "key": "text", "label": "Texto", "type": "text", "max": 70 },
+          { "key": "italic", "label": "Estilo", "type": "toggle", "onLabel": "Itálico (vinho)", "offLabel": "Normal" }
+        ]},
+        { "key": "manifesto.footnote", "label": "Nota de rodapé", "type": "textarea", "max": 200 }
+      ]},
+      { "id": "numeros", "label": "Números", "hint": "Cada número leva ao projeto de onde veio.", "fields": [
+        { "key": "homeStats", "label": "Números da Home", "type": "repeater", "maxItems": 4, "itemLabel": "Número", "titleKey": "value", "itemDefault": { "value": "", "unit": "", "label": "", "project": "" }, "fields": [
+          { "key": "value", "label": "Valor", "type": "text", "max": 6 },
+          { "key": "unit", "label": "Unidade", "type": "text", "max": 4, "placeholder": "mil, mi, %" },
+          { "key": "label", "label": "Legenda", "type": "text", "max": 60 },
+          { "key": "project", "label": "Projeto", "type": "select", "optionsFrom": "projects" }
+        ]},
+        { "key": "projectsIntro", "label": "Texto de abertura da página Projetos", "type": "textarea", "max": 260 }
+      ]},
+      { "id": "contato", "label": "Contato", "hint": "Aparece no rodapé de todas as páginas.", "fields": [
+        { "key": "contact.headline.0.text", "label": "Chamada — linha 1", "type": "text", "max": 30 },
+        { "key": "contact.headline.1.text", "label": "Chamada — linha 2 (itálico)", "type": "text", "max": 30 },
+        { "key": "contact.email", "label": "E-mail", "type": "email", "max": 80, "required": true },
+        { "key": "contact.phone", "label": "Telefone", "type": "text", "max": 20, "help": "Deixe vazio para não publicar." },
+        { "key": "contact.linkedin", "label": "LinkedIn", "type": "url", "max": 120 },
+        { "key": "contact.instagram", "label": "Instagram", "type": "text", "max": 40, "placeholder": "@usuario", "help": "Opcional." }
+      ]}
+    ]},
+    "cv": { "label": "Currículo", "file": "profile", "path": "", "preview": "#/curriculo", "groups": [
+      { "id": "sobre", "label": "Sobre", "fields": [
+        { "key": "about.headline.a", "label": "Título — parte 1", "type": "text", "max": 40 },
+        { "key": "about.headline.b", "label": "Título — parte 2 (itálico)", "type": "text", "max": 40 },
+        { "key": "about.paragraphs", "label": "Parágrafos", "type": "stringlist", "long": true, "max": 320, "maxItems": 4 },
+        { "key": "photos.about", "label": "Foto horizontal", "type": "media" }
+      ]},
+      { "id": "experiencia", "label": "Experiência", "hint": "Da mais recente para a mais antiga.", "fields": [
+        { "key": "cv.experience", "label": "Experiências", "type": "repeater", "maxItems": 14, "itemLabel": "Experiência", "titleKey": "company", "itemDefault": { "company": "", "role": "", "period": "", "dates": "", "description": "", "project": "" }, "fields": [
+          { "key": "company", "label": "Empresa", "type": "text", "max": 50 },
+          { "key": "role", "label": "Cargo", "type": "text", "max": 70 },
+          { "key": "period", "label": "Período", "type": "text", "max": 20, "placeholder": "2023 — 2026" },
+          { "key": "dates", "label": "Datas completas", "type": "text", "max": 30, "placeholder": "01/2023 — 09/2026" },
+          { "key": "description", "label": "Descrição", "type": "textarea", "max": 300 },
+          { "key": "project", "label": "Projeto relacionado", "type": "select", "optionsFrom": "projects" }
+        ]}
+      ]},
+      { "id": "formacao", "label": "Formação", "fields": [
+        { "key": "cv.education", "label": "Formação acadêmica", "type": "repeater", "maxItems": 6, "itemLabel": "Curso", "titleKey": "course", "itemDefault": { "course": "", "institution": "", "year": "" }, "fields": [
+          { "key": "course", "label": "Curso", "type": "text", "max": 110 },
+          { "key": "institution", "label": "Instituição", "type": "text", "max": 60 },
+          { "key": "year", "label": "Ano", "type": "text", "max": 15 }
+        ]},
+        { "key": "cv.courses", "label": "Cursos e extensões", "type": "repeater", "maxItems": 10, "itemLabel": "Curso", "titleKey": "course", "itemDefault": { "course": "", "institution": "", "year": "" }, "fields": [
+          { "key": "course", "label": "Curso", "type": "text", "max": 120 },
+          { "key": "institution", "label": "Instituição", "type": "text", "max": 40 },
+          { "key": "year", "label": "Ano", "type": "text", "max": 15 }
+        ]}
+      ]},
+      { "id": "competencias", "label": "Competências", "fields": [
+        { "key": "cv.specializations", "label": "Especializações", "type": "stringlist", "max": 50, "maxItems": 8 },
+        { "key": "cv.skills", "label": "Competências", "type": "stringlist", "max": 26, "maxItems": 16 },
+        { "key": "cv.tools", "label": "Ferramentas", "type": "stringlist", "max": 26, "maxItems": 16 },
+        { "key": "cv.languages", "label": "Idiomas", "type": "repeater", "maxItems": 4, "itemLabel": "Idioma", "titleKey": "language", "itemDefault": { "language": "", "detail": "" }, "fields": [
+          { "key": "language", "label": "Idioma", "type": "text", "max": 20 },
+          { "key": "detail", "label": "Nível ou escola", "type": "text", "max": 40 }
+        ]},
+        { "key": "cv.pdf", "label": "Link do PDF do currículo", "type": "url", "max": 300 }
+      ]}
+    ]},
+    "media": { "label": "Vídeos a classificar", "file": "media", "path": "", "preview": "#/", "groups": [
+      { "id": "reels", "label": "Reels", "hint": "Curadoria: decida a qual projeto cada vídeo pertence antes de usá-lo.", "fields": [
+        { "key": "reels", "label": "Vídeos", "type": "repeater", "maxItems": 30, "itemLabel": "Vídeo", "titleKey": "title", "itemDefault": { "id": "", "url": "", "title": "", "project": null, "status": "a classificar" }, "fields": [
+          { "key": "url", "label": "Link", "type": "url", "max": 200 },
+          { "key": "title", "label": "Título curto", "type": "text", "max": 40 },
+          { "key": "project", "label": "Pertence ao projeto", "type": "select", "optionsFrom": "projects" },
+          { "key": "status", "label": "Decisão", "type": "select", "options": "reelStatus" }
+        ]}
+      ]}
+    ]}
+  }
+}

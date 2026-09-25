@@ -1,0 +1,11 @@
+{
+  "_nota": "Caixa de entrada de mídia. Cada item fica 'a classificar' até a curadoria vinculá-lo a um projeto (campo project = slug).",
+  "reels": [
+    { "id": "DcJ7OsaoNb-", "url": "https://www.instagram.com/reel/DcJ7OsaoNb-/", "title": "", "project": null, "status": "a classificar" },
+    { "id": "DSdFNCHAhpk", "url": "https://www.instagram.com/reel/DSdFNCHAhpk/", "title": "", "project": null, "status": "a classificar" },
+    { "id": "DTP2vmdk02S", "url": "https://www.instagram.com/reel/DTP2vmdk02S/", "title": "", "project": null, "status": "a classificar" },
+    { "id": "DQegt9DAAD7", "url": "https://www.instagram.com/reel/DQegt9DAAD7/", "title": "", "project": null, "status": "a classificar" },
+    { "id": "DPhNI7uk4mV", "url": "https://www.instagram.com/reel/DPhNI7uk4mV/", "title": "", "project": null, "status": "a classificar" },
+    { "id": "C6_JW45LfFe", "url": "https://www.instagram.com/reel/C6_JW45LfFe/", "title": "", "project": null, "status": "a classificar" }
+  ]
+}

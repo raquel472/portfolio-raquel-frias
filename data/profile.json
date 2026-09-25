@@ -1,0 +1,74 @@
+{
+  "name": "Raquel Frias",
+  "fullName": "Raquel de Oliveira Frias",
+  "roles": ["Analista de Marketing e Comunicação", "Jornalista", "Copywriter", "Editora e Revisora de Textos"],
+  "city": "Uberlândia, MG",
+  "edition": "2026",
+  "positioning": { "a": "Comunicação que humaniza,", "b": "marketing que comunica." },
+  "intro": "Comunicadora social por formação e estrategista por paixão. Especialista em copy e branding, transformo conceitos em campanhas institucionais que não apenas comunicam, mas conectam.",
+  "disciplines": ["Copywriting", "Storytelling", "Branding", "Estratégia de comunicação", "Jornalismo", "Conteúdo", "Roteirização", "Comunicação institucional", "Projetos editoriais", "UGC", "Fotografia de lifestyle"],
+  "manifesto": {
+    "lines": [
+      { "text": "Entre o rigor do jornalismo" },
+      { "text": "e a magia das histórias infantis,", "italic": true },
+      { "text": "encontrei meu propósito: dar voz e forma a narrativas" },
+      { "text": "que deixam marca.", "italic": true }
+    ],
+    "footnote": "Seja em uma estratégia de mercado ou em uma página de livro infantil, uma boa história é o que move o mundo."
+  },
+  "homeStats": [
+    { "value": "9,46", "unit": "mi", "label": "pessoas únicas alcançadas", "project": "sempre-perto" },
+    { "value": "98,7", "unit": "mil", "label": "visualizações no YouTube", "project": "novembro-azul" },
+    { "value": "71,5", "unit": "mil", "label": "de alcance médio por post no Instagram", "project": "outubro-rosa" },
+    { "value": "80", "unit": "%", "label": "dos stories do mês gerados pelo público (UGC)", "project": "outubro-rosa" }
+  ],
+  "projectsIntro": "Planejamento e execução de campanhas institucionais e promocionais de grande visibilidade — transformando estratégia em conceitos criativos com impacto real na marca e na experiência dos públicos.",
+  "photos": {
+    "hero": { "src": "", "label": "Retrato vertical · Hero", "ratio": "4/5", "tone": "caramel" },
+    "about": { "src": "", "label": "Foto natural · horizontal", "ratio": "3/2", "tone": "light" }
+  },
+  "about": {
+    "headline": { "a": "Comunicação que humaniza,", "b": "marketing que comunica." },
+    "paragraphs": [
+      "Entre o rigor do jornalismo e a magia das histórias infantis, encontrei meu propósito: dar voz e forma a narrativas que deixam marca.",
+      "Sou comunicadora social por formação e estrategista por paixão. Especialista em copy e branding, transformo conceitos em campanhas institucionais que não apenas comunicam, mas conectam.",
+      "Para mim, seja em uma estratégia de mercado ou em uma página de livro infantil, uma boa história é o que move o mundo."
+    ]
+  },
+  "contact": {
+    "headline": [{ "text": "Vamos criar algo" }, { "text": "inesquecível juntos.", "italic": true }],
+    "email": "raquel.frias1612@gmail.com",
+    "phone": "(34) 98431-8575",
+    "phoneIntl": "+5534984318575",
+    "linkedin": "linkedin.com/in/raquel-frias-ba818a37",
+    "instagram": ""
+  },
+  "cv": {
+    "pdf": "assets/cv/raquel-frias-cv.pdf",
+    "experience": [
+      { "company": "Unimed Uberlândia", "role": "Analista de Marketing e Comunicação", "period": "2023 — 2026", "dates": "01/2023 — 09/2026", "description": "Planejamento e execução de campanhas institucionais 360°, endomarketing e comunicação interna, produção de conteúdo para mídias sociais e canais internos, gestão de indicadores e controle de custos.", "project": "" },
+      { "company": "Historinhas da Maricota", "role": "Escritora, editora e revisora · Freelancer", "period": "2015 — 2023", "dates": "", "description": "Redação, edição e revisão de textos infantis.", "project": "historinhas-da-maricota" },
+      { "company": "Mondelez International", "role": "Analista de Marketing / Trade Marketing", "period": "2009 — 2015", "dates": "07/2009 — 06/2015", "description": "Análise de indicadores de desempenho e resultados comerciais; planejamento e execução de ações de trade marketing com foco em ponto de venda; suporte à área comercial.", "project": "trade-marketing-mondelez" },
+      { "company": "Autus Comercial Chevrolet", "role": "Comunicação Pós-Vendas", "period": "2006 — 2009", "dates": "04/2006 — 07/2009", "description": "Comunicação de pós-vendas em concessionária, condução de oficinas de treinamento e desenvolvimento de manuais departamentais.", "project": "" },
+      { "company": "ONG AYA — Doenças Raras", "role": "Jornalista colaboradora", "period": "2006", "dates": "", "description": "", "project": "" },
+      { "company": "Affinity Corretora de Seguros", "role": "Auxiliar administrativa", "period": "2005 — 2006", "dates": "06/2005 — 04/2006", "description": "", "project": "" },
+      { "company": "Guia Universitário", "role": "Jornalista colaboradora", "period": "2002 — 2005", "dates": "", "description": "Cadernos esportivo, político e econômico.", "project": "" },
+      { "company": "Revista Vagalume", "role": "Jornalista", "period": "", "dates": "", "description": "Santuário Diocesano Nossa Senhora Aparecida.", "project": "" }
+    ],
+    "education": [
+      { "course": "Branding e Customer Experience", "institution": "UNIUBE", "year": "Em andamento" },
+      { "course": "Pós-graduação em Gestão Organizacional e Desenvolvimento de Talentos Humanos", "institution": "Faculdade Católica de Uberlândia", "year": "2009" },
+      { "course": "Bacharelado em Comunicação Social — Jornalismo", "institution": "Unitri", "year": "2000" }
+    ],
+    "specializations": ["Redação Criativa & Storytelling", "Branding & Posicionamento de Marca", "Estratégia de Marketing & Copywriting", "Comunicação Social & Jornalismo", "UGC & Fotografia de Lifestyle", "Roteirização (screenwriting)"],
+    "courses": [
+      { "course": "Copywriting", "institution": "EBAC", "year": "2024" },
+      { "course": "Marketing Digital", "institution": "RD Station", "year": "" },
+      { "course": "Marketing de Conteúdo e Revisão de Conteúdo Web", "institution": "Rock University", "year": "" },
+      { "course": "Gestão de Marketing, Comunicação Institucional, Gestão de Pessoas, Estratégia de Empresas", "institution": "FGV", "year": "" }
+    ],
+    "skills": ["Estratégia", "Redação", "Conteúdo", "Branding", "Endomarketing", "Comunicação Interna", "Trade Marketing", "Análise de Indicadores", "Campanhas", "Roteiro", "Copywriting", "Mídias Sociais"],
+    "tools": [],
+    "languages": [{ "language": "Inglês", "detail": "We Like School" }]
+  }
+}
