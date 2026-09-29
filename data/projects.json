@@ -597,6 +597,44 @@
       "gallery": [],
       "video": null,
       "link": ""
+    },
+    {
+      "slug": "",
+      "status": "rascunho",
+      "featured": false,
+      "layout": "",
+      "title": "",
+      "subtitle": "",
+      "year": "",
+      "client": "",
+      "type": "",
+      "categories": [],
+      "filters": [],
+      "summary": "",
+      "context": "",
+      "objective": "",
+      "audience": "",
+      "concept": null,
+      "strategy": null,
+      "role": {
+        "tags": [],
+        "text": ""
+      },
+      "body": [],
+      "results": {
+        "stats": [],
+        "notes": [],
+        "learnings": []
+      },
+      "cover": {
+        "src": "assets/uploads/mun2otj7-1.jpg",
+        "label": "Cuidado que Floresce, Esperança que Renasce - Outubro Rosa",
+        "tone": "light"
+      },
+      "gallery": [],
+      "video": null,
+      "link": "",
+      "order": 7
     }
   ]
 }
