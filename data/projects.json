@@ -13,7 +13,7 @@
       "order": 1,
       "status": "publicado",
       "featured": true,
-      "layout": "wide",
+      "layout": "",
       "title": "Outubro Rosa,",
       "subtitle": "Cuidado que Floresce, Esperança que Renasce...",
       "year": "2025",
@@ -29,15 +29,49 @@
         "campanhas",
         "institucional"
       ],
-      "summary": "A campanha ressignificou o Ipê Amarelo — símbolo da Oncologia da Unimed — florescendo em rosa para representar cuidado, renascimento e a força da rede de apoio no combate ao câncer de mama.",
-      "context": "Tornar tangível e emocional um símbolo já consolidado — o Ipê Amarelo — trazendo o conceito de rede de apoio ao tratamento.",
+      "summary": "A campanha ressignificou o Ipê Amarelo, símbolo da Oncologia da Unimed Uberlândia, florescendo em rosa para representar cuidado, renascimento e a força da rede de apoio no combate ao câncer de mama.",
+      "context": "Tornar tangível e emocional um símbolo já consolidado, o Ipê Amarelo, trazendo o conceito de rede de apoio ao tratamento.",
       "objective": "Fortalecer a rede de apoio ao cuidado e à prevenção do câncer de mama, promovendo conscientização, engajamento e acolhimento, reforçando a Unimed como referência em saúde integral e humanizada.",
       "audience": "Beneficiários, colaboradores, cooperados, empresas parceiras e público geral (via TV e digital).",
       "concept": {
         "quote": "Mesmo em tempos desafiadores, a vida pode florescer.",
         "text": "O ipê rosa como fio condutor visual e simbólico, sob o mote “ninguém floresce sozinho”."
       },
-      "strategy": null,
+      "strategy": {
+        "text": "Partimos do Ipê Amarelo, símbolo consolidado, e o transformamos em metáfora de rede de apoio: assim como a árvore floresce mesmo na seca, a vida floresce com acolhimento. Unimos emoção e informação, integrando canais de massa e de relacionamento para gerar conscientização, engajamento e reforçar a Unimed Uberlândia como referência em cuidado humanizado.",
+        "items": [
+          {
+            "title": "Vídeo",
+            "text": "Filme emocional com o Ipê Amarelo como metáfora de rede de apoio, para alcançar o grande público.",
+            "slug": "v"
+          },
+          {
+            "title": "Digital",
+            "text": "Desdobramento do conceito em redes sociais e conteúdos informativos sobre prevenção e cuidado.",
+            "slug": "d"
+          },
+          {
+            "title": "Endomarketing",
+            "text": "Mobilização de colaboradores e cooperados como multiplicadores da mensagem de acolhimento.",
+            "slug": "e"
+          },
+          {
+            "title": "Parcerias empresariais",
+            "text": "Engajamento de empresas parceiras para ampliar o alcance e a conscientização (palestras)",
+            "slug": "p"
+          },
+          {
+            "title": "Ativações",
+            "text": "Ações presenciais que tornam o símbolo tangível e aproximam o público da causa. (Nas unidades de atendimento)",
+            "slug": "a"
+          },
+          {
+            "title": "Relacionamento",
+            "text": "Por fim, o fechamento com uma caminhada aberta, entrega de kits. Reforçando a Unimed Uberlândia como referência em saúde integral e humanizada.",
+            "slug": "r"
+          }
+        ]
+      },
       "role": {
         "tags": [
           "Estratégia",
@@ -45,7 +79,7 @@
           "Narrativa",
           "Storytelling"
         ],
-        "text": "Responsável por toda a estratégia, o conceito criativo e a construção da narrativa da campanha — do desenvolvimento da ideia “ninguém floresce sozinho” à condução do storytelling que uniu o símbolo do Ipê Rosa, a rede de apoio e as ativações em todos os pontos de contato (presencial, mídia e digital)."
+        "text": "Responsável por toda a estratégia, o conceito criativo e a construção da narrativa da campanha, do desenvolvimento da ideia “ninguém floresce sozinho” à condução do storytelling que uniu o símbolo do Ipê Rosa, a rede de apoio e as ativações em todos os pontos de contato (presencial, mídia e digital)."
       },
       "body": [
         {
@@ -62,13 +96,13 @@
             },
             {
               "title": "Caminhada Outubro Rosa",
-              "text": "25/10, Parque Marileusa, em parceria com o Instituto Unimed Uberlândia: ativações, kit com camiseta, bucket e bolsa, plantio simbólico do ipê rosa e arrecadação de itens de higiene pessoal para o Instituto Unimed e a Casa Santa Gema."
+              "text": "Parque Marileusa, em parceria com o Instituto Unimed Uberlândia: ativações, kit com camiseta, bucket e bolsa, plantio simbólico do ipê rosa e arrecadação de itens de higiene pessoal para o Instituto Unimed e a Casa Santa Gema."
             }
           ]
         },
         {
           "type": "image",
-          "src": "",
+          "src": "assets/uploads/muq4zo3i-1.jpg",
           "label": "Caminhada Outubro Rosa · Parque Marileusa",
           "ratio": "16/9",
           "tone": "wine"
@@ -91,13 +125,13 @@
           "type": "pair",
           "images": [
             {
-              "src": "",
+              "src": "assets/uploads/muq4zo3i-2.jpg",
               "label": "Pétalas de ipê com mensagens de incentivo",
               "ratio": "4/5",
               "tone": "caramel"
             },
             {
-              "src": "",
+              "src": "assets/uploads/muq4zo3i-3.jpg",
               "label": "Pins de mobilização interna",
               "ratio": "4/5",
               "tone": "light"
@@ -140,28 +174,28 @@
         "learnings": []
       },
       "cover": {
-        "src": "",
+        "src": "assets/uploads/muq4zo3i-4.jpg",
         "label": "Capa · Ipê rosa",
         "tone": "wine"
       },
       "gallery": [
         {
-          "src": "",
+          "src": "assets/uploads/muq4zo3i-5.jpg",
           "label": "Key visual da campanha",
-          "size": "full",
-          "ratio": "21/9",
+          "size": "portrait",
+          "ratio": "4/5",
           "tone": "wine"
         },
         {
-          "src": "",
+          "src": "assets/uploads/muq4zo3i-6.jpg",
           "label": "Espaço instagramável nas unidades",
           "size": "half",
           "ratio": "4/3",
           "tone": "light"
         },
         {
-          "src": "",
-          "label": "Kit da caminhada",
+          "src": "assets/uploads/muq4zo3i-7.jpg",
+          "label": "Plantio do ipê",
           "size": "half",
           "ratio": "4/3",
           "tone": "caramel"
@@ -169,10 +203,11 @@
       ],
       "video": {
         "src": "",
-        "embed": "",
+        "embed": "https://www.youtube.com/embed/sXeiIORmFFA",
         "kind": "video",
         "label": "Vídeo de abertura da campanha, com Mônica Cunha",
-        "tone": "ink"
+        "tone": "ink",
+        "url": "https://www.youtube.com/watch?v=sXeiIORmFFA"
       },
       "link": ""
     },

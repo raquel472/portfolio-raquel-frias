@@ -4,16 +4,16 @@
   "roles": [
     "Analista de Marketing e Comunicação",
     "Jornalista",
-    "Copywriter",
-    "Editora e Revisora de Textos"
+    "Endomarketing",
+    "Produção e Eventos"
   ],
   "city": "Uberlândia, MG",
   "edition": "2026",
   "positioning": {
-    "a": "Teste",
-    "b": "marketing que comunica."
+    "a": "Conectar pessoas e ideias",
+    "b": "Marketing que comunica"
   },
-  "intro": "Comunicadora social por formação e estrategista por paixão. Especialista em copy e branding, transformo conceitos em campanhas institucionais que não apenas comunicam, mas conectam.",
+  "intro": "Comunicadora social por formação e estrategista por paixão. Atuo na criação de campanhas institucionais, unindo branding, copywriting, endomarketing e produção de vídeos. Acredito que comunicar é só o começo, o que importa é conectar.",
   "disciplines": [
     "Copywriting",
     "Storytelling",
@@ -24,8 +24,8 @@
     "Roteirização",
     "Comunicação institucional",
     "Projetos editoriais",
-    "UGC",
-    "Fotografia de lifestyle"
+    "Produção e eventos",
+    "Endomarketing"
   ],
   "manifesto": {
     "lines": [
@@ -37,7 +37,7 @@
         "italic": true
       },
       {
-        "text": "encontrei meu propósito: dar voz e forma a narrativas"
+        "text": "encontrei meu propósito, dar voz e forma a narrativas"
       },
       {
         "text": "que deixam marca.",
@@ -49,7 +49,7 @@
   "homeStats": [
     {
       "value": "9,46",
-      "unit": "mi",
+      "unit": "mil",
       "label": "pessoas únicas alcançadas",
       "project": "sempre-perto"
     },
@@ -72,10 +72,10 @@
       "project": "outubro-rosa"
     }
   ],
-  "projectsIntro": "Planejamento e execução de campanhas institucionais e promocionais de grande visibilidade — transformando estratégia em conceitos criativos com impacto real na marca e na experiência dos públicos.",
+  "projectsIntro": "Planejamento e execução de campanhas institucionais e promocionais de grande visibilidade, transformando estratégia em conceitos criativos com impacto real na marca e na experiência dos públicos.",
   "photos": {
     "hero": {
-      "src": "",
+      "src": "assets/uploads/muq4zo3i-8.jpg",
       "label": "Retrato vertical · Hero",
       "ratio": "4/5",
       "tone": "caramel"
