@@ -64,7 +64,7 @@ button,input,select,textarea{font-family:inherit}
     </sc-if>
 
     <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
-      <p style="font-size:14px;color:#5E5A52;">Carregando conteúdo…</p>
+      <p role="status" style="font-size:14px;color:#5E5A52;">{{ loadMsg }}</p>
     </sc-if>
 
     <!-- INÍCIO -->
@@ -486,7 +486,7 @@ class Component extends DCLogic {
         }
       } catch (e) {}
       this.setState({ ready: true, schema, orig: base, docs: this.clone(docs) });
-    } catch (e) { console.error('[editor] falha ao carregar', e); this.flash('Não foi possível carregar o conteúdo.'); }
+    } catch (e) { console.error('[editor] falha ao carregar', e); this.setState({ loadError: (e && e.message) || 'erro desconhecido' }); }
   }
 
   clone(o) { return JSON.parse(JSON.stringify(o)); }
@@ -815,7 +815,7 @@ class Component extends DCLogic {
       showPreviewPane: () => this.setState({ pane: 'preview' }), showFormPane: () => this.setState({ pane: 'form' }),
       toast: s.toast, hasToast: !!s.toast
     };
-    if (!s.ready) return { ...common, loading: true, navItems: [], tiles: [], isHome: false, isList: false, isForm: false, showPublish: false, hasChanges: false };
+    if (!s.ready) return { ...common, loading: true, loadMsg: s.loadError ? 'Não foi possível carregar o conteúdo (' + s.loadError + '). Recarregue a página.' : 'Carregando conteúdo…', navItems: [], tiles: [], isHome: false, isList: false, isForm: false, showPublish: false, hasChanges: false };
 
     const { schema, docs } = s;
     const C = schema.collections, projArr = this.g(docs, this.collPath(C.projects)) || [], testArr = this.g(docs, this.collPath(C.testimonials)) || [];
