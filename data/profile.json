@@ -2,18 +2,18 @@
   "name": "Raquel Frias",
   "fullName": "Raquel de Oliveira Frias",
   "roles": [
-    "Analista de Marketing e Comunicação",
+    "Marketing e Comunicação",
     "Jornalista",
-    "Endomarketing",
-    "Produção e Eventos"
+    "Branding",
+    "Produção e eventos"
   ],
   "city": "Uberlândia, MG",
   "edition": "2026",
   "positioning": {
-    "a": "Conectar pessoas e ideias",
-    "b": "Marketing que comunica"
+    "a": "Estratégia que conecta, ",
+    "b": "marketing que comunica."
   },
-  "intro": "Comunicadora social por formação e estrategista por paixão. Atuo na criação de campanhas institucionais, unindo branding, copywriting, endomarketing e produção de vídeos. Acredito que comunicar é só o começo, o que importa é conectar.",
+  "intro": "Comunicadora social por formação, estrategista por paixão. Uso copy, branding, endomarketing e vídeo para transformar conceitos em campanhas institucionais que não apenas informam, mas conectam pessoas e fortalecem marcas",
   "disciplines": [
     "Copywriting",
     "Storytelling",
@@ -24,8 +24,8 @@
     "Roteirização",
     "Comunicação institucional",
     "Projetos editoriais",
-    "Produção e eventos",
-    "Endomarketing"
+    "Endomarketing",
+    "Produção de Vídeos"
   ],
   "manifesto": {
     "lines": [
@@ -49,7 +49,7 @@
   "homeStats": [
     {
       "value": "9,46",
-      "unit": "mil",
+      "unit": "mi",
       "label": "pessoas únicas alcançadas",
       "project": "sempre-perto"
     },
@@ -72,10 +72,10 @@
       "project": "outubro-rosa"
     }
   ],
-  "projectsIntro": "Planejamento e execução de campanhas institucionais e promocionais de grande visibilidade, transformando estratégia em conceitos criativos com impacto real na marca e na experiência dos públicos.",
+  "projectsIntro": "Planejamento e execução de campanhas institucionais e promocionais de grande visibilidade — transformando estratégia em conceitos criativos com impacto real na marca e na experiência dos públicos.",
   "photos": {
     "hero": {
-      "src": "assets/uploads/muq4zo3i-8.jpg",
+      "src": "assets/uploads/murb6f6i-8.jpg",
       "label": "Retrato vertical · Hero",
       "ratio": "4/5",
       "tone": "caramel"
