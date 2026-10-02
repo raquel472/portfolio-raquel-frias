@@ -29,44 +29,15 @@
         "campanhas",
         "institucional"
       ],
-      "summary": "A campanha ressignificou o Ipê Amarelo, símbolo da Oncologia da Unimed Uberlândia, florescendo em rosa para representar cuidado, renascimento e a força da rede de apoio no combate ao câncer de mama.",
-      "context": "O Ipê Amarelo já é um símbolo consolidado do Espaço de Saúde Oncologia da Unimed, corria o risco de ser visto apenas como imagem. O desafio era transformá-lo em algo tangível e emocional, trazendo o conceito de rede de apoio ao tratamento para o centro da comunicação",
-      "objective": "Fortalecer a rede de apoio ao cuidado e à prevenção do câncer de mama, gerando conscientização, engajamento e acolhimento, e reforçar a Unimed Uberlândia como referência em saúde integral e humanizada",
-      "audience": "Beneficiários, colaboradores, cooperados, empresas parceiras e público geral, alcançados por TV e canais digitais",
+      "summary": "A campanha ressignificou o Ipê Amarelo — símbolo da Oncologia da Unimed — florescendo em rosa para representar cuidado, renascimento e a força da rede de apoio no combate ao câncer de mama.",
+      "context": "Tornar tangível e emocional um símbolo já consolidado — o Ipê Amarelo — trazendo o conceito de rede de apoio ao tratamento.",
+      "objective": "Fortalecer a rede de apoio ao cuidado e à prevenção do câncer de mama, promovendo conscientização, engajamento e acolhimento, reforçando a Unimed como referência em saúde integral e humanizada.",
+      "audience": "Beneficiários, colaboradores, cooperados, empresas parceiras e público geral (via TV e digital).",
       "concept": {
         "quote": "Mesmo em tempos desafiadores, a vida pode florescer.",
-        "text": "O ipê rosa vira o fio condutor visual e simbólico da campanha, sob o mote \"ninguém floresce sozinho\". Assim como a árvore depende do solo, da água e da luz, quem enfrenta o câncer de mama depende de uma rede que cuida, escuta e acompanha"
+        "text": "O ipê rosa como fio condutor visual e simbólico, sob o mote “ninguém floresce sozinho”."
       },
-      "strategy": {
-        "text": "Em vez de criar um novo símbolo, partimos de um já consolidado e demos a ele um significado concreto: a rede de apoio. A ideia foi mostrar que o cuidado se faz de gestos de várias pessoas, e que cada público tem um papel nele. A mensagem foi adaptada a cada canal, do institucional na TV ao diálogo direto no digital e com o público interno",
-        "items": [
-          {
-            "title": "Vídeo",
-            "text": "filme institucional para ampliar o alcance e a conscientização.",
-            "slug": "v"
-          },
-          {
-            "title": "Digital e redes sociais",
-            "text": "conteúdos que mantêm a conversa ativa e convidam à participação.",
-            "slug": "digital-e-redes-sociais"
-          },
-          {
-            "title": "Endomarketing",
-            "text": "ações com colaboradores e cooperados para que vivam a rede de apoio por dentro.",
-            "slug": "e"
-          },
-          {
-            "title": "Parcerias com empresas",
-            "text": "envolvimento de empresas parceiras na causa, através de palestras e rodas de conversas",
-            "slug": "p"
-          },
-          {
-            "title": "Caminhada",
-            "text": "entrega de kits, ativações e plantio do ipê pelos diretores da Unimed, fechando a campanha com cuidado, humanização e prevenção",
-            "slug": "c"
-          }
-        ]
-      },
+      "strategy": null,
       "role": {
         "tags": [
           "Estratégia",
@@ -74,7 +45,7 @@
           "Narrativa",
           "Storytelling"
         ],
-        "text": "Responsável pela estratégia, pelo conceito criativo e pela narrativa da campanha, do desenvolvimento da ideia \"ninguém floresce sozinho\" à condução do storytelling que uniu o Ipê Rosa, a rede de apoio e as ativações em todos os pontos de contato: presencial, mídia e digital. Conduzi também o fechamento, com caminhada entre stakeholders, entrega de kits e o plantio do ipê pelos diretores da Unimed Uberlândia"
+        "text": "Responsável por toda a estratégia, o conceito criativo e a construção da narrativa da campanha — do desenvolvimento da ideia “ninguém floresce sozinho” à condução do storytelling que uniu o símbolo do Ipê Rosa, a rede de apoio e as ativações em todos os pontos de contato (presencial, mídia e digital)."
       },
       "body": [
         {
@@ -90,13 +61,14 @@
               "text": "Palestras, rodas de conversa e materiais informativos sobre a Linha de Cuidado da Mama."
             },
             {
-              "title": "Caminhada Outubro Rosa , Parque Marileusa, em parceria com o Instituto Unimed Uberlândia: ativações, kit com camiseta, bucket e bolsa, plantio simbólico do ipê rosa e arrecadação de itens de higiene pessoal para o Instituto Unimed e a Casa Santa Gema."
+              "title": "Caminhada Outubro Rosa",
+              "text": "25/10, Parque Marileusa, em parceria com o Instituto Unimed Uberlândia: ativações, kit com camiseta, bucket e bolsa, plantio simbólico do ipê rosa e arrecadação de itens de higiene pessoal para o Instituto Unimed e a Casa Santa Gema."
             }
           ]
         },
         {
           "type": "image",
-          "src": "assets/uploads/murb6f6i-1.jpg",
+          "src": "",
           "label": "Caminhada Outubro Rosa · Parque Marileusa",
           "ratio": "16/9",
           "tone": "wine"
@@ -119,13 +91,13 @@
           "type": "pair",
           "images": [
             {
-              "src": "assets/uploads/murb6f6i-2.jpg",
+              "src": "",
               "label": "Pétalas de ipê com mensagens de incentivo",
               "ratio": "4/5",
               "tone": "caramel"
             },
             {
-              "src": "assets/uploads/murb6f6i-3.jpg",
+              "src": "",
               "label": "Pins de mobilização interna",
               "ratio": "4/5",
               "tone": "light"
@@ -168,28 +140,28 @@
         "learnings": []
       },
       "cover": {
-        "src": "assets/uploads/murb6f6i-4.jpg",
+        "src": "",
         "label": "Capa · Ipê rosa",
         "tone": "wine"
       },
       "gallery": [
         {
-          "src": "assets/uploads/murb6f6i-5.jpg",
+          "src": "",
           "label": "Key visual da campanha",
           "size": "full",
-          "ratio": "4/5",
+          "ratio": "21/9",
           "tone": "wine"
         },
         {
-          "src": "assets/uploads/murb6f6i-6.jpg",
+          "src": "",
           "label": "Espaço instagramável nas unidades",
           "size": "half",
           "ratio": "4/3",
           "tone": "light"
         },
         {
-          "src": "assets/uploads/murb6f6i-7.jpg",
-          "label": "Plantio do Ipê",
+          "src": "",
+          "label": "Kit da caminhada",
           "size": "half",
           "ratio": "4/3",
           "tone": "caramel"
@@ -197,11 +169,10 @@
       ],
       "video": {
         "src": "",
-        "embed": "https://www.youtube.com/embed/sXeiIORmFFA",
+        "embed": "",
         "kind": "video",
         "label": "Vídeo de abertura da campanha, com Mônica Cunha",
-        "tone": "ink",
-        "url": "https://youtu.be/sXeiIORmFFA"
+        "tone": "ink"
       },
       "link": ""
     },
@@ -664,6 +635,44 @@
       "video": null,
       "link": "",
       "order": 7
+    },
+    {
+      "slug": "",
+      "status": "rascunho",
+      "featured": false,
+      "layout": "",
+      "title": "",
+      "subtitle": "",
+      "year": "",
+      "client": "",
+      "type": "",
+      "categories": [],
+      "filters": [],
+      "summary": "",
+      "context": "",
+      "objective": "",
+      "audience": "",
+      "concept": null,
+      "strategy": null,
+      "role": {
+        "tags": [],
+        "text": ""
+      },
+      "body": [],
+      "results": {
+        "stats": [],
+        "notes": [],
+        "learnings": []
+      },
+      "cover": {
+        "src": "",
+        "label": "",
+        "tone": "light"
+      },
+      "gallery": [],
+      "video": null,
+      "link": "",
+      "order": 8
     }
   ]
 }

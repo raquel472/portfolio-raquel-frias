@@ -2,18 +2,18 @@
   "name": "Raquel Frias",
   "fullName": "Raquel de Oliveira Frias",
   "roles": [
-    "Marketing e Comunicação",
+    "Analista de Marketing e Comunicação",
     "Jornalista",
-    "Branding",
-    "Produção e eventos"
+    "Copywriter",
+    "Editora e Revisora de Textos"
   ],
   "city": "Uberlândia, MG",
   "edition": "2026",
   "positioning": {
-    "a": "Estratégia que conecta, ",
+    "a": "Teste",
     "b": "marketing que comunica."
   },
-  "intro": "Comunicadora social por formação, estrategista por paixão. Uso copy, branding, endomarketing e vídeo para transformar conceitos em campanhas institucionais que não apenas informam, mas conectam pessoas e fortalecem marcas",
+  "intro": "Comunicadora social por formação e estrategista por paixão. Especialista em copy e branding, transformo conceitos em campanhas institucionais que não apenas comunicam, mas conectam.",
   "disciplines": [
     "Copywriting",
     "Storytelling",
@@ -24,8 +24,8 @@
     "Roteirização",
     "Comunicação institucional",
     "Projetos editoriais",
-    "Endomarketing",
-    "Produção de Vídeos"
+    "UGC",
+    "Fotografia de lifestyle"
   ],
   "manifesto": {
     "lines": [
@@ -37,7 +37,7 @@
         "italic": true
       },
       {
-        "text": "encontrei meu propósito, dar voz e forma a narrativas"
+        "text": "encontrei meu propósito: dar voz e forma a narrativas"
       },
       {
         "text": "que deixam marca.",
@@ -75,7 +75,7 @@
   "projectsIntro": "Planejamento e execução de campanhas institucionais e promocionais de grande visibilidade — transformando estratégia em conceitos criativos com impacto real na marca e na experiência dos públicos.",
   "photos": {
     "hero": {
-      "src": "assets/uploads/murb6f6i-8.jpg",
+      "src": "",
       "label": "Retrato vertical · Hero",
       "ratio": "4/5",
       "tone": "caramel"
