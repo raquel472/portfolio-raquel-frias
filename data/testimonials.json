@@ -1,0 +1,37 @@
+{
+  "testimonials": [
+    {
+      "order": 1,
+      "size": "large",
+      "name": "Joander Santos",
+      "role": "Identidade Visual | UI/UX Design | Branding design | Landing pages | Apresentações Personalizadas",
+      "company": "Unimed Uberlândia",
+      "photo": "",
+      "linkedin": "https://linkedin.com/in/joandersantos",
+      "highlight": "Ela tem aquela habilidade rara de equilibrar o rigor do jornalismo com a criatividade do copywriting.",
+      "quote": "Trabalhar com a Raquel na Unimed Uberlândia é ter a tranquilidade de saber que a comunicação está em boas mãos. Ela tem aquela habilidade rara de equilibrar o rigor do jornalismo com a criatividade do copywriting de um jeito muito natural. Além de ser super dedicada e organizada, a Raquel traz uma sensibilidade única para os conteúdos — vi de perto como ela se entregou em campanhas importantes, como o Outubro Rosa, criando conexões reais com as pessoas. É uma profissional que não para de aprender, encara os desafios com resiliência e faz tudo com uma leveza e parceria que tornam o dia a dia muito melhor."
+    },
+    {
+      "order": 2,
+      "size": "small",
+      "name": "Valquiria Vieira",
+      "role": "Account Based Marketing | Produto SaaS | Educação Corporativa | Sales Enablement B2B LATAM",
+      "company": "",
+      "photo": "",
+      "linkedin": "https://linkedin.com/in/valquiriavieirs",
+      "highlight": "",
+      "quote": "Raquel é uma profissional extremamente dedicada, atenta aos detalhes e com excelente relação interpessoal. Organizada, proativa e super parceira, com ela os dias ficam mais leves e as demandas fluem com clareza, dinâmica e compromisso. Foi uma honra trabalhar e aprender ao seu lado!"
+    },
+    {
+      "order": 3,
+      "size": "small",
+      "name": "Jackson Pereira",
+      "role": "UX/UI Designer | Visual Designer | Product Designer | Motion Design | Design System",
+      "company": "Unimed Uberlândia",
+      "photo": "",
+      "linkedin": "https://linkedin.com/in/jose-jackson",
+      "highlight": "",
+      "quote": "Trabalhar com a Raquel na Unimed Uberlândia foi uma experiência muito positiva. Ela é uma profissional extremamente dedicada, organizada e com uma visão estratégica muito clara sobre marketing e comunicação. No dia a dia, sempre demonstrou responsabilidade, atenção aos detalhes e uma facilidade enorme para lidar com demandas complexas, trazendo soluções bem pensadas e alinhadas aos objetivos do time. Além disso, a Raquel tem uma postura colaborativa e uma comunicação leve, o que torna o trabalho em grupo mais produtivo e agradável. É o tipo de profissional em quem se pode confiar e que faz diferença no time."
+    }
+  ]
+}
