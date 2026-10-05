@@ -24,8 +24,8 @@
     "Roteirização",
     "Comunicação institucional",
     "Projetos editoriais",
-    "UGC",
-    "Fotografia de lifestyle"
+    "Eventos",
+    "Produção de vídeos"
   ],
   "manifesto": {
     "lines": [
@@ -37,7 +37,7 @@
         "italic": true
       },
       {
-        "text": "encontrei meu propósito: dar voz e forma a narrativas"
+        "text": "encontrei meu propósito, dar voz e forma a narrativas"
       },
       {
         "text": "que deixam marca.",
@@ -75,7 +75,7 @@
   "projectsIntro": "Planejamento e execução de campanhas institucionais e promocionais de grande visibilidade — transformando estratégia em conceitos criativos com impacto real na marca e na experiência dos públicos.",
   "photos": {
     "hero": {
-      "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/muvhnlib-1.jpg",
+      "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/muvju5fd-8.jpg",
       "label": "Retrato vertical · Hero",
       "ratio": "4/5",
       "tone": "caramel"

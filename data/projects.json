@@ -14,7 +14,7 @@
       "status": "publicado",
       "featured": true,
       "layout": "wide",
-      "title": "Outubro Rosa teste",
+      "title": "Outubro Rosa ",
       "subtitle": "Cuidado que Floresce, Esperança que Renasce",
       "year": "2025",
       "client": "Unimed Uberlândia",
@@ -27,17 +27,20 @@
       ],
       "filters": [
         "campanhas",
-        "institucional"
+        "institucional",
+        "conteudo"
       ],
-      "summary": "A campanha ressignificou o Ipê Amarelo — símbolo da Oncologia da Unimed — florescendo em rosa para representar cuidado, renascimento e a força da rede de apoio no combate ao câncer de mama.",
-      "context": "Tornar tangível e emocional um símbolo já consolidado — o Ipê Amarelo — trazendo o conceito de rede de apoio ao tratamento.",
-      "objective": "Fortalecer a rede de apoio ao cuidado e à prevenção do câncer de mama, promovendo conscientização, engajamento e acolhimento, reforçando a Unimed como referência em saúde integral e humanizada.",
-      "audience": "Beneficiários, colaboradores, cooperados, empresas parceiras e público geral (via TV e digital).",
+      "summary": "No Outubro Rosa, o Ipê Amarelo do Espaço de Saúde Oncologia da Unimed Uberlândia, floresceu em rosa e transformou conscientização em acolhimento, reforçando a marca como referência em saúde integral e humanizada.",
+      "context": "O Ipê Amarelo é um símbolo consolidado do Espaço de Saúde Oncologia da Unimed Uberlândia. No Outubro Rosa, o desafio era torná-lo mais tangível e emocional, trazendo o conceito de rede de apoio ao tratamento sem perder o reconhecimento que o símbolo já construiu.",
+      "objective": "Fortalecer a rede de apoio ao cuidado e à prevenção do câncer de mama, promovendo conscientização, engajamento e acolhimento, e posicionar a Unimed Uberlândia como referência em saúde integral e humanizada.",
+      "audience": "Beneficiários, colaboradores, cooperados, empresas parceiras e público geral, alcançados por TV e canais digitais.",
       "concept": {
         "quote": "Mesmo em tempos desafiadores, a vida pode florescer.",
         "text": "O ipê rosa como fio condutor visual e simbólico, sob o mote “ninguém floresce sozinho”."
       },
-      "strategy": null,
+      "strategy": {
+        "text": "Em vez de criar um símbolo novo, partimos do Ipê Amarelo, já reconhecido como marca da Oncologia da Unimed. Ao florescer em rosa, ele une o Outubro Rosa à identidade da marca e traz a ideia de renascimento. O mote \"ninguém floresce sozinho\" transforma a imagem em rede de apoio e acolhimento, em uma linguagem simples para TV e digital."
+      },
       "role": {
         "tags": [
           "Estratégia",
@@ -45,7 +48,7 @@
           "Narrativa",
           "Storytelling"
         ],
-        "text": "Responsável por toda a estratégia, o conceito criativo e a construção da narrativa da campanha — do desenvolvimento da ideia “ninguém floresce sozinho” à condução do storytelling que uniu o símbolo do Ipê Rosa, a rede de apoio e as ativações em todos os pontos de contato (presencial, mídia e digital)."
+        "text": "Liderei a estratégia, o conceito criativo e a narrativa da campanha. Da ideia \"ninguém floresce sozinho\" ao storytelling que uniu o Ipê Rosa e a rede de apoio, conduzi a mensagem de forma integrada em todos os pontos de contato: ações presenciais, mídia e digital."
       },
       "body": [
         {
@@ -68,7 +71,7 @@
         },
         {
           "type": "image",
-          "src": "",
+          "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/muvju5fd-1.jpg",
           "label": "Caminhada Outubro Rosa · Parque Marileusa",
           "ratio": "16/9",
           "tone": "wine"
@@ -91,13 +94,13 @@
           "type": "pair",
           "images": [
             {
-              "src": "",
+              "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/muvju5fd-2.jpg",
               "label": "Pétalas de ipê com mensagens de incentivo",
               "ratio": "4/5",
               "tone": "caramel"
             },
             {
-              "src": "",
+              "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/muvju5fd-3.jpg",
               "label": "Pins de mobilização interna",
               "ratio": "4/5",
               "tone": "light"
@@ -140,28 +143,28 @@
         "learnings": []
       },
       "cover": {
-        "src": "",
+        "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/muvju5fd-4.jpg",
         "label": "Capa · Ipê rosa",
         "tone": "wine"
       },
       "gallery": [
         {
-          "src": "",
+          "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/muvju5fd-5.jpg",
           "label": "Key visual da campanha",
           "size": "full",
-          "ratio": "21/9",
+          "ratio": "4/5",
           "tone": "wine"
         },
         {
-          "src": "",
+          "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/muvju5fd-6.jpg",
           "label": "Espaço instagramável nas unidades",
           "size": "half",
           "ratio": "4/3",
           "tone": "light"
         },
         {
-          "src": "",
-          "label": "Kit da caminhada",
+          "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/muvju5fd-7.jpg",
+          "label": "Plantio do Ipê",
           "size": "half",
           "ratio": "4/3",
           "tone": "caramel"
@@ -169,10 +172,11 @@
       ],
       "video": {
         "src": "",
-        "embed": "",
+        "embed": "https://www.youtube.com/embed/sXeiIORmFFA",
         "kind": "video",
         "label": "Vídeo de abertura da campanha, com Mônica Cunha",
-        "tone": "ink"
+        "tone": "ink",
+        "url": "https://youtu.be/sXeiIORmFFA"
       },
       "link": ""
     },
