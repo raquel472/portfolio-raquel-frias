@@ -3,9 +3,9 @@
   "fullName": "Raquel de Oliveira Frias",
   "roles": [
     "Analista de Marketing e Comunicação",
-    "Jornalista",
+    "Endomarketing",
     "Copywriter",
-    "Editora e Revisora de Textos"
+    "Produção de vídeos"
   ],
   "city": "Uberlândia, MG",
   "edition": "2026",
@@ -75,7 +75,7 @@
   "projectsIntro": "Planejamento e execução de campanhas institucionais e promocionais de grande visibilidade — transformando estratégia em conceitos criativos com impacto real na marca e na experiência dos públicos.",
   "photos": {
     "hero": {
-      "src": "",
+      "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/muvhnlib-1.jpg",
       "label": "Retrato vertical · Hero",
       "ratio": "4/5",
       "tone": "caramel"
