@@ -546,18 +546,23 @@
         "autoral"
       ],
       "summary": "Textos infantis escritos, editados e revisados com foco em linguagem adequada ao público-alvo.",
-      "context": "Projeto autoral criado após conquistar o 1º lugar em um concurso de histórias infantis em Varginha (MG).",
-      "objective": "",
-      "audience": "Público infantil.",
-      "concept": null,
-      "strategy": null,
+      "context": "Projeto autoral criado após conquistar o 1º lugar em um concurso de histórias infantis em Varginha (MG), dando origem a uma personagem e a um universo próprio voltado ao público infantil.",
+      "objective": "Criar uma personagem infantil carismática e um universo de histórias capaz de estimular a imaginação, a criatividade e o interesse das crianças pela leitura, transformando a personagem em uma identidade própria para conteúdos digitais.",
+      "audience": "Crianças, com comunicação também direcionada a pais, familiares e educadores.",
+      "concept": {
+        "quote": "Toda história começa com um mundo para imaginar.",
+        "text": "Histórias em experiências de imaginação, descoberta e diversão. O conceito combina narrativa, personagens e elementos visuais lúdicos para criar um universo infantil acolhedor, estimulando a curiosidade e aproximando as crianças do prazer de ouvir e contar histórias"
+      },
+      "strategy": {
+        "text": "Criar um universo infantil com identidade própria, usando a personagem Maricota como fio condutor das histórias. A estratégia combina narrativa, linguagem simples, elementos visuais lúdicos e conteúdo digital para criar conexão com as crianças e, ao mesmo tempo, despertar o interesse de pais e educadores pelo projeto."
+      },
       "role": {
         "tags": [
           "Escrita",
           "Edição",
           "Revisão"
         ],
-        "text": "Escreveu, editou e revisou textos voltados ao público infantil e os compartilhou voluntariamente em leituras em escolas e no Instagram, com acesso aberto a todos."
+        "text": "Criei e desenvolvi o universo da Maricota, desde a concepção da personagem e das histórias até a construção da identidade visual e dos conteúdos para o Instagram. Estruturei a linguagem e a narrativa do projeto para criar uma experiência infantil lúdica, afetiva e reconhecível.O projeto conquistou o 1º lugar no concurso de histórias infantis realizado em Varginha (MG), tornando-se o ponto de partida para a criação da página Historinhas da Maricota e para o desenvolvimento de um universo infantil autoral."
       },
       "body": [],
       "results": {
@@ -571,53 +576,9 @@
         "learnings": []
       },
       "cover": {
-        "src": "",
+        "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/mux7gy8i-1.jpg",
         "label": "Capa · Historinhas da Maricota",
         "tone": "caramel"
-      },
-      "gallery": [],
-      "video": null,
-      "link": ""
-    },
-    {
-      "slug": "trade-marketing-mondelez",
-      "order": 6,
-      "status": "publicado",
-      "featured": false,
-      "layout": "",
-      "title": "Trade Marketing Mondelez",
-      "subtitle": "Ativações diversas",
-      "year": "2009 — 2015",
-      "client": "Mondelez International",
-      "type": "Trade marketing / ponto de venda",
-      "categories": [
-        "Trade Marketing",
-        "Análise de Indicadores"
-      ],
-      "filters": [
-        "trade"
-      ],
-      "summary": "Conjunto de ativações de trade marketing no ponto de venda, com apoio à área comercial e acompanhamento de indicadores, para sustentar a presença e a performance das marcas da Mondelez no varejo.",
-      "context": "Garantir visibilidade e execução das marcas no ponto de venda e dar suporte à equipe comercial com ações, materiais e indicadores que sustentassem a performance no varejo.",
-      "objective": "Sustentação das marcas no ponto de venda e suporte à área comercial.",
-      "audience": "Canal comercial, equipe de vendas e ponto de venda.",
-      "concept": null,
-      "strategy": null,
-      "role": {
-        "tags": [
-          "Análise de indicadores",
-          "Planejamento",
-          "Execução",
-          "Materiais de venda"
-        ],
-        "text": "Análise de indicadores de desempenho, planejamento e execução das ações, estruturação de campanhas e materiais de apoio à venda."
-      },
-      "body": [],
-      "results": null,
-      "cover": {
-        "src": "",
-        "label": "Capa · Ponto de venda",
-        "tone": "ink"
       },
       "gallery": [],
       "video": null,
