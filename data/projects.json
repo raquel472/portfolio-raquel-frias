@@ -459,7 +459,7 @@
           "Conceito",
           "Curadoria de conteúdo"
         ],
-        "text": "Desenvolvi a estratégia de comunicação e o conceito da cartilha, traduzindo o modelo assistencial das Linhas de Cuidado para uma linguagem mais clara e acessível. Estruturei a narrativa, organizei os conteúdos e direcionei a construção visual para tornar o tema mais didático, próximo e alinhado à identidade da Unimed."
+        "text": "Desenvolvi a estratégia de comunicação e o conceito da cartilha, traduzindo o modelo assistencial das Linhas de Cuidado para uma linguagem mais clara e acessível. Estruturei a narrativa, organizei os conteúdos e direcionei a construção visual para tornar o tema mais didático, próximo e alinhado à identidade da Unimed.\n\nhttps://mktcomunicacao.aflip.in/linhadecuidadounimeduberlandia.html\n"
       },
       "body": [
         {
@@ -488,7 +488,7 @@
           "text": "A cartilha tornou mais acessível a compreensão sobre as Linhas de Cuidado, apresentando de forma didática suas diferentes frentes e reforçando a proposta de um cuidado contínuo, personalizado e integral. O material também se tornou um recurso de apoio para comunicação e ações educativas."
         },
         {
-          "type": "pair",
+          "type": "image",
           "images": [
             {
               "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/mux610vo-1.jpg",
@@ -502,7 +502,9 @@
               "ratio": "3/4",
               "tone": "caramel"
             }
-          ]
+          ],
+          "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/mux6apzd-1.jpg",
+          "ratio": "16/9"
         }
       ],
       "results": {
