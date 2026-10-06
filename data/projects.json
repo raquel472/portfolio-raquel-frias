@@ -330,12 +330,15 @@
         "conteudo"
       ],
       "summary": "Campanha digital multicanal — e-mail, redes sociais e YouTube — de conscientização sobre a saúde do homem, incentivando o autocuidado e a prevenção.",
-      "context": "",
+      "context": "A saúde masculina ainda é cercada por tabus e pela baixa adesão a práticas preventivas. A campanha surgiu para ampliar a conscientização sobre a importância do autocuidado e do diagnóstico precoce, aproximando a Unimed Uberlândia do público masculino por meio de uma comunicação informativa, acessível e relevante.",
       "objective": "Conscientizar o público masculino sobre a importância da prevenção, incentivar o autocuidado e fortalecer o posicionamento institucional da marca como promotora de saúde integral.",
-      "audience": "Público masculino.",
-      "concept": null,
+      "audience": "foco na conscientização sobre prevenção e cuidados com a saúde do homem",
+      "concept": {
+        "quote": "O cuidado é o melhor caminho.",
+        "text": "O conceito parte da ideia de que cuidar da saúde é uma escolha que deve fazer parte da rotina. A campanha utiliza uma linguagem positiva e acolhedora para incentivar os homens a deixarem de lado os tabus e assumirem uma postura mais preventiva, reforçando que o cuidado é o primeiro passo "
+      },
       "strategy": {
-        "text": "Abordagem digital integrada, com um papel claro para cada canal.",
+        "text": "Transformar a prevenção em uma mensagem simples, positiva e próxima do público masculino. A estratégia utilizou uma comunicação integrada nos canais digitais, combinando conteúdo educativo, redes sociais, e-mail marketing e YouTube para ampliar o alcance, estimular o engajamento e reforçar a importância do autocuidado e do diagnóstico precoce.",
         "items": [
           {
             "title": "E-mail marketing",
@@ -357,7 +360,7 @@
           "Copywriting",
           "Coordenação"
         ],
-        "text": "Responsável pela estratégia de comunicação digital e pelo copywriting da campanha, integrando e-mail, redes sociais e YouTube em uma mensagem única de prevenção e autocuidado masculino. Coordenou o alinhamento com as áreas internas e as aprovações, garantindo a coerência com o posicionamento institucional da marca."
+        "text": "Desenvolvi a estratégia de comunicação da campanha, trabalhando o conceito criativo, direcionamento das mensagens e desdobramento das peças para os canais digitais. Coordenei a comunicação entre os diferentes formatos, garantindo unidade visual e consistência da mensagem ao longo da campanha."
       },
       "body": [],
       "results": {
@@ -381,17 +384,26 @@
         "learnings": []
       },
       "cover": {
-        "src": "",
+        "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/mux3a71j-1.jpg",
         "label": "Capa · Novembro Azul",
         "tone": "ink"
       },
-      "gallery": [],
+      "gallery": [
+        {
+          "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/mux3a71j-2.jpg",
+          "label": "Redes Sociais",
+          "size": "half",
+          "ratio": "4/5",
+          "tone": "light"
+        }
+      ],
       "video": {
         "src": "",
-        "embed": "",
+        "embed": "https://www.youtube.com/embed/S4j9-E6P684",
         "kind": "video",
         "label": "Vídeo da campanha · YouTube",
-        "tone": "ink"
+        "tone": "ink",
+        "url": "https://youtu.be/S4j9-E6P684"
       },
       "link": ""
     },
