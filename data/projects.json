@@ -428,12 +428,15 @@
         "editorial"
       ],
       "summary": "Material institucional que traduziu um modelo assistencial complexo em linguagem clara e humanizada, apresentando as cinco Linhas de Cuidado da Unimed Uberlândia.",
-      "context": "Tornar compreensível para o beneficiário um modelo assistencial complexo e técnico, com padronização de linguagem e alinhamento ao propósito da marca.",
+      "context": "Tornar compreensível para o beneficiário um modelo assistencial complexo e técnico, com padronização de linguagem e alinhamento ao propósito da marca. Era necessário apresentar as Linhas de Cuidado de forma clara, mostrando como elas aproximam o beneficiário de uma assistência contínua, personalizada e integral.",
       "objective": "Desenvolver um material institucional didático e estratégico, explicando o conceito das Linhas de Cuidado, seus benefícios e o compromisso da Unimed com a excelência assistencial.",
-      "audience": "Beneficiários e, secundariamente, equipes internas e ações educativas.",
-      "concept": null,
+      "audience": "Beneficiários e, secundariamente, equipes internas e profissionais envolvidos nas ações educativas e assistenciais.",
+      "concept": {
+        "quote": "Cuidado contínuo, próximo e humano.",
+        "text": "O conceito parte da ideia de que o cuidado deve ser contínuo, próximo e humano. As Linhas de Cuidado organizam a assistência de acordo com diferentes fases da vida e condições de saúde, aproximando o beneficiário de soluções que tornam o cuidado mais personalizado, integral e resolutivo."
+      },
       "strategy": {
-        "text": "Três pilares.",
+        "text": "Transformar um conceito assistencial técnico em uma experiência de comunicação simples, visual e acessível. A estratégia foi organizar as Linhas de Cuidado em uma narrativa que apresenta seu propósito, importância e diferentes frentes de atuação, facilitando a compreensão do beneficiário e reforçando o posicionamento da Unimed como referência em cuidado integral.",
         "items": [
           {
             "title": "Humanização do discurso",
@@ -456,7 +459,7 @@
           "Conceito",
           "Curadoria de conteúdo"
         ],
-        "text": "Conduziu toda a parte de redação e estruturação do material — redação, conceito e curadoria de conteúdo."
+        "text": "Desenvolvi a estratégia de comunicação e o conceito da cartilha, traduzindo o modelo assistencial das Linhas de Cuidado para uma linguagem mais clara e acessível. Estruturei a narrativa, organizei os conteúdos e direcionei a construção visual para tornar o tema mais didático, próximo e alinhado à identidade da Unimed."
       },
       "body": [
         {
@@ -482,13 +485,13 @@
         },
         {
           "type": "text",
-          "text": "Cada linha foi apresentada com objetivo, público-alvo, serviços, impacto na qualidade de vida e canais de acesso."
+          "text": "A cartilha tornou mais acessível a compreensão sobre as Linhas de Cuidado, apresentando de forma didática suas diferentes frentes e reforçando a proposta de um cuidado contínuo, personalizado e integral. O material também se tornou um recurso de apoio para comunicação e ações educativas."
         },
         {
           "type": "pair",
           "images": [
             {
-              "src": "",
+              "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/mux610vo-1.jpg",
               "label": "Página do material · abertura",
               "ratio": "3/4",
               "tone": "light"
@@ -512,7 +515,7 @@
         "learnings": []
       },
       "cover": {
-        "src": "",
+        "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/mux610vo-2.jpg",
         "label": "Capa · Linhas de Cuidado",
         "tone": "light"
       },
