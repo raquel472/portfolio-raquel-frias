@@ -200,12 +200,15 @@
         "institucional"
       ],
       "summary": "Campanha multicanal — mídia externa, TV, digital e redes sociais — para fortalecer a presença da marca e valorizar os serviços próprios da cooperativa, alcançando 9,46 milhões de pessoas únicas.",
-      "context": "",
-      "objective": "Fortalecer a presença institucional da Unimed Uberlândia e valorizar os serviços próprios da cooperativa.",
-      "audience": "",
-      "concept": null,
+      "context": "A Unimed Uberlândia precisava fortalecer sua presença institucional e ampliar a percepção de valor sobre seus serviços próprios. Em um cenário de comunicação cada vez mais competitivo, era necessário reforçar os diferenciais da cooperativa , cuidado, qualidade, inovação e proximidade; mostrando ao público que a Unimed está presente em diferentes momentos e necessidades de seus beneficiários.",
+      "objective": "Fortalecer a presença institucional da Unimed Uberlândia e valorizar os serviços próprios da cooperativa, reforçando sua proximidade, qualidade, inovação e capacidade de cuidado.\n\n",
+      "audience": "Beneficiários e potenciais clientes da Unimed Uberlândia, além da comunidade de Uberlândia e região, com foco em pessoas que buscam qualidade, confiança, cuidado e praticidade em serviços de saúde.",
+      "concept": {
+        "quote": "Aqui tem cuidado. Aqui tem qualidade. Aqui tem inovação.",
+        "text": "O conceito “Sempre Perto” traduz o posicionamento da Unimed Uberlândia como uma marca presente e próxima das pessoas. A campanha evidencia os serviços próprios como pontos de contato que entregam cuidado, qualidade e inovação, fortalecendo a percepção de confiança e proximidade com a cooperativa."
+      },
       "strategy": {
-        "text": "",
+        "text": "Reforçar o posicionamento institucional da Unimed Uberlândia a partir de uma comunicação integrada e próxima, valorizando seus serviços próprios como diferenciais de cuidado, qualidade e inovação. A estratégia combinou mídia externa, TV, YouTube e redes sociais para ampliar o alcance, gerar presença contínua e fortalecer a percepção de confiança e proximidade com a marca.",
         "items": [
           {
             "title": "Mídia externa",
@@ -232,7 +235,7 @@
           "Copywriting",
           "Coordenação"
         ],
-        "text": "Responsável pela estratégia, pelo conceito e pelo copywriting da campanha, integrando mídia externa, TV, digital e redes sociais. Coordenou o alinhamento com as áreas envolvidas e as aprovações internas."
+        "text": "Desenvolvi e coordenei a campanha institucional “Sempre Perto”, desde a definição do conceito e estratégia de comunicação até o desdobramento das peças para diferentes canais, como TV, mídia externa, YouTube e redes sociais, garantindo unidade visual e consistência da mensagem."
       },
       "body": [],
       "results": {
@@ -270,39 +273,40 @@
         ]
       },
       "cover": {
-        "src": "",
+        "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/mux1zv55-1.jpg",
         "label": "Capa · Sempre Perto",
         "tone": "caramel"
       },
       "gallery": [
         {
-          "src": "",
+          "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/mux1zv55-2.jpg",
           "label": "Mídia externa · Uberlândia Shopping",
           "size": "half",
           "ratio": "3/4",
           "tone": "light"
         },
         {
-          "src": "",
+          "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/mux1zv55-3.jpg",
           "label": "Mídia externa · Center Shopping",
           "size": "half",
-          "ratio": "3/4",
+          "ratio": "16/9",
           "tone": "caramel"
         },
         {
-          "src": "",
+          "src": "https://raw.githubusercontent.com/raquel472/portfolio-raquel-frias/main/assets/uploads/mux1zv55-4.jpg",
           "label": "Landing page de apoio",
           "size": "full",
-          "ratio": "16/9",
+          "ratio": "4/5",
           "tone": "light"
         }
       ],
       "video": {
         "src": "",
-        "embed": "",
+        "embed": "https://www.youtube.com/embed/wnJMdiomzCI",
         "kind": "video",
         "label": "Vídeo institucional · TV Integração, TV Paranaíba e YouTube",
-        "tone": "ink"
+        "tone": "ink",
+        "url": "https://youtu.be/wnJMdiomzCI"
       },
       "link": ""
     },
